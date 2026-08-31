@@ -1,0 +1,1040 @@
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC01
+Event ID      : 2042
+Time Created  : 07/09/2026 00:56:13
+
+Event Message :
+It has been too long since this machine last replicated with the named source machine. The time between replications with this source has exceeded the tombstone lifetime. Replication has been stopped with this source.
+ 
+ The reason that replication is not allowed to continue is that the two DCs may contain lingering objects.  Objects that have been deleted and garbage collected from an Active Directory Domain Services partition but still exist in the writable partitions of other DCs in the same domain, or read-only partitions of global catalog servers in other domains in the forest are known as "lingering objects".  If the local destination DC was allowed to replicate with the source DC, these potential lingering object would be recreated in the local Active Directory Domain Services database.
+ 
+Time of last successful replication:
+2024-03-15 03:52:45 
+Invocation ID of source directory server:
+542ad1cf-fa64-4d9f-8595-bc86f233dcef 
+Name of source directory server:
+e7fe0ee9-b2ff-4318-b971-8859b250ba1e._msdcs.apcflex.aero 
+Tombstone lifetime (days):
+180 
+ 
+The replication operation has failed.
+ 
+ 
+User Action:
+  The action plan to recover from this error can be found at http://support.microsoft.com/?id=314282.
+ 
+ If both the source and destination DCs are Windows Server 2003 DCs, then install the support tools included on the installation CD.  To see which objects would be deleted without actually performing the deletion run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC> /ADVISORY_MODE". The event logs on the source DC will enumerate all lingering objects.  To remove lingering objects from a source domain controller run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC>".
+ 
+ If either source or destination DC is a Windows 2000 Server DC, then more information on how to remove lingering objects on the source DC can be found at http://support.microsoft.com/?id=314282 or from your Microsoft support personnel.
+ 
+ If you need Active Directory Domain Services replication to function immediately at all costs and don't have time to remove lingering objects, enable replication by setting the following registry key to a non-zero value:
+ 
+Registry Key:
+HKLM\System\CurrentControlSet\Services\NTDS\Parameters\Allow Replication With Divergent and Corrupt Partner
+ 
+ Replication errors between DCs sharing a common partition can prevent user and computer accounts, trust relationships, their passwords, security groups, security group memberships and other Active Directory Domain Services configuration data to vary between DCs, affecting the ability to log on, find objects of interest and perform other critical operations. These inconsistencies are resolved once replication errors are resolved.  DCs that fail to inbound replicate deleted objects within tombstone lifetime number of days will remain inconsistent until lingering objects are manually removed by an administrator from each local DC.  Additionally, replication may continue to be blocked after this registry key is set, depending on whether lingering objects are located immediately.
+ 
+ 
+Alternate User Action:
+ 
+Force demote or reinstall the DC(s) that were disconnected.
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC01
+Event ID      : 2042
+Time Created  : 07/09/2026 00:56:13
+
+Event Message :
+It has been too long since this machine last replicated with the named source machine. The time between replications with this source has exceeded the tombstone lifetime. Replication has been stopped with this source.
+ 
+ The reason that replication is not allowed to continue is that the two DCs may contain lingering objects.  Objects that have been deleted and garbage collected from an Active Directory Domain Services partition but still exist in the writable partitions of other DCs in the same domain, or read-only partitions of global catalog servers in other domains in the forest are known as "lingering objects".  If the local destination DC was allowed to replicate with the source DC, these potential lingering object would be recreated in the local Active Directory Domain Services database.
+ 
+Time of last successful replication:
+2024-03-15 03:52:45 
+Invocation ID of source directory server:
+542ad1cf-fa64-4d9f-8595-bc86f233dcef 
+Name of source directory server:
+e7fe0ee9-b2ff-4318-b971-8859b250ba1e._msdcs.apcflex.aero 
+Tombstone lifetime (days):
+180 
+ 
+The replication operation has failed.
+ 
+ 
+User Action:
+  The action plan to recover from this error can be found at http://support.microsoft.com/?id=314282.
+ 
+ If both the source and destination DCs are Windows Server 2003 DCs, then install the support tools included on the installation CD.  To see which objects would be deleted without actually performing the deletion run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC> /ADVISORY_MODE". The event logs on the source DC will enumerate all lingering objects.  To remove lingering objects from a source domain controller run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC>".
+ 
+ If either source or destination DC is a Windows 2000 Server DC, then more information on how to remove lingering objects on the source DC can be found at http://support.microsoft.com/?id=314282 or from your Microsoft support personnel.
+ 
+ If you need Active Directory Domain Services replication to function immediately at all costs and don't have time to remove lingering objects, enable replication by setting the following registry key to a non-zero value:
+ 
+Registry Key:
+HKLM\System\CurrentControlSet\Services\NTDS\Parameters\Allow Replication With Divergent and Corrupt Partner
+ 
+ Replication errors between DCs sharing a common partition can prevent user and computer accounts, trust relationships, their passwords, security groups, security group memberships and other Active Directory Domain Services configuration data to vary between DCs, affecting the ability to log on, find objects of interest and perform other critical operations. These inconsistencies are resolved once replication errors are resolved.  DCs that fail to inbound replicate deleted objects within tombstone lifetime number of days will remain inconsistent until lingering objects are manually removed by an administrator from each local DC.  Additionally, replication may continue to be blocked after this registry key is set, depending on whether lingering objects are located immediately.
+ 
+ 
+Alternate User Action:
+ 
+Force demote or reinstall the DC(s) that were disconnected.
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC01
+Event ID      : 2042
+Time Created  : 07/09/2026 00:56:13
+
+Event Message :
+It has been too long since this machine last replicated with the named source machine. The time between replications with this source has exceeded the tombstone lifetime. Replication has been stopped with this source.
+ 
+ The reason that replication is not allowed to continue is that the two DCs may contain lingering objects.  Objects that have been deleted and garbage collected from an Active Directory Domain Services partition but still exist in the writable partitions of other DCs in the same domain, or read-only partitions of global catalog servers in other domains in the forest are known as "lingering objects".  If the local destination DC was allowed to replicate with the source DC, these potential lingering object would be recreated in the local Active Directory Domain Services database.
+ 
+Time of last successful replication:
+2024-03-15 04:00:06 
+Invocation ID of source directory server:
+542ad1cf-fa64-4d9f-8595-bc86f233dcef 
+Name of source directory server:
+e7fe0ee9-b2ff-4318-b971-8859b250ba1e._msdcs.apcflex.aero 
+Tombstone lifetime (days):
+180 
+ 
+The replication operation has failed.
+ 
+ 
+User Action:
+  The action plan to recover from this error can be found at http://support.microsoft.com/?id=314282.
+ 
+ If both the source and destination DCs are Windows Server 2003 DCs, then install the support tools included on the installation CD.  To see which objects would be deleted without actually performing the deletion run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC> /ADVISORY_MODE". The event logs on the source DC will enumerate all lingering objects.  To remove lingering objects from a source domain controller run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC>".
+ 
+ If either source or destination DC is a Windows 2000 Server DC, then more information on how to remove lingering objects on the source DC can be found at http://support.microsoft.com/?id=314282 or from your Microsoft support personnel.
+ 
+ If you need Active Directory Domain Services replication to function immediately at all costs and don't have time to remove lingering objects, enable replication by setting the following registry key to a non-zero value:
+ 
+Registry Key:
+HKLM\System\CurrentControlSet\Services\NTDS\Parameters\Allow Replication With Divergent and Corrupt Partner
+ 
+ Replication errors between DCs sharing a common partition can prevent user and computer accounts, trust relationships, their passwords, security groups, security group memberships and other Active Directory Domain Services configuration data to vary between DCs, affecting the ability to log on, find objects of interest and perform other critical operations. These inconsistencies are resolved once replication errors are resolved.  DCs that fail to inbound replicate deleted objects within tombstone lifetime number of days will remain inconsistent until lingering objects are manually removed by an administrator from each local DC.  Additionally, replication may continue to be blocked after this registry key is set, depending on whether lingering objects are located immediately.
+ 
+ 
+Alternate User Action:
+ 
+Force demote or reinstall the DC(s) that were disconnected.
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC01
+Event ID      : 2042
+Time Created  : 07/09/2026 00:56:13
+
+Event Message :
+It has been too long since this machine last replicated with the named source machine. The time between replications with this source has exceeded the tombstone lifetime. Replication has been stopped with this source.
+ 
+ The reason that replication is not allowed to continue is that the two DCs may contain lingering objects.  Objects that have been deleted and garbage collected from an Active Directory Domain Services partition but still exist in the writable partitions of other DCs in the same domain, or read-only partitions of global catalog servers in other domains in the forest are known as "lingering objects".  If the local destination DC was allowed to replicate with the source DC, these potential lingering object would be recreated in the local Active Directory Domain Services database.
+ 
+Time of last successful replication:
+2024-03-15 03:52:45 
+Invocation ID of source directory server:
+542ad1cf-fa64-4d9f-8595-bc86f233dcef 
+Name of source directory server:
+e7fe0ee9-b2ff-4318-b971-8859b250ba1e._msdcs.apcflex.aero 
+Tombstone lifetime (days):
+180 
+ 
+The replication operation has failed.
+ 
+ 
+User Action:
+  The action plan to recover from this error can be found at http://support.microsoft.com/?id=314282.
+ 
+ If both the source and destination DCs are Windows Server 2003 DCs, then install the support tools included on the installation CD.  To see which objects would be deleted without actually performing the deletion run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC> /ADVISORY_MODE". The event logs on the source DC will enumerate all lingering objects.  To remove lingering objects from a source domain controller run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC>".
+ 
+ If either source or destination DC is a Windows 2000 Server DC, then more information on how to remove lingering objects on the source DC can be found at http://support.microsoft.com/?id=314282 or from your Microsoft support personnel.
+ 
+ If you need Active Directory Domain Services replication to function immediately at all costs and don't have time to remove lingering objects, enable replication by setting the following registry key to a non-zero value:
+ 
+Registry Key:
+HKLM\System\CurrentControlSet\Services\NTDS\Parameters\Allow Replication With Divergent and Corrupt Partner
+ 
+ Replication errors between DCs sharing a common partition can prevent user and computer accounts, trust relationships, their passwords, security groups, security group memberships and other Active Directory Domain Services configuration data to vary between DCs, affecting the ability to log on, find objects of interest and perform other critical operations. These inconsistencies are resolved once replication errors are resolved.  DCs that fail to inbound replicate deleted objects within tombstone lifetime number of days will remain inconsistent until lingering objects are manually removed by an administrator from each local DC.  Additionally, replication may continue to be blocked after this registry key is set, depending on whether lingering objects are located immediately.
+ 
+ 
+Alternate User Action:
+ 
+Force demote or reinstall the DC(s) that were disconnected.
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC01
+Event ID      : 2042
+Time Created  : 07/09/2026 00:56:13
+
+Event Message :
+It has been too long since this machine last replicated with the named source machine. The time between replications with this source has exceeded the tombstone lifetime. Replication has been stopped with this source.
+ 
+ The reason that replication is not allowed to continue is that the two DCs may contain lingering objects.  Objects that have been deleted and garbage collected from an Active Directory Domain Services partition but still exist in the writable partitions of other DCs in the same domain, or read-only partitions of global catalog servers in other domains in the forest are known as "lingering objects".  If the local destination DC was allowed to replicate with the source DC, these potential lingering object would be recreated in the local Active Directory Domain Services database.
+ 
+Time of last successful replication:
+2024-03-15 03:52:45 
+Invocation ID of source directory server:
+542ad1cf-fa64-4d9f-8595-bc86f233dcef 
+Name of source directory server:
+e7fe0ee9-b2ff-4318-b971-8859b250ba1e._msdcs.apcflex.aero 
+Tombstone lifetime (days):
+180 
+ 
+The replication operation has failed.
+ 
+ 
+User Action:
+  The action plan to recover from this error can be found at http://support.microsoft.com/?id=314282.
+ 
+ If both the source and destination DCs are Windows Server 2003 DCs, then install the support tools included on the installation CD.  To see which objects would be deleted without actually performing the deletion run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC> /ADVISORY_MODE". The event logs on the source DC will enumerate all lingering objects.  To remove lingering objects from a source domain controller run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC>".
+ 
+ If either source or destination DC is a Windows 2000 Server DC, then more information on how to remove lingering objects on the source DC can be found at http://support.microsoft.com/?id=314282 or from your Microsoft support personnel.
+ 
+ If you need Active Directory Domain Services replication to function immediately at all costs and don't have time to remove lingering objects, enable replication by setting the following registry key to a non-zero value:
+ 
+Registry Key:
+HKLM\System\CurrentControlSet\Services\NTDS\Parameters\Allow Replication With Divergent and Corrupt Partner
+ 
+ Replication errors between DCs sharing a common partition can prevent user and computer accounts, trust relationships, their passwords, security groups, security group memberships and other Active Directory Domain Services configuration data to vary between DCs, affecting the ability to log on, find objects of interest and perform other critical operations. These inconsistencies are resolved once replication errors are resolved.  DCs that fail to inbound replicate deleted objects within tombstone lifetime number of days will remain inconsistent until lingering objects are manually removed by an administrator from each local DC.  Additionally, replication may continue to be blocked after this registry key is set, depending on whether lingering objects are located immediately.
+ 
+ 
+Alternate User Action:
+ 
+Force demote or reinstall the DC(s) that were disconnected.
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC01
+Event ID      : 2042
+Time Created  : 07/09/2026 00:41:12
+
+Event Message :
+It has been too long since this machine last replicated with the named source machine. The time between replications with this source has exceeded the tombstone lifetime. Replication has been stopped with this source.
+ 
+ The reason that replication is not allowed to continue is that the two DCs may contain lingering objects.  Objects that have been deleted and garbage collected from an Active Directory Domain Services partition but still exist in the writable partitions of other DCs in the same domain, or read-only partitions of global catalog servers in other domains in the forest are known as "lingering objects".  If the local destination DC was allowed to replicate with the source DC, these potential lingering object would be recreated in the local Active Directory Domain Services database.
+ 
+Time of last successful replication:
+2024-03-15 03:52:45 
+Invocation ID of source directory server:
+542ad1cf-fa64-4d9f-8595-bc86f233dcef 
+Name of source directory server:
+e7fe0ee9-b2ff-4318-b971-8859b250ba1e._msdcs.apcflex.aero 
+Tombstone lifetime (days):
+180 
+ 
+The replication operation has failed.
+ 
+ 
+User Action:
+  The action plan to recover from this error can be found at http://support.microsoft.com/?id=314282.
+ 
+ If both the source and destination DCs are Windows Server 2003 DCs, then install the support tools included on the installation CD.  To see which objects would be deleted without actually performing the deletion run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC> /ADVISORY_MODE". The event logs on the source DC will enumerate all lingering objects.  To remove lingering objects from a source domain controller run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC>".
+ 
+ If either source or destination DC is a Windows 2000 Server DC, then more information on how to remove lingering objects on the source DC can be found at http://support.microsoft.com/?id=314282 or from your Microsoft support personnel.
+ 
+ If you need Active Directory Domain Services replication to function immediately at all costs and don't have time to remove lingering objects, enable replication by setting the following registry key to a non-zero value:
+ 
+Registry Key:
+HKLM\System\CurrentControlSet\Services\NTDS\Parameters\Allow Replication With Divergent and Corrupt Partner
+ 
+ Replication errors between DCs sharing a common partition can prevent user and computer accounts, trust relationships, their passwords, security groups, security group memberships and other Active Directory Domain Services configuration data to vary between DCs, affecting the ability to log on, find objects of interest and perform other critical operations. These inconsistencies are resolved once replication errors are resolved.  DCs that fail to inbound replicate deleted objects within tombstone lifetime number of days will remain inconsistent until lingering objects are manually removed by an administrator from each local DC.  Additionally, replication may continue to be blocked after this registry key is set, depending on whether lingering objects are located immediately.
+ 
+ 
+Alternate User Action:
+ 
+Force demote or reinstall the DC(s) that were disconnected.
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC01
+Event ID      : 2042
+Time Created  : 07/09/2026 00:41:12
+
+Event Message :
+It has been too long since this machine last replicated with the named source machine. The time between replications with this source has exceeded the tombstone lifetime. Replication has been stopped with this source.
+ 
+ The reason that replication is not allowed to continue is that the two DCs may contain lingering objects.  Objects that have been deleted and garbage collected from an Active Directory Domain Services partition but still exist in the writable partitions of other DCs in the same domain, or read-only partitions of global catalog servers in other domains in the forest are known as "lingering objects".  If the local destination DC was allowed to replicate with the source DC, these potential lingering object would be recreated in the local Active Directory Domain Services database.
+ 
+Time of last successful replication:
+2024-03-15 03:52:45 
+Invocation ID of source directory server:
+542ad1cf-fa64-4d9f-8595-bc86f233dcef 
+Name of source directory server:
+e7fe0ee9-b2ff-4318-b971-8859b250ba1e._msdcs.apcflex.aero 
+Tombstone lifetime (days):
+180 
+ 
+The replication operation has failed.
+ 
+ 
+User Action:
+  The action plan to recover from this error can be found at http://support.microsoft.com/?id=314282.
+ 
+ If both the source and destination DCs are Windows Server 2003 DCs, then install the support tools included on the installation CD.  To see which objects would be deleted without actually performing the deletion run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC> /ADVISORY_MODE". The event logs on the source DC will enumerate all lingering objects.  To remove lingering objects from a source domain controller run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC>".
+ 
+ If either source or destination DC is a Windows 2000 Server DC, then more information on how to remove lingering objects on the source DC can be found at http://support.microsoft.com/?id=314282 or from your Microsoft support personnel.
+ 
+ If you need Active Directory Domain Services replication to function immediately at all costs and don't have time to remove lingering objects, enable replication by setting the following registry key to a non-zero value:
+ 
+Registry Key:
+HKLM\System\CurrentControlSet\Services\NTDS\Parameters\Allow Replication With Divergent and Corrupt Partner
+ 
+ Replication errors between DCs sharing a common partition can prevent user and computer accounts, trust relationships, their passwords, security groups, security group memberships and other Active Directory Domain Services configuration data to vary between DCs, affecting the ability to log on, find objects of interest and perform other critical operations. These inconsistencies are resolved once replication errors are resolved.  DCs that fail to inbound replicate deleted objects within tombstone lifetime number of days will remain inconsistent until lingering objects are manually removed by an administrator from each local DC.  Additionally, replication may continue to be blocked after this registry key is set, depending on whether lingering objects are located immediately.
+ 
+ 
+Alternate User Action:
+ 
+Force demote or reinstall the DC(s) that were disconnected.
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC01
+Event ID      : 2042
+Time Created  : 07/09/2026 00:41:11
+
+Event Message :
+It has been too long since this machine last replicated with the named source machine. The time between replications with this source has exceeded the tombstone lifetime. Replication has been stopped with this source.
+ 
+ The reason that replication is not allowed to continue is that the two DCs may contain lingering objects.  Objects that have been deleted and garbage collected from an Active Directory Domain Services partition but still exist in the writable partitions of other DCs in the same domain, or read-only partitions of global catalog servers in other domains in the forest are known as "lingering objects".  If the local destination DC was allowed to replicate with the source DC, these potential lingering object would be recreated in the local Active Directory Domain Services database.
+ 
+Time of last successful replication:
+2024-03-15 04:00:06 
+Invocation ID of source directory server:
+542ad1cf-fa64-4d9f-8595-bc86f233dcef 
+Name of source directory server:
+e7fe0ee9-b2ff-4318-b971-8859b250ba1e._msdcs.apcflex.aero 
+Tombstone lifetime (days):
+180 
+ 
+The replication operation has failed.
+ 
+ 
+User Action:
+  The action plan to recover from this error can be found at http://support.microsoft.com/?id=314282.
+ 
+ If both the source and destination DCs are Windows Server 2003 DCs, then install the support tools included on the installation CD.  To see which objects would be deleted without actually performing the deletion run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC> /ADVISORY_MODE". The event logs on the source DC will enumerate all lingering objects.  To remove lingering objects from a source domain controller run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC>".
+ 
+ If either source or destination DC is a Windows 2000 Server DC, then more information on how to remove lingering objects on the source DC can be found at http://support.microsoft.com/?id=314282 or from your Microsoft support personnel.
+ 
+ If you need Active Directory Domain Services replication to function immediately at all costs and don't have time to remove lingering objects, enable replication by setting the following registry key to a non-zero value:
+ 
+Registry Key:
+HKLM\System\CurrentControlSet\Services\NTDS\Parameters\Allow Replication With Divergent and Corrupt Partner
+ 
+ Replication errors between DCs sharing a common partition can prevent user and computer accounts, trust relationships, their passwords, security groups, security group memberships and other Active Directory Domain Services configuration data to vary between DCs, affecting the ability to log on, find objects of interest and perform other critical operations. These inconsistencies are resolved once replication errors are resolved.  DCs that fail to inbound replicate deleted objects within tombstone lifetime number of days will remain inconsistent until lingering objects are manually removed by an administrator from each local DC.  Additionally, replication may continue to be blocked after this registry key is set, depending on whether lingering objects are located immediately.
+ 
+ 
+Alternate User Action:
+ 
+Force demote or reinstall the DC(s) that were disconnected.
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC01
+Event ID      : 2042
+Time Created  : 07/09/2026 00:41:11
+
+Event Message :
+It has been too long since this machine last replicated with the named source machine. The time between replications with this source has exceeded the tombstone lifetime. Replication has been stopped with this source.
+ 
+ The reason that replication is not allowed to continue is that the two DCs may contain lingering objects.  Objects that have been deleted and garbage collected from an Active Directory Domain Services partition but still exist in the writable partitions of other DCs in the same domain, or read-only partitions of global catalog servers in other domains in the forest are known as "lingering objects".  If the local destination DC was allowed to replicate with the source DC, these potential lingering object would be recreated in the local Active Directory Domain Services database.
+ 
+Time of last successful replication:
+2024-03-15 03:52:45 
+Invocation ID of source directory server:
+542ad1cf-fa64-4d9f-8595-bc86f233dcef 
+Name of source directory server:
+e7fe0ee9-b2ff-4318-b971-8859b250ba1e._msdcs.apcflex.aero 
+Tombstone lifetime (days):
+180 
+ 
+The replication operation has failed.
+ 
+ 
+User Action:
+  The action plan to recover from this error can be found at http://support.microsoft.com/?id=314282.
+ 
+ If both the source and destination DCs are Windows Server 2003 DCs, then install the support tools included on the installation CD.  To see which objects would be deleted without actually performing the deletion run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC> /ADVISORY_MODE". The event logs on the source DC will enumerate all lingering objects.  To remove lingering objects from a source domain controller run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC>".
+ 
+ If either source or destination DC is a Windows 2000 Server DC, then more information on how to remove lingering objects on the source DC can be found at http://support.microsoft.com/?id=314282 or from your Microsoft support personnel.
+ 
+ If you need Active Directory Domain Services replication to function immediately at all costs and don't have time to remove lingering objects, enable replication by setting the following registry key to a non-zero value:
+ 
+Registry Key:
+HKLM\System\CurrentControlSet\Services\NTDS\Parameters\Allow Replication With Divergent and Corrupt Partner
+ 
+ Replication errors between DCs sharing a common partition can prevent user and computer accounts, trust relationships, their passwords, security groups, security group memberships and other Active Directory Domain Services configuration data to vary between DCs, affecting the ability to log on, find objects of interest and perform other critical operations. These inconsistencies are resolved once replication errors are resolved.  DCs that fail to inbound replicate deleted objects within tombstone lifetime number of days will remain inconsistent until lingering objects are manually removed by an administrator from each local DC.  Additionally, replication may continue to be blocked after this registry key is set, depending on whether lingering objects are located immediately.
+ 
+ 
+Alternate User Action:
+ 
+Force demote or reinstall the DC(s) that were disconnected.
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC01
+Event ID      : 2042
+Time Created  : 07/09/2026 00:41:11
+
+Event Message :
+It has been too long since this machine last replicated with the named source machine. The time between replications with this source has exceeded the tombstone lifetime. Replication has been stopped with this source.
+ 
+ The reason that replication is not allowed to continue is that the two DCs may contain lingering objects.  Objects that have been deleted and garbage collected from an Active Directory Domain Services partition but still exist in the writable partitions of other DCs in the same domain, or read-only partitions of global catalog servers in other domains in the forest are known as "lingering objects".  If the local destination DC was allowed to replicate with the source DC, these potential lingering object would be recreated in the local Active Directory Domain Services database.
+ 
+Time of last successful replication:
+2024-03-15 03:52:45 
+Invocation ID of source directory server:
+542ad1cf-fa64-4d9f-8595-bc86f233dcef 
+Name of source directory server:
+e7fe0ee9-b2ff-4318-b971-8859b250ba1e._msdcs.apcflex.aero 
+Tombstone lifetime (days):
+180 
+ 
+The replication operation has failed.
+ 
+ 
+User Action:
+  The action plan to recover from this error can be found at http://support.microsoft.com/?id=314282.
+ 
+ If both the source and destination DCs are Windows Server 2003 DCs, then install the support tools included on the installation CD.  To see which objects would be deleted without actually performing the deletion run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC> /ADVISORY_MODE". The event logs on the source DC will enumerate all lingering objects.  To remove lingering objects from a source domain controller run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC>".
+ 
+ If either source or destination DC is a Windows 2000 Server DC, then more information on how to remove lingering objects on the source DC can be found at http://support.microsoft.com/?id=314282 or from your Microsoft support personnel.
+ 
+ If you need Active Directory Domain Services replication to function immediately at all costs and don't have time to remove lingering objects, enable replication by setting the following registry key to a non-zero value:
+ 
+Registry Key:
+HKLM\System\CurrentControlSet\Services\NTDS\Parameters\Allow Replication With Divergent and Corrupt Partner
+ 
+ Replication errors between DCs sharing a common partition can prevent user and computer accounts, trust relationships, their passwords, security groups, security group memberships and other Active Directory Domain Services configuration data to vary between DCs, affecting the ability to log on, find objects of interest and perform other critical operations. These inconsistencies are resolved once replication errors are resolved.  DCs that fail to inbound replicate deleted objects within tombstone lifetime number of days will remain inconsistent until lingering objects are manually removed by an administrator from each local DC.  Additionally, replication may continue to be blocked after this registry key is set, depending on whether lingering objects are located immediately.
+ 
+ 
+Alternate User Action:
+ 
+Force demote or reinstall the DC(s) that were disconnected.
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC01
+Event ID      : 2042
+Time Created  : 07/09/2026 00:26:10
+
+Event Message :
+It has been too long since this machine last replicated with the named source machine. The time between replications with this source has exceeded the tombstone lifetime. Replication has been stopped with this source.
+ 
+ The reason that replication is not allowed to continue is that the two DCs may contain lingering objects.  Objects that have been deleted and garbage collected from an Active Directory Domain Services partition but still exist in the writable partitions of other DCs in the same domain, or read-only partitions of global catalog servers in other domains in the forest are known as "lingering objects".  If the local destination DC was allowed to replicate with the source DC, these potential lingering object would be recreated in the local Active Directory Domain Services database.
+ 
+Time of last successful replication:
+2024-03-15 03:52:45 
+Invocation ID of source directory server:
+542ad1cf-fa64-4d9f-8595-bc86f233dcef 
+Name of source directory server:
+e7fe0ee9-b2ff-4318-b971-8859b250ba1e._msdcs.apcflex.aero 
+Tombstone lifetime (days):
+180 
+ 
+The replication operation has failed.
+ 
+ 
+User Action:
+  The action plan to recover from this error can be found at http://support.microsoft.com/?id=314282.
+ 
+ If both the source and destination DCs are Windows Server 2003 DCs, then install the support tools included on the installation CD.  To see which objects would be deleted without actually performing the deletion run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC> /ADVISORY_MODE". The event logs on the source DC will enumerate all lingering objects.  To remove lingering objects from a source domain controller run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC>".
+ 
+ If either source or destination DC is a Windows 2000 Server DC, then more information on how to remove lingering objects on the source DC can be found at http://support.microsoft.com/?id=314282 or from your Microsoft support personnel.
+ 
+ If you need Active Directory Domain Services replication to function immediately at all costs and don't have time to remove lingering objects, enable replication by setting the following registry key to a non-zero value:
+ 
+Registry Key:
+HKLM\System\CurrentControlSet\Services\NTDS\Parameters\Allow Replication With Divergent and Corrupt Partner
+ 
+ Replication errors between DCs sharing a common partition can prevent user and computer accounts, trust relationships, their passwords, security groups, security group memberships and other Active Directory Domain Services configuration data to vary between DCs, affecting the ability to log on, find objects of interest and perform other critical operations. These inconsistencies are resolved once replication errors are resolved.  DCs that fail to inbound replicate deleted objects within tombstone lifetime number of days will remain inconsistent until lingering objects are manually removed by an administrator from each local DC.  Additionally, replication may continue to be blocked after this registry key is set, depending on whether lingering objects are located immediately.
+ 
+ 
+Alternate User Action:
+ 
+Force demote or reinstall the DC(s) that were disconnected.
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC01
+Event ID      : 2042
+Time Created  : 07/09/2026 00:26:10
+
+Event Message :
+It has been too long since this machine last replicated with the named source machine. The time between replications with this source has exceeded the tombstone lifetime. Replication has been stopped with this source.
+ 
+ The reason that replication is not allowed to continue is that the two DCs may contain lingering objects.  Objects that have been deleted and garbage collected from an Active Directory Domain Services partition but still exist in the writable partitions of other DCs in the same domain, or read-only partitions of global catalog servers in other domains in the forest are known as "lingering objects".  If the local destination DC was allowed to replicate with the source DC, these potential lingering object would be recreated in the local Active Directory Domain Services database.
+ 
+Time of last successful replication:
+2024-03-15 03:52:45 
+Invocation ID of source directory server:
+542ad1cf-fa64-4d9f-8595-bc86f233dcef 
+Name of source directory server:
+e7fe0ee9-b2ff-4318-b971-8859b250ba1e._msdcs.apcflex.aero 
+Tombstone lifetime (days):
+180 
+ 
+The replication operation has failed.
+ 
+ 
+User Action:
+  The action plan to recover from this error can be found at http://support.microsoft.com/?id=314282.
+ 
+ If both the source and destination DCs are Windows Server 2003 DCs, then install the support tools included on the installation CD.  To see which objects would be deleted without actually performing the deletion run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC> /ADVISORY_MODE". The event logs on the source DC will enumerate all lingering objects.  To remove lingering objects from a source domain controller run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC>".
+ 
+ If either source or destination DC is a Windows 2000 Server DC, then more information on how to remove lingering objects on the source DC can be found at http://support.microsoft.com/?id=314282 or from your Microsoft support personnel.
+ 
+ If you need Active Directory Domain Services replication to function immediately at all costs and don't have time to remove lingering objects, enable replication by setting the following registry key to a non-zero value:
+ 
+Registry Key:
+HKLM\System\CurrentControlSet\Services\NTDS\Parameters\Allow Replication With Divergent and Corrupt Partner
+ 
+ Replication errors between DCs sharing a common partition can prevent user and computer accounts, trust relationships, their passwords, security groups, security group memberships and other Active Directory Domain Services configuration data to vary between DCs, affecting the ability to log on, find objects of interest and perform other critical operations. These inconsistencies are resolved once replication errors are resolved.  DCs that fail to inbound replicate deleted objects within tombstone lifetime number of days will remain inconsistent until lingering objects are manually removed by an administrator from each local DC.  Additionally, replication may continue to be blocked after this registry key is set, depending on whether lingering objects are located immediately.
+ 
+ 
+Alternate User Action:
+ 
+Force demote or reinstall the DC(s) that were disconnected.
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC01
+Event ID      : 2042
+Time Created  : 07/09/2026 00:26:10
+
+Event Message :
+It has been too long since this machine last replicated with the named source machine. The time between replications with this source has exceeded the tombstone lifetime. Replication has been stopped with this source.
+ 
+ The reason that replication is not allowed to continue is that the two DCs may contain lingering objects.  Objects that have been deleted and garbage collected from an Active Directory Domain Services partition but still exist in the writable partitions of other DCs in the same domain, or read-only partitions of global catalog servers in other domains in the forest are known as "lingering objects".  If the local destination DC was allowed to replicate with the source DC, these potential lingering object would be recreated in the local Active Directory Domain Services database.
+ 
+Time of last successful replication:
+2024-03-15 04:00:06 
+Invocation ID of source directory server:
+542ad1cf-fa64-4d9f-8595-bc86f233dcef 
+Name of source directory server:
+e7fe0ee9-b2ff-4318-b971-8859b250ba1e._msdcs.apcflex.aero 
+Tombstone lifetime (days):
+180 
+ 
+The replication operation has failed.
+ 
+ 
+User Action:
+  The action plan to recover from this error can be found at http://support.microsoft.com/?id=314282.
+ 
+ If both the source and destination DCs are Windows Server 2003 DCs, then install the support tools included on the installation CD.  To see which objects would be deleted without actually performing the deletion run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC> /ADVISORY_MODE". The event logs on the source DC will enumerate all lingering objects.  To remove lingering objects from a source domain controller run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC>".
+ 
+ If either source or destination DC is a Windows 2000 Server DC, then more information on how to remove lingering objects on the source DC can be found at http://support.microsoft.com/?id=314282 or from your Microsoft support personnel.
+ 
+ If you need Active Directory Domain Services replication to function immediately at all costs and don't have time to remove lingering objects, enable replication by setting the following registry key to a non-zero value:
+ 
+Registry Key:
+HKLM\System\CurrentControlSet\Services\NTDS\Parameters\Allow Replication With Divergent and Corrupt Partner
+ 
+ Replication errors between DCs sharing a common partition can prevent user and computer accounts, trust relationships, their passwords, security groups, security group memberships and other Active Directory Domain Services configuration data to vary between DCs, affecting the ability to log on, find objects of interest and perform other critical operations. These inconsistencies are resolved once replication errors are resolved.  DCs that fail to inbound replicate deleted objects within tombstone lifetime number of days will remain inconsistent until lingering objects are manually removed by an administrator from each local DC.  Additionally, replication may continue to be blocked after this registry key is set, depending on whether lingering objects are located immediately.
+ 
+ 
+Alternate User Action:
+ 
+Force demote or reinstall the DC(s) that were disconnected.
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC01
+Event ID      : 2042
+Time Created  : 07/09/2026 00:26:10
+
+Event Message :
+It has been too long since this machine last replicated with the named source machine. The time between replications with this source has exceeded the tombstone lifetime. Replication has been stopped with this source.
+ 
+ The reason that replication is not allowed to continue is that the two DCs may contain lingering objects.  Objects that have been deleted and garbage collected from an Active Directory Domain Services partition but still exist in the writable partitions of other DCs in the same domain, or read-only partitions of global catalog servers in other domains in the forest are known as "lingering objects".  If the local destination DC was allowed to replicate with the source DC, these potential lingering object would be recreated in the local Active Directory Domain Services database.
+ 
+Time of last successful replication:
+2024-03-15 03:52:45 
+Invocation ID of source directory server:
+542ad1cf-fa64-4d9f-8595-bc86f233dcef 
+Name of source directory server:
+e7fe0ee9-b2ff-4318-b971-8859b250ba1e._msdcs.apcflex.aero 
+Tombstone lifetime (days):
+180 
+ 
+The replication operation has failed.
+ 
+ 
+User Action:
+  The action plan to recover from this error can be found at http://support.microsoft.com/?id=314282.
+ 
+ If both the source and destination DCs are Windows Server 2003 DCs, then install the support tools included on the installation CD.  To see which objects would be deleted without actually performing the deletion run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC> /ADVISORY_MODE". The event logs on the source DC will enumerate all lingering objects.  To remove lingering objects from a source domain controller run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC>".
+ 
+ If either source or destination DC is a Windows 2000 Server DC, then more information on how to remove lingering objects on the source DC can be found at http://support.microsoft.com/?id=314282 or from your Microsoft support personnel.
+ 
+ If you need Active Directory Domain Services replication to function immediately at all costs and don't have time to remove lingering objects, enable replication by setting the following registry key to a non-zero value:
+ 
+Registry Key:
+HKLM\System\CurrentControlSet\Services\NTDS\Parameters\Allow Replication With Divergent and Corrupt Partner
+ 
+ Replication errors between DCs sharing a common partition can prevent user and computer accounts, trust relationships, their passwords, security groups, security group memberships and other Active Directory Domain Services configuration data to vary between DCs, affecting the ability to log on, find objects of interest and perform other critical operations. These inconsistencies are resolved once replication errors are resolved.  DCs that fail to inbound replicate deleted objects within tombstone lifetime number of days will remain inconsistent until lingering objects are manually removed by an administrator from each local DC.  Additionally, replication may continue to be blocked after this registry key is set, depending on whether lingering objects are located immediately.
+ 
+ 
+Alternate User Action:
+ 
+Force demote or reinstall the DC(s) that were disconnected.
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC01
+Event ID      : 2042
+Time Created  : 07/09/2026 00:26:09
+
+Event Message :
+It has been too long since this machine last replicated with the named source machine. The time between replications with this source has exceeded the tombstone lifetime. Replication has been stopped with this source.
+ 
+ The reason that replication is not allowed to continue is that the two DCs may contain lingering objects.  Objects that have been deleted and garbage collected from an Active Directory Domain Services partition but still exist in the writable partitions of other DCs in the same domain, or read-only partitions of global catalog servers in other domains in the forest are known as "lingering objects".  If the local destination DC was allowed to replicate with the source DC, these potential lingering object would be recreated in the local Active Directory Domain Services database.
+ 
+Time of last successful replication:
+2024-03-15 03:52:45 
+Invocation ID of source directory server:
+542ad1cf-fa64-4d9f-8595-bc86f233dcef 
+Name of source directory server:
+e7fe0ee9-b2ff-4318-b971-8859b250ba1e._msdcs.apcflex.aero 
+Tombstone lifetime (days):
+180 
+ 
+The replication operation has failed.
+ 
+ 
+User Action:
+  The action plan to recover from this error can be found at http://support.microsoft.com/?id=314282.
+ 
+ If both the source and destination DCs are Windows Server 2003 DCs, then install the support tools included on the installation CD.  To see which objects would be deleted without actually performing the deletion run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC> /ADVISORY_MODE". The event logs on the source DC will enumerate all lingering objects.  To remove lingering objects from a source domain controller run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC>".
+ 
+ If either source or destination DC is a Windows 2000 Server DC, then more information on how to remove lingering objects on the source DC can be found at http://support.microsoft.com/?id=314282 or from your Microsoft support personnel.
+ 
+ If you need Active Directory Domain Services replication to function immediately at all costs and don't have time to remove lingering objects, enable replication by setting the following registry key to a non-zero value:
+ 
+Registry Key:
+HKLM\System\CurrentControlSet\Services\NTDS\Parameters\Allow Replication With Divergent and Corrupt Partner
+ 
+ Replication errors between DCs sharing a common partition can prevent user and computer accounts, trust relationships, their passwords, security groups, security group memberships and other Active Directory Domain Services configuration data to vary between DCs, affecting the ability to log on, find objects of interest and perform other critical operations. These inconsistencies are resolved once replication errors are resolved.  DCs that fail to inbound replicate deleted objects within tombstone lifetime number of days will remain inconsistent until lingering objects are manually removed by an administrator from each local DC.  Additionally, replication may continue to be blocked after this registry key is set, depending on whether lingering objects are located immediately.
+ 
+ 
+Alternate User Action:
+ 
+Force demote or reinstall the DC(s) that were disconnected.
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC01
+Event ID      : 2042
+Time Created  : 07/09/2026 00:11:08
+
+Event Message :
+It has been too long since this machine last replicated with the named source machine. The time between replications with this source has exceeded the tombstone lifetime. Replication has been stopped with this source.
+ 
+ The reason that replication is not allowed to continue is that the two DCs may contain lingering objects.  Objects that have been deleted and garbage collected from an Active Directory Domain Services partition but still exist in the writable partitions of other DCs in the same domain, or read-only partitions of global catalog servers in other domains in the forest are known as "lingering objects".  If the local destination DC was allowed to replicate with the source DC, these potential lingering object would be recreated in the local Active Directory Domain Services database.
+ 
+Time of last successful replication:
+2024-03-15 03:52:45 
+Invocation ID of source directory server:
+542ad1cf-fa64-4d9f-8595-bc86f233dcef 
+Name of source directory server:
+e7fe0ee9-b2ff-4318-b971-8859b250ba1e._msdcs.apcflex.aero 
+Tombstone lifetime (days):
+180 
+ 
+The replication operation has failed.
+ 
+ 
+User Action:
+  The action plan to recover from this error can be found at http://support.microsoft.com/?id=314282.
+ 
+ If both the source and destination DCs are Windows Server 2003 DCs, then install the support tools included on the installation CD.  To see which objects would be deleted without actually performing the deletion run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC> /ADVISORY_MODE". The event logs on the source DC will enumerate all lingering objects.  To remove lingering objects from a source domain controller run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC>".
+ 
+ If either source or destination DC is a Windows 2000 Server DC, then more information on how to remove lingering objects on the source DC can be found at http://support.microsoft.com/?id=314282 or from your Microsoft support personnel.
+ 
+ If you need Active Directory Domain Services replication to function immediately at all costs and don't have time to remove lingering objects, enable replication by setting the following registry key to a non-zero value:
+ 
+Registry Key:
+HKLM\System\CurrentControlSet\Services\NTDS\Parameters\Allow Replication With Divergent and Corrupt Partner
+ 
+ Replication errors between DCs sharing a common partition can prevent user and computer accounts, trust relationships, their passwords, security groups, security group memberships and other Active Directory Domain Services configuration data to vary between DCs, affecting the ability to log on, find objects of interest and perform other critical operations. These inconsistencies are resolved once replication errors are resolved.  DCs that fail to inbound replicate deleted objects within tombstone lifetime number of days will remain inconsistent until lingering objects are manually removed by an administrator from each local DC.  Additionally, replication may continue to be blocked after this registry key is set, depending on whether lingering objects are located immediately.
+ 
+ 
+Alternate User Action:
+ 
+Force demote or reinstall the DC(s) that were disconnected.
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC01
+Event ID      : 2042
+Time Created  : 07/09/2026 00:11:07
+
+Event Message :
+It has been too long since this machine last replicated with the named source machine. The time between replications with this source has exceeded the tombstone lifetime. Replication has been stopped with this source.
+ 
+ The reason that replication is not allowed to continue is that the two DCs may contain lingering objects.  Objects that have been deleted and garbage collected from an Active Directory Domain Services partition but still exist in the writable partitions of other DCs in the same domain, or read-only partitions of global catalog servers in other domains in the forest are known as "lingering objects".  If the local destination DC was allowed to replicate with the source DC, these potential lingering object would be recreated in the local Active Directory Domain Services database.
+ 
+Time of last successful replication:
+2024-03-15 03:52:45 
+Invocation ID of source directory server:
+542ad1cf-fa64-4d9f-8595-bc86f233dcef 
+Name of source directory server:
+e7fe0ee9-b2ff-4318-b971-8859b250ba1e._msdcs.apcflex.aero 
+Tombstone lifetime (days):
+180 
+ 
+The replication operation has failed.
+ 
+ 
+User Action:
+  The action plan to recover from this error can be found at http://support.microsoft.com/?id=314282.
+ 
+ If both the source and destination DCs are Windows Server 2003 DCs, then install the support tools included on the installation CD.  To see which objects would be deleted without actually performing the deletion run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC> /ADVISORY_MODE". The event logs on the source DC will enumerate all lingering objects.  To remove lingering objects from a source domain controller run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC>".
+ 
+ If either source or destination DC is a Windows 2000 Server DC, then more information on how to remove lingering objects on the source DC can be found at http://support.microsoft.com/?id=314282 or from your Microsoft support personnel.
+ 
+ If you need Active Directory Domain Services replication to function immediately at all costs and don't have time to remove lingering objects, enable replication by setting the following registry key to a non-zero value:
+ 
+Registry Key:
+HKLM\System\CurrentControlSet\Services\NTDS\Parameters\Allow Replication With Divergent and Corrupt Partner
+ 
+ Replication errors between DCs sharing a common partition can prevent user and computer accounts, trust relationships, their passwords, security groups, security group memberships and other Active Directory Domain Services configuration data to vary between DCs, affecting the ability to log on, find objects of interest and perform other critical operations. These inconsistencies are resolved once replication errors are resolved.  DCs that fail to inbound replicate deleted objects within tombstone lifetime number of days will remain inconsistent until lingering objects are manually removed by an administrator from each local DC.  Additionally, replication may continue to be blocked after this registry key is set, depending on whether lingering objects are located immediately.
+ 
+ 
+Alternate User Action:
+ 
+Force demote or reinstall the DC(s) that were disconnected.
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC01
+Event ID      : 2042
+Time Created  : 07/09/2026 00:11:06
+
+Event Message :
+It has been too long since this machine last replicated with the named source machine. The time between replications with this source has exceeded the tombstone lifetime. Replication has been stopped with this source.
+ 
+ The reason that replication is not allowed to continue is that the two DCs may contain lingering objects.  Objects that have been deleted and garbage collected from an Active Directory Domain Services partition but still exist in the writable partitions of other DCs in the same domain, or read-only partitions of global catalog servers in other domains in the forest are known as "lingering objects".  If the local destination DC was allowed to replicate with the source DC, these potential lingering object would be recreated in the local Active Directory Domain Services database.
+ 
+Time of last successful replication:
+2024-03-15 04:00:06 
+Invocation ID of source directory server:
+542ad1cf-fa64-4d9f-8595-bc86f233dcef 
+Name of source directory server:
+e7fe0ee9-b2ff-4318-b971-8859b250ba1e._msdcs.apcflex.aero 
+Tombstone lifetime (days):
+180 
+ 
+The replication operation has failed.
+ 
+ 
+User Action:
+  The action plan to recover from this error can be found at http://support.microsoft.com/?id=314282.
+ 
+ If both the source and destination DCs are Windows Server 2003 DCs, then install the support tools included on the installation CD.  To see which objects would be deleted without actually performing the deletion run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC> /ADVISORY_MODE". The event logs on the source DC will enumerate all lingering objects.  To remove lingering objects from a source domain controller run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC>".
+ 
+ If either source or destination DC is a Windows 2000 Server DC, then more information on how to remove lingering objects on the source DC can be found at http://support.microsoft.com/?id=314282 or from your Microsoft support personnel.
+ 
+ If you need Active Directory Domain Services replication to function immediately at all costs and don't have time to remove lingering objects, enable replication by setting the following registry key to a non-zero value:
+ 
+Registry Key:
+HKLM\System\CurrentControlSet\Services\NTDS\Parameters\Allow Replication With Divergent and Corrupt Partner
+ 
+ Replication errors between DCs sharing a common partition can prevent user and computer accounts, trust relationships, their passwords, security groups, security group memberships and other Active Directory Domain Services configuration data to vary between DCs, affecting the ability to log on, find objects of interest and perform other critical operations. These inconsistencies are resolved once replication errors are resolved.  DCs that fail to inbound replicate deleted objects within tombstone lifetime number of days will remain inconsistent until lingering objects are manually removed by an administrator from each local DC.  Additionally, replication may continue to be blocked after this registry key is set, depending on whether lingering objects are located immediately.
+ 
+ 
+Alternate User Action:
+ 
+Force demote or reinstall the DC(s) that were disconnected.
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC01
+Event ID      : 2042
+Time Created  : 07/09/2026 00:11:06
+
+Event Message :
+It has been too long since this machine last replicated with the named source machine. The time between replications with this source has exceeded the tombstone lifetime. Replication has been stopped with this source.
+ 
+ The reason that replication is not allowed to continue is that the two DCs may contain lingering objects.  Objects that have been deleted and garbage collected from an Active Directory Domain Services partition but still exist in the writable partitions of other DCs in the same domain, or read-only partitions of global catalog servers in other domains in the forest are known as "lingering objects".  If the local destination DC was allowed to replicate with the source DC, these potential lingering object would be recreated in the local Active Directory Domain Services database.
+ 
+Time of last successful replication:
+2024-03-15 03:52:45 
+Invocation ID of source directory server:
+542ad1cf-fa64-4d9f-8595-bc86f233dcef 
+Name of source directory server:
+e7fe0ee9-b2ff-4318-b971-8859b250ba1e._msdcs.apcflex.aero 
+Tombstone lifetime (days):
+180 
+ 
+The replication operation has failed.
+ 
+ 
+User Action:
+  The action plan to recover from this error can be found at http://support.microsoft.com/?id=314282.
+ 
+ If both the source and destination DCs are Windows Server 2003 DCs, then install the support tools included on the installation CD.  To see which objects would be deleted without actually performing the deletion run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC> /ADVISORY_MODE". The event logs on the source DC will enumerate all lingering objects.  To remove lingering objects from a source domain controller run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC>".
+ 
+ If either source or destination DC is a Windows 2000 Server DC, then more information on how to remove lingering objects on the source DC can be found at http://support.microsoft.com/?id=314282 or from your Microsoft support personnel.
+ 
+ If you need Active Directory Domain Services replication to function immediately at all costs and don't have time to remove lingering objects, enable replication by setting the following registry key to a non-zero value:
+ 
+Registry Key:
+HKLM\System\CurrentControlSet\Services\NTDS\Parameters\Allow Replication With Divergent and Corrupt Partner
+ 
+ Replication errors between DCs sharing a common partition can prevent user and computer accounts, trust relationships, their passwords, security groups, security group memberships and other Active Directory Domain Services configuration data to vary between DCs, affecting the ability to log on, find objects of interest and perform other critical operations. These inconsistencies are resolved once replication errors are resolved.  DCs that fail to inbound replicate deleted objects within tombstone lifetime number of days will remain inconsistent until lingering objects are manually removed by an administrator from each local DC.  Additionally, replication may continue to be blocked after this registry key is set, depending on whether lingering objects are located immediately.
+ 
+ 
+Alternate User Action:
+ 
+Force demote or reinstall the DC(s) that were disconnected.
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC01
+Event ID      : 2042
+Time Created  : 07/09/2026 00:11:05
+
+Event Message :
+It has been too long since this machine last replicated with the named source machine. The time between replications with this source has exceeded the tombstone lifetime. Replication has been stopped with this source.
+ 
+ The reason that replication is not allowed to continue is that the two DCs may contain lingering objects.  Objects that have been deleted and garbage collected from an Active Directory Domain Services partition but still exist in the writable partitions of other DCs in the same domain, or read-only partitions of global catalog servers in other domains in the forest are known as "lingering objects".  If the local destination DC was allowed to replicate with the source DC, these potential lingering object would be recreated in the local Active Directory Domain Services database.
+ 
+Time of last successful replication:
+2024-03-15 03:52:45 
+Invocation ID of source directory server:
+542ad1cf-fa64-4d9f-8595-bc86f233dcef 
+Name of source directory server:
+e7fe0ee9-b2ff-4318-b971-8859b250ba1e._msdcs.apcflex.aero 
+Tombstone lifetime (days):
+180 
+ 
+The replication operation has failed.
+ 
+ 
+User Action:
+  The action plan to recover from this error can be found at http://support.microsoft.com/?id=314282.
+ 
+ If both the source and destination DCs are Windows Server 2003 DCs, then install the support tools included on the installation CD.  To see which objects would be deleted without actually performing the deletion run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC> /ADVISORY_MODE". The event logs on the source DC will enumerate all lingering objects.  To remove lingering objects from a source domain controller run "repadmin /removelingeringobjects <Source DC> <Destination DC DSA GUID> <NC>".
+ 
+ If either source or destination DC is a Windows 2000 Server DC, then more information on how to remove lingering objects on the source DC can be found at http://support.microsoft.com/?id=314282 or from your Microsoft support personnel.
+ 
+ If you need Active Directory Domain Services replication to function immediately at all costs and don't have time to remove lingering objects, enable replication by setting the following registry key to a non-zero value:
+ 
+Registry Key:
+HKLM\System\CurrentControlSet\Services\NTDS\Parameters\Allow Replication With Divergent and Corrupt Partner
+ 
+ Replication errors between DCs sharing a common partition can prevent user and computer accounts, trust relationships, their passwords, security groups, security group memberships and other Active Directory Domain Services configuration data to vary between DCs, affecting the ability to log on, find objects of interest and perform other critical operations. These inconsistencies are resolved once replication errors are resolved.  DCs that fail to inbound replicate deleted objects within tombstone lifetime number of days will remain inconsistent until lingering objects are manually removed by an administrator from each local DC.  Additionally, replication may continue to be blocked after this registry key is set, depending on whether lingering objects are located immediately.
+ 
+ 
+Alternate User Action:
+ 
+Force demote or reinstall the DC(s) that were disconnected.
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================

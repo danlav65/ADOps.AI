@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ADOps.Infrastructure</name>
+    </assembly>
+    <members>
+        <member name="T:ADOps.Infrastructure.Analysis.RootCauseAnalyzer">
+            <summary>
+            Generates root cause analysis from correlated findings.
+            </summary>
+        </member>
+        <member name="M:ADOps.Infrastructure.Analysis.RootCauseAnalyzer.Analyze(System.Collections.Generic.IEnumerable{ADOps.Core.Entities.CorrelatedFinding})">
+            <summary>
+            Generates a root cause analysis from correlated findings.
+            </summary>
+        </member>
+        <member name="T:ADOps.Infrastructure.Recommendations.RecommendationEngine">
+            <summary>
+            Generates deterministic operational recommendations from investigation findings.
+            </summary>
+        </member>
+        <member name="M:ADOps.Infrastructure.Recommendations.RecommendationEngine.Generate(ADOps.Core.Entities.RootCauseAnalysis,System.Collections.Generic.IEnumerable{ADOps.Core.Entities.CorrelatedFinding})">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

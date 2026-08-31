@@ -1,0 +1,15 @@
+Repadmin: running command /showrepl against full DC localhost 
+ 
+Default-First-Site-Name\ZUSW-DC1 
+DSA Options: IS_GC 
+Site Options: (none) 
+DSA object GUID: 33333333-3333-3333-3333-333333333333 
+DSA invocationID: 44444444-4444-4444-4444-444444444444 
+ 
+==== INBOUND NEIGHBORS ====================================== 
+ 
+DC=apcflex,DC=aero 
+    Default-First-Site-Name\SFOFLEX-DC1 
+    From server: SFOFLEX-DC1 
+    Last attempt @ 2026-07-09 12:00:00 was successful 
+    0 (0x0) 

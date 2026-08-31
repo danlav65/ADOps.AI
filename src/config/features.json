@@ -1,0 +1,14 @@
+{
+    "Features":
+    {
+        "Topology": true,
+
+        "KnowledgeFramework": false,
+
+        "RiskEngine": true,
+
+        "PredictiveAnalytics": false,
+
+        "GeneratePDF": true
+    }
+}

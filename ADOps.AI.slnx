@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ADOps.Application.Tests/ADOps.Application.Tests.csproj" />
+    <Project Path="src/ADOps.Application/ADOps.Application.csproj" />
+    <Project Path="src/ADOps.Core.Tests/ADOps.Core.Tests.csproj" />
+    <Project Path="src/ADOps.Core/ADOps.Core.csproj" />
+    <Project Path="src/ADOps.Infrastructure.Tests/ADOps.Infrastructure.Tests.csproj" />
+    <Project Path="src/ADOps.Infrastructure/ADOps.Infrastructure.csproj" />
+    <Project Path="src/ADOps.Portal/ADOps.Portal.csproj" />
+    <Project Path="src/ADOps.Reporting/ADOps.Reporting.csproj" />
+    <Project Path="src/ADOps.Shared/ADOps.Shared.csproj" />
+    <Project Path="src/ADOps.TestHarness/ADOps.TestHarness.csproj" />
+  </Folder>
+</Solution>

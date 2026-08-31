@@ -1,0 +1,198 @@
+=================================================
+AD Replication Health Check Started : 2026-07-09 10:29:12
+=================================================
+
+--- PASSIVE REPLICATION SUMMARY ---
+Replication Summary Start Time: 2026-07-09 10:29:13
+
+
+
+Beginning data collection for replication summary, this may take awhile:
+
+  ....
+
+
+
+
+
+Source DSA          largest delta    fails/total %%   error
+
+ LAXFLEX-DC02              43m:58s    0 /   5    0  
+
+ ZUSW-DC02                 13m:57s    0 /   5    0  
+
+
+
+
+
+Destination DSA     largest delta    fails/total %%   error
+
+ LAXFLEX-DC1               43m:58s    0 /  10    0  
+
+
+
+
+
+
+=========================================
+Checking DC: LAXFLEX-DC1
+=========================================
+Failure: Partner -> CN=NTDS Settings,CN=ZUSW-DC02,CN=Servers,CN=Azure-ZUSW,CN=Sites,CN=Configuration,DC=apcflex,DC=aero | Code ->  | Count -> 0 | Last Attempt -> 
+LAX\LAXFLEX-DC1
+
+DSA Options: IS_GC 
+
+Site Options: (none)
+
+DSA object GUID: 49d466e7-71e9-4f57-b114-053469f2e5b2
+
+DSA invocationID: 2378c781-22b5-4e2d-afdd-86ff826a24f6
+
+
+
+==== INBOUND NEIGHBORS ======================================
+
+
+
+DC=apcflex,DC=aero
+
+    Azure-ZUSW\ZUSW-DC02 via RPC
+
+        DSA object GUID: 600db924-89fc-4e3b-a88f-7c05348afb5a
+
+        Last attempt @ 2026-07-09 10:15:16 was successful.
+
+    LAX\LAXFLEX-DC02 via RPC
+
+        DSA object GUID: c907504c-8f47-469a-a70e-e3919216b999
+
+        Last attempt @ 2026-07-09 10:29:13 was successful.
+
+
+
+CN=Configuration,DC=apcflex,DC=aero
+
+    Azure-ZUSW\ZUSW-DC02 via RPC
+
+        DSA object GUID: 600db924-89fc-4e3b-a88f-7c05348afb5a
+
+        Last attempt @ 2026-07-09 10:15:17 was successful.
+
+    LAX\LAXFLEX-DC02 via RPC
+
+        DSA object GUID: c907504c-8f47-469a-a70e-e3919216b999
+
+        Last attempt @ 2026-07-09 10:17:37 was successful.
+
+
+
+CN=Schema,CN=Configuration,DC=apcflex,DC=aero
+
+    LAX\LAXFLEX-DC02 via RPC
+
+        DSA object GUID: c907504c-8f47-469a-a70e-e3919216b999
+
+        Last attempt @ 2026-07-09 09:45:15 was successful.
+
+    Azure-ZUSW\ZUSW-DC02 via RPC
+
+        DSA object GUID: 600db924-89fc-4e3b-a88f-7c05348afb5a
+
+        Last attempt @ 2026-07-09 10:15:17 was successful.
+
+
+
+DC=DomainDnsZones,DC=apcflex,DC=aero
+
+    Azure-ZUSW\ZUSW-DC02 via RPC
+
+        DSA object GUID: 600db924-89fc-4e3b-a88f-7c05348afb5a
+
+        Last attempt @ 2026-07-09 10:15:17 was successful.
+
+    LAX\LAXFLEX-DC02 via RPC
+
+        DSA object GUID: c907504c-8f47-469a-a70e-e3919216b999
+
+        Last attempt @ 2026-07-09 10:26:37 was successful.
+
+
+
+DC=ForestDnsZones,DC=apcflex,DC=aero
+
+    Azure-ZUSW\ZUSW-DC02 via RPC
+
+        DSA object GUID: 600db924-89fc-4e3b-a88f-7c05348afb5a
+
+        Last attempt @ 2026-07-09 10:15:17 was successful.
+
+    LAX\LAXFLEX-DC02 via RPC
+
+        DSA object GUID: c907504c-8f47-469a-a70e-e3919216b999
+
+        Last attempt @ 2026-07-09 10:15:53 was successful.
+
+
+
+
+Directory Server Diagnosis
+
+
+Performing initial setup:
+
+   * Identified AD Forest. 
+   Done gathering initial info.
+
+
+Doing initial required tests
+
+   
+   Testing server: LAX\LAXFLEX-DC1
+
+      Starting test: Connectivity
+
+         ......................... LAXFLEX-DC1 passed test Connectivity
+
+
+
+Doing primary tests
+
+   
+   Testing server: LAX\LAXFLEX-DC1
+
+      Starting test: Advertising
+
+         ......................... LAXFLEX-DC1 passed test Advertising
+
+      Starting test: SysVolCheck
+
+         ......................... LAXFLEX-DC1 passed test SysVolCheck
+
+   
+   
+   Running partition tests on : ForestDnsZones
+
+   
+   Running partition tests on : DomainDnsZones
+
+   
+   Running partition tests on : Schema
+
+   
+   Running partition tests on : Configuration
+
+   
+   Running partition tests on : apcflex
+
+   
+   Running enterprise tests on : apcflex.aero
+
+
+--- DFSR BACKLOG CHECK ---
+
+No Backlog - member <laxflex-dc1> is in sync with partner <zusw-dc02>
+
+Operation Succeeded
+
+
+AD Replication Health Check Completed : 2026-07-09 10:29:27

@@ -1,0 +1,207 @@
+=================================================
+AD Replication Health Check Started : 2026-07-09 11:28:01
+=================================================
+
+--- PASSIVE REPLICATION SUMMARY ---
+Replication Summary Start Time: 2026-07-09 11:28:02
+
+
+
+Beginning data collection for replication summary, this may take awhile:
+
+  ....
+
+
+
+
+
+Source DSA          largest delta    fails/total %%   error
+
+ LIM2FLEX-DC02             34m:35s    0 /   5    0  
+
+
+
+
+
+Destination DSA     largest delta    fails/total %%   error
+
+ LIM2FLEX-DC01             34m:35s    0 /   5    0  
+
+
+
+
+
+
+=========================================
+Checking DC: LIM2FLEX-DC01
+=========================================
+Failure: Partner -> CN=NTDS Settings,CN=zuse-prd-dc03,CN=Servers,CN=Azure-USE,CN=Sites,CN=Configuration,DC=apcflex,DC=aero | Code ->  | Count -> 1871 | Last Attempt -> 
+LIM2\LIM2FLEX-DC01
+
+DSA Options: IS_GC 
+
+Site Options: (none)
+
+DSA object GUID: 7c5ae038-7dcc-4190-a668-9589360c46d9
+
+DSA invocationID: 502fa682-1c1d-48a5-9c2e-76d1669dd652
+
+
+
+==== INBOUND NEIGHBORS ======================================
+
+
+
+DC=apcflex,DC=aero
+
+    LIM2\LIM2FLEX-DC02 via RPC
+
+        DSA object GUID: fa1ac4b4-8227-4d36-9c68-716351923862
+
+        Last attempt @ 2026-07-09 11:28:03 was successful.
+
+
+
+CN=Configuration,DC=apcflex,DC=aero
+
+    LIM2\LIM2FLEX-DC02 via RPC
+
+        DSA object GUID: fa1ac4b4-8227-4d36-9c68-716351923862
+
+        Last attempt @ 2026-07-09 11:21:45 was successful.
+
+
+
+CN=Schema,CN=Configuration,DC=apcflex,DC=aero
+
+    LIM2\LIM2FLEX-DC02 via RPC
+
+        DSA object GUID: fa1ac4b4-8227-4d36-9c68-716351923862
+
+        Last attempt @ 2026-07-09 10:53:27 was successful.
+
+
+
+DC=DomainDnsZones,DC=apcflex,DC=aero
+
+    LIM2\LIM2FLEX-DC02 via RPC
+
+        DSA object GUID: fa1ac4b4-8227-4d36-9c68-716351923862
+
+        Last attempt @ 2026-07-09 11:21:10 was successful.
+
+
+
+DC=ForestDnsZones,DC=apcflex,DC=aero
+
+    LIM2\LIM2FLEX-DC02 via RPC
+
+        DSA object GUID: fa1ac4b4-8227-4d36-9c68-716351923862
+
+        Last attempt @ 2026-07-09 10:53:27 was successful.
+
+
+
+Source: Azure-USE\zuse-prd-dc03
+
+******* 1871 CONSECUTIVE FAILURES since 2026-06-18 04:10:05
+
+Last error: 1722 (0x6ba):
+
+            The RPC server is unavailable.
+
+
+
+Naming Context: CN=Configuration,DC=apcflex,DC=aero
+
+Source: Azure-USE\zuse-prd-dc03
+
+******* WARNING: KCC could not add this REPLICA LINK due to error.
+
+
+
+Naming Context: DC=ForestDnsZones,DC=apcflex,DC=aero
+
+Source: Azure-USE\zuse-prd-dc03
+
+******* WARNING: KCC could not add this REPLICA LINK due to error.
+
+
+
+Naming Context: DC=apcflex,DC=aero
+
+Source: Azure-USE\zuse-prd-dc03
+
+******* WARNING: KCC could not add this REPLICA LINK due to error.
+
+
+
+Naming Context: DC=DomainDnsZones,DC=apcflex,DC=aero
+
+Source: Azure-USE\zuse-prd-dc03
+
+******* WARNING: KCC could not add this REPLICA LINK due to error.
+
+
+
+
+Directory Server Diagnosis
+
+
+Performing initial setup:
+
+   * Identified AD Forest. 
+   Done gathering initial info.
+
+
+Doing initial required tests
+
+   
+   Testing server: LIM2\LIM2FLEX-DC01
+
+      Starting test: Connectivity
+
+         ......................... LIM2FLEX-DC01 passed test Connectivity
+
+
+
+Doing primary tests
+
+   
+   Testing server: LIM2\LIM2FLEX-DC01
+
+      Starting test: Advertising
+
+         ......................... LIM2FLEX-DC01 passed test Advertising
+
+      Starting test: SysVolCheck
+
+         ......................... LIM2FLEX-DC01 passed test SysVolCheck
+
+   
+   
+   Running partition tests on : ForestDnsZones
+
+   
+   Running partition tests on : DomainDnsZones
+
+   
+   Running partition tests on : Schema
+
+   
+   Running partition tests on : Configuration
+
+   
+   Running partition tests on : apcflex
+
+   
+   Running enterprise tests on : apcflex.aero
+
+
+--- DFSR BACKLOG CHECK ---
+[ERROR] Failed to connect to WMI services on computer: zuse-dc01.apcflex.aero
+
+Operation Failed
+
+
+AD Replication Health Check Completed : 2026-07-09 11:28:10

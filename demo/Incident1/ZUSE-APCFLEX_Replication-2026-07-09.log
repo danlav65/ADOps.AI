@@ -1,0 +1,928 @@
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1865
+Time Created  : 07/09/2026 00:53:26
+
+Event Message :
+The Knowledge Consistency Checker (KCC) was unable to form a complete spanning tree network topology. As a result, the following list of sites cannot be reached from the local site. 
+ 
+Sites: 
+CN=CAI,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=NLU,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=LFW,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+ 
+ 
+ 
+ 
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1311
+Time Created  : 07/09/2026 00:53:26
+
+Event Message :
+The Knowledge Consistency Checker (KCC) has detected problems with the following directory partition. 
+ 
+Directory partition:
+CN=Configuration,DC=apcflex,DC=aero 
+ 
+There is insufficient site connectivity information for the KCC to create a spanning tree replication topology. Or, one or more directory servers with this directory partition are unable to replicate the directory partition information. This is probably due to inaccessible directory servers. 
+ 
+User Action 
+Perform one of the following actions: 
+- Publish sufficient site connectivity information so that the KCC can determine a route by which this directory partition can reach this site. This is the preferred option. 
+- Add a Connection object to a directory service that contains the directory partition in this site from a directory service that contains the same directory partition in another site. 
+ 
+If neither of the tasks correct this condition, see previous events logged by the KCC that identify the inaccessible directory servers.
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1865
+Time Created  : 07/09/2026 00:53:26
+
+Event Message :
+The Knowledge Consistency Checker (KCC) was unable to form a complete spanning tree network topology. As a result, the following list of sites cannot be reached from the local site. 
+ 
+Sites: 
+CN=CAI,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=NLU,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=LFW,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+ 
+ 
+ 
+ 
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1311
+Time Created  : 07/09/2026 00:53:26
+
+Event Message :
+The Knowledge Consistency Checker (KCC) has detected problems with the following directory partition. 
+ 
+Directory partition:
+DC=ForestDnsZones,DC=apcflex,DC=aero 
+ 
+There is insufficient site connectivity information for the KCC to create a spanning tree replication topology. Or, one or more directory servers with this directory partition are unable to replicate the directory partition information. This is probably due to inaccessible directory servers. 
+ 
+User Action 
+Perform one of the following actions: 
+- Publish sufficient site connectivity information so that the KCC can determine a route by which this directory partition can reach this site. This is the preferred option. 
+- Add a Connection object to a directory service that contains the directory partition in this site from a directory service that contains the same directory partition in another site. 
+ 
+If neither of the tasks correct this condition, see previous events logged by the KCC that identify the inaccessible directory servers.
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1865
+Time Created  : 07/09/2026 00:53:26
+
+Event Message :
+The Knowledge Consistency Checker (KCC) was unable to form a complete spanning tree network topology. As a result, the following list of sites cannot be reached from the local site. 
+ 
+Sites: 
+CN=CAI,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=NLU,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=LFW,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+ 
+ 
+ 
+ 
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1311
+Time Created  : 07/09/2026 00:53:26
+
+Event Message :
+The Knowledge Consistency Checker (KCC) has detected problems with the following directory partition. 
+ 
+Directory partition:
+DC=DomainDnsZones,DC=apcflex,DC=aero 
+ 
+There is insufficient site connectivity information for the KCC to create a spanning tree replication topology. Or, one or more directory servers with this directory partition are unable to replicate the directory partition information. This is probably due to inaccessible directory servers. 
+ 
+User Action 
+Perform one of the following actions: 
+- Publish sufficient site connectivity information so that the KCC can determine a route by which this directory partition can reach this site. This is the preferred option. 
+- Add a Connection object to a directory service that contains the directory partition in this site from a directory service that contains the same directory partition in another site. 
+ 
+If neither of the tasks correct this condition, see previous events logged by the KCC that identify the inaccessible directory servers.
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1865
+Time Created  : 07/09/2026 00:53:26
+
+Event Message :
+The Knowledge Consistency Checker (KCC) was unable to form a complete spanning tree network topology. As a result, the following list of sites cannot be reached from the local site. 
+ 
+Sites: 
+CN=CAI,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=NLU,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=LFW,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+ 
+ 
+ 
+ 
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1311
+Time Created  : 07/09/2026 00:53:26
+
+Event Message :
+The Knowledge Consistency Checker (KCC) has detected problems with the following directory partition. 
+ 
+Directory partition:
+DC=apcflex,DC=aero 
+ 
+There is insufficient site connectivity information for the KCC to create a spanning tree replication topology. Or, one or more directory servers with this directory partition are unable to replicate the directory partition information. This is probably due to inaccessible directory servers. 
+ 
+User Action 
+Perform one of the following actions: 
+- Publish sufficient site connectivity information so that the KCC can determine a route by which this directory partition can reach this site. This is the preferred option. 
+- Add a Connection object to a directory service that contains the directory partition in this site from a directory service that contains the same directory partition in another site. 
+ 
+If neither of the tasks correct this condition, see previous events logged by the KCC that identify the inaccessible directory servers.
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1865
+Time Created  : 07/09/2026 00:35:35
+
+Event Message :
+The Knowledge Consistency Checker (KCC) was unable to form a complete spanning tree network topology. As a result, the following list of sites cannot be reached from the local site. 
+ 
+Sites: 
+CN=CAI,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=NLU,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=LFW,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+ 
+ 
+ 
+ 
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1311
+Time Created  : 07/09/2026 00:35:35
+
+Event Message :
+The Knowledge Consistency Checker (KCC) has detected problems with the following directory partition. 
+ 
+Directory partition:
+CN=Configuration,DC=apcflex,DC=aero 
+ 
+There is insufficient site connectivity information for the KCC to create a spanning tree replication topology. Or, one or more directory servers with this directory partition are unable to replicate the directory partition information. This is probably due to inaccessible directory servers. 
+ 
+User Action 
+Perform one of the following actions: 
+- Publish sufficient site connectivity information so that the KCC can determine a route by which this directory partition can reach this site. This is the preferred option. 
+- Add a Connection object to a directory service that contains the directory partition in this site from a directory service that contains the same directory partition in another site. 
+ 
+If neither of the tasks correct this condition, see previous events logged by the KCC that identify the inaccessible directory servers.
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1865
+Time Created  : 07/09/2026 00:35:35
+
+Event Message :
+The Knowledge Consistency Checker (KCC) was unable to form a complete spanning tree network topology. As a result, the following list of sites cannot be reached from the local site. 
+ 
+Sites: 
+CN=CAI,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=NLU,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=LFW,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+ 
+ 
+ 
+ 
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1311
+Time Created  : 07/09/2026 00:35:35
+
+Event Message :
+The Knowledge Consistency Checker (KCC) has detected problems with the following directory partition. 
+ 
+Directory partition:
+DC=ForestDnsZones,DC=apcflex,DC=aero 
+ 
+There is insufficient site connectivity information for the KCC to create a spanning tree replication topology. Or, one or more directory servers with this directory partition are unable to replicate the directory partition information. This is probably due to inaccessible directory servers. 
+ 
+User Action 
+Perform one of the following actions: 
+- Publish sufficient site connectivity information so that the KCC can determine a route by which this directory partition can reach this site. This is the preferred option. 
+- Add a Connection object to a directory service that contains the directory partition in this site from a directory service that contains the same directory partition in another site. 
+ 
+If neither of the tasks correct this condition, see previous events logged by the KCC that identify the inaccessible directory servers.
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1865
+Time Created  : 07/09/2026 00:35:35
+
+Event Message :
+The Knowledge Consistency Checker (KCC) was unable to form a complete spanning tree network topology. As a result, the following list of sites cannot be reached from the local site. 
+ 
+Sites: 
+CN=CAI,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=NLU,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=LFW,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+ 
+ 
+ 
+ 
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1311
+Time Created  : 07/09/2026 00:35:35
+
+Event Message :
+The Knowledge Consistency Checker (KCC) has detected problems with the following directory partition. 
+ 
+Directory partition:
+DC=DomainDnsZones,DC=apcflex,DC=aero 
+ 
+There is insufficient site connectivity information for the KCC to create a spanning tree replication topology. Or, one or more directory servers with this directory partition are unable to replicate the directory partition information. This is probably due to inaccessible directory servers. 
+ 
+User Action 
+Perform one of the following actions: 
+- Publish sufficient site connectivity information so that the KCC can determine a route by which this directory partition can reach this site. This is the preferred option. 
+- Add a Connection object to a directory service that contains the directory partition in this site from a directory service that contains the same directory partition in another site. 
+ 
+If neither of the tasks correct this condition, see previous events logged by the KCC that identify the inaccessible directory servers.
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1865
+Time Created  : 07/09/2026 00:35:35
+
+Event Message :
+The Knowledge Consistency Checker (KCC) was unable to form a complete spanning tree network topology. As a result, the following list of sites cannot be reached from the local site. 
+ 
+Sites: 
+CN=CAI,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=NLU,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=LFW,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+ 
+ 
+ 
+ 
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1311
+Time Created  : 07/09/2026 00:35:35
+
+Event Message :
+The Knowledge Consistency Checker (KCC) has detected problems with the following directory partition. 
+ 
+Directory partition:
+DC=apcflex,DC=aero 
+ 
+There is insufficient site connectivity information for the KCC to create a spanning tree replication topology. Or, one or more directory servers with this directory partition are unable to replicate the directory partition information. This is probably due to inaccessible directory servers. 
+ 
+User Action 
+Perform one of the following actions: 
+- Publish sufficient site connectivity information so that the KCC can determine a route by which this directory partition can reach this site. This is the preferred option. 
+- Add a Connection object to a directory service that contains the directory partition in this site from a directory service that contains the same directory partition in another site. 
+ 
+If neither of the tasks correct this condition, see previous events logged by the KCC that identify the inaccessible directory servers.
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1865
+Time Created  : 07/09/2026 00:18:06
+
+Event Message :
+The Knowledge Consistency Checker (KCC) was unable to form a complete spanning tree network topology. As a result, the following list of sites cannot be reached from the local site. 
+ 
+Sites: 
+CN=CAI,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=NLU,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=LFW,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+ 
+ 
+ 
+ 
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1311
+Time Created  : 07/09/2026 00:18:06
+
+Event Message :
+The Knowledge Consistency Checker (KCC) has detected problems with the following directory partition. 
+ 
+Directory partition:
+CN=Configuration,DC=apcflex,DC=aero 
+ 
+There is insufficient site connectivity information for the KCC to create a spanning tree replication topology. Or, one or more directory servers with this directory partition are unable to replicate the directory partition information. This is probably due to inaccessible directory servers. 
+ 
+User Action 
+Perform one of the following actions: 
+- Publish sufficient site connectivity information so that the KCC can determine a route by which this directory partition can reach this site. This is the preferred option. 
+- Add a Connection object to a directory service that contains the directory partition in this site from a directory service that contains the same directory partition in another site. 
+ 
+If neither of the tasks correct this condition, see previous events logged by the KCC that identify the inaccessible directory servers.
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1865
+Time Created  : 07/09/2026 00:18:06
+
+Event Message :
+The Knowledge Consistency Checker (KCC) was unable to form a complete spanning tree network topology. As a result, the following list of sites cannot be reached from the local site. 
+ 
+Sites: 
+CN=CAI,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=NLU,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=LFW,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+ 
+ 
+ 
+ 
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1311
+Time Created  : 07/09/2026 00:18:06
+
+Event Message :
+The Knowledge Consistency Checker (KCC) has detected problems with the following directory partition. 
+ 
+Directory partition:
+DC=ForestDnsZones,DC=apcflex,DC=aero 
+ 
+There is insufficient site connectivity information for the KCC to create a spanning tree replication topology. Or, one or more directory servers with this directory partition are unable to replicate the directory partition information. This is probably due to inaccessible directory servers. 
+ 
+User Action 
+Perform one of the following actions: 
+- Publish sufficient site connectivity information so that the KCC can determine a route by which this directory partition can reach this site. This is the preferred option. 
+- Add a Connection object to a directory service that contains the directory partition in this site from a directory service that contains the same directory partition in another site. 
+ 
+If neither of the tasks correct this condition, see previous events logged by the KCC that identify the inaccessible directory servers.
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1865
+Time Created  : 07/09/2026 00:18:06
+
+Event Message :
+The Knowledge Consistency Checker (KCC) was unable to form a complete spanning tree network topology. As a result, the following list of sites cannot be reached from the local site. 
+ 
+Sites: 
+CN=CAI,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=NLU,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=LFW,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+ 
+ 
+ 
+ 
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1311
+Time Created  : 07/09/2026 00:18:06
+
+Event Message :
+The Knowledge Consistency Checker (KCC) has detected problems with the following directory partition. 
+ 
+Directory partition:
+DC=DomainDnsZones,DC=apcflex,DC=aero 
+ 
+There is insufficient site connectivity information for the KCC to create a spanning tree replication topology. Or, one or more directory servers with this directory partition are unable to replicate the directory partition information. This is probably due to inaccessible directory servers. 
+ 
+User Action 
+Perform one of the following actions: 
+- Publish sufficient site connectivity information so that the KCC can determine a route by which this directory partition can reach this site. This is the preferred option. 
+- Add a Connection object to a directory service that contains the directory partition in this site from a directory service that contains the same directory partition in another site. 
+ 
+If neither of the tasks correct this condition, see previous events logged by the KCC that identify the inaccessible directory servers.
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1865
+Time Created  : 07/09/2026 00:18:06
+
+Event Message :
+The Knowledge Consistency Checker (KCC) was unable to form a complete spanning tree network topology. As a result, the following list of sites cannot be reached from the local site. 
+ 
+Sites: 
+CN=CAI,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=NLU,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=LFW,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+ 
+ 
+ 
+ 
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1311
+Time Created  : 07/09/2026 00:18:06
+
+Event Message :
+The Knowledge Consistency Checker (KCC) has detected problems with the following directory partition. 
+ 
+Directory partition:
+DC=apcflex,DC=aero 
+ 
+There is insufficient site connectivity information for the KCC to create a spanning tree replication topology. Or, one or more directory servers with this directory partition are unable to replicate the directory partition information. This is probably due to inaccessible directory servers. 
+ 
+User Action 
+Perform one of the following actions: 
+- Publish sufficient site connectivity information so that the KCC can determine a route by which this directory partition can reach this site. This is the preferred option. 
+- Add a Connection object to a directory service that contains the directory partition in this site from a directory service that contains the same directory partition in another site. 
+ 
+If neither of the tasks correct this condition, see previous events logged by the KCC that identify the inaccessible directory servers.
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1865
+Time Created  : 07/09/2026 00:01:00
+
+Event Message :
+The Knowledge Consistency Checker (KCC) was unable to form a complete spanning tree network topology. As a result, the following list of sites cannot be reached from the local site. 
+ 
+Sites: 
+CN=CAI,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=NLU,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=LFW,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+ 
+ 
+ 
+ 
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1311
+Time Created  : 07/09/2026 00:01:00
+
+Event Message :
+The Knowledge Consistency Checker (KCC) has detected problems with the following directory partition. 
+ 
+Directory partition:
+CN=Configuration,DC=apcflex,DC=aero 
+ 
+There is insufficient site connectivity information for the KCC to create a spanning tree replication topology. Or, one or more directory servers with this directory partition are unable to replicate the directory partition information. This is probably due to inaccessible directory servers. 
+ 
+User Action 
+Perform one of the following actions: 
+- Publish sufficient site connectivity information so that the KCC can determine a route by which this directory partition can reach this site. This is the preferred option. 
+- Add a Connection object to a directory service that contains the directory partition in this site from a directory service that contains the same directory partition in another site. 
+ 
+If neither of the tasks correct this condition, see previous events logged by the KCC that identify the inaccessible directory servers.
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1865
+Time Created  : 07/09/2026 00:01:00
+
+Event Message :
+The Knowledge Consistency Checker (KCC) was unable to form a complete spanning tree network topology. As a result, the following list of sites cannot be reached from the local site. 
+ 
+Sites: 
+CN=CAI,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=NLU,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=LFW,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+ 
+ 
+ 
+ 
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1311
+Time Created  : 07/09/2026 00:01:00
+
+Event Message :
+The Knowledge Consistency Checker (KCC) has detected problems with the following directory partition. 
+ 
+Directory partition:
+DC=ForestDnsZones,DC=apcflex,DC=aero 
+ 
+There is insufficient site connectivity information for the KCC to create a spanning tree replication topology. Or, one or more directory servers with this directory partition are unable to replicate the directory partition information. This is probably due to inaccessible directory servers. 
+ 
+User Action 
+Perform one of the following actions: 
+- Publish sufficient site connectivity information so that the KCC can determine a route by which this directory partition can reach this site. This is the preferred option. 
+- Add a Connection object to a directory service that contains the directory partition in this site from a directory service that contains the same directory partition in another site. 
+ 
+If neither of the tasks correct this condition, see previous events logged by the KCC that identify the inaccessible directory servers.
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1865
+Time Created  : 07/09/2026 00:01:00
+
+Event Message :
+The Knowledge Consistency Checker (KCC) was unable to form a complete spanning tree network topology. As a result, the following list of sites cannot be reached from the local site. 
+ 
+Sites: 
+CN=CAI,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=NLU,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=LFW,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+ 
+ 
+ 
+ 
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1311
+Time Created  : 07/09/2026 00:01:00
+
+Event Message :
+The Knowledge Consistency Checker (KCC) has detected problems with the following directory partition. 
+ 
+Directory partition:
+DC=DomainDnsZones,DC=apcflex,DC=aero 
+ 
+There is insufficient site connectivity information for the KCC to create a spanning tree replication topology. Or, one or more directory servers with this directory partition are unable to replicate the directory partition information. This is probably due to inaccessible directory servers. 
+ 
+User Action 
+Perform one of the following actions: 
+- Publish sufficient site connectivity information so that the KCC can determine a route by which this directory partition can reach this site. This is the preferred option. 
+- Add a Connection object to a directory service that contains the directory partition in this site from a directory service that contains the same directory partition in another site. 
+ 
+If neither of the tasks correct this condition, see previous events logged by the KCC that identify the inaccessible directory servers.
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1865
+Time Created  : 07/09/2026 00:01:00
+
+Event Message :
+The Knowledge Consistency Checker (KCC) was unable to form a complete spanning tree network topology. As a result, the following list of sites cannot be reached from the local site. 
+ 
+Sites: 
+CN=CAI,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=NLU,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+CN=LFW,CN=Sites,CN=Configuration,DC=apcflex,DC=aero 
+ 
+ 
+ 
+ 
+
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================
+=====================================
+ACTIVE DIRECTORY REPLICATION ALERT
+=====================================
+
+Server        : ZUSE-DC02
+Event ID      : 1311
+Time Created  : 07/09/2026 00:01:00
+
+Event Message :
+The Knowledge Consistency Checker (KCC) has detected problems with the following directory partition. 
+ 
+Directory partition:
+DC=apcflex,DC=aero 
+ 
+There is insufficient site connectivity information for the KCC to create a spanning tree replication topology. Or, one or more directory servers with this directory partition are unable to replicate the directory partition information. This is probably due to inaccessible directory servers. 
+ 
+User Action 
+Perform one of the following actions: 
+- Publish sufficient site connectivity information so that the KCC can determine a route by which this directory partition can reach this site. This is the preferred option. 
+- Add a Connection object to a directory service that contains the directory partition in this site from a directory service that contains the same directory partition in another site. 
+ 
+If neither of the tasks correct this condition, see previous events logged by the KCC that identify the inaccessible directory servers.
+
+Recommended Action:
+Run replication health checks:
+
+repadmin /replsummary
+repadmin /showrepl
+dcdiag /test:replications
+=====================================

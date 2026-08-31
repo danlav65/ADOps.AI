@@ -1,0 +1,12 @@
+[2026-07-09 13:53:30] Script SHA256: D6CE7C0D6ADD59BB9B504E94792EDA1E9168B5FEB04529872DD589FAEBD7D780
+[2026-07-09 13:53:30] Starting AD Replication Health v4. Computer=CURFLEX-DC01 Targets=CURFLEX-DC01
+[2026-07-09 13:53:30] Resolved Invoke-PortScan path: C:\SITA\scripts\Invoke-PortScan.ps1
+[2026-07-09 13:53:30] Resolved ADHealth_Check path : C:\SITA\scripts\ADHealth_Check.ps1
+[2026-07-09 13:53:30] Running: repadmin /showrepl CURFLEX-DC01 /errorsonly /verbose
+[2026-07-09 13:53:30] Saved repadmin raw output to: C:\Logs\AD_Replication_Health\repadmin_showrepl_20260709_135330.log
+[2026-07-09 13:53:30] Failures detected: 0. Running additional diagnostics for attachments...
+[2026-07-09 13:53:30] Executing ADHealth_Check: C:\SITA\scripts\ADHealth_Check.ps1
+[2026-07-09 13:53:40] Attached ADHealth_Check main log: C:\Logs\ADReplicationHealthCheck.log
+[2026-07-09 13:53:40] Invoke-PortScan script not found or Skipped.
+[2026-07-09 13:53:40] Sending email to: sameh.bashatly@sita.aero, Sabin.Georgescu@sita.aero, Carl.Dufresne@sita.aero, Paul.Topan@sita.aero, CR.Lakshmikanthan@sita.aero, Mohammed_Jane.Alam@sita.aero, Danny.Lavardera@sita.aero
+[2026-07-09 13:53:40] Subject: Flex Domain AD Replication report on CURFLEX-DC01 (0 failures)

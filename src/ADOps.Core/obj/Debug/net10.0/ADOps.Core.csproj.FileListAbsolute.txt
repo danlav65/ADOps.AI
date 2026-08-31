@@ -1,0 +1,13 @@
+C:\Temp\ADOps.AI\src\ADOps.Core\bin\Debug\net10.0\ADOps.Core.deps.json
+C:\Temp\ADOps.AI\src\ADOps.Core\bin\Debug\net10.0\ADOps.Core.dll
+C:\Temp\ADOps.AI\src\ADOps.Core\bin\Debug\net10.0\ADOps.Core.pdb
+C:\Temp\ADOps.AI\src\ADOps.Core\bin\Debug\net10.0\ADOps.Core.xml
+C:\Temp\ADOps.AI\src\ADOps.Core\obj\Debug\net10.0\ADOps.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Temp\ADOps.AI\src\ADOps.Core\obj\Debug\net10.0\ADOps.Core.AssemblyInfoInputs.cache
+C:\Temp\ADOps.AI\src\ADOps.Core\obj\Debug\net10.0\ADOps.Core.AssemblyInfo.cs
+C:\Temp\ADOps.AI\src\ADOps.Core\obj\Debug\net10.0\ADOps.Core.csproj.CoreCompileInputs.cache
+C:\Temp\ADOps.AI\src\ADOps.Core\obj\Debug\net10.0\ADOps.Core.dll
+C:\Temp\ADOps.AI\src\ADOps.Core\obj\Debug\net10.0\refint\ADOps.Core.dll
+C:\Temp\ADOps.AI\src\ADOps.Core\obj\Debug\net10.0\ADOps.Core.xml
+C:\Temp\ADOps.AI\src\ADOps.Core\obj\Debug\net10.0\ADOps.Core.pdb
+C:\Temp\ADOps.AI\src\ADOps.Core\obj\Debug\net10.0\ref\ADOps.Core.dll

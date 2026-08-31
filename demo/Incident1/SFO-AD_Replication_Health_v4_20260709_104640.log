@@ -1,0 +1,12 @@
+[2026-07-09 10:46:40] Script SHA256: D6CE7C0D6ADD59BB9B504E94792EDA1E9168B5FEB04529872DD589FAEBD7D780
+[2026-07-09 10:46:40] Starting AD Replication Health v4. Computer=SFOFLEX-DC1 Targets=SFOFLEX-DC1
+[2026-07-09 10:46:40] Resolved Invoke-PortScan path: C:\SITA\scripts\Invoke-PortScan.ps1
+[2026-07-09 10:46:40] Resolved ADHealth_Check path : C:\SITA\scripts\ADHealth_Check.ps1
+[2026-07-09 10:46:40] Running: repadmin /showrepl SFOFLEX-DC1 /errorsonly /verbose
+[2026-07-09 10:46:40] Saved repadmin raw output to: C:\Logs\AD_Replication_Health\repadmin_showrepl_20260709_104640.log
+[2026-07-09 10:46:40] Failures detected: 0. Running additional diagnostics for attachments...
+[2026-07-09 10:46:40] Executing ADHealth_Check: C:\SITA\scripts\ADHealth_Check.ps1
+[2026-07-09 10:47:01] Attached ADHealth_Check main log: C:\Logs\ADReplicationHealthCheck.log
+[2026-07-09 10:47:01] Invoke-PortScan script not found or Skipped.
+[2026-07-09 10:47:01] Sending email to: sameh.bashatly@sita.aero, Sabin.Georgescu@sita.aero, Carl.Dufresne@sita.aero, Paul.Topan@sita.aero, CR.Lakshmikanthan@sita.aero, Mohammed_Jane.Alam@sita.aero, Danny.Lavardera@sita.aero
+[2026-07-09 10:47:01] Subject: Flex Domain AD Replication report on SFOFLEX-DC1 (0 failures)

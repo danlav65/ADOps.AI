@@ -1,0 +1,7 @@
+{
+  "Target": "ZUSW-DC1",
+  "Success": false,
+  "ErrorCode": 1722,
+  "ErrorMessage": "The RPC server is unavailable.",
+  "SourceCommand": "Test-NetConnection ZUSW-DC1 -Port 135"
+}

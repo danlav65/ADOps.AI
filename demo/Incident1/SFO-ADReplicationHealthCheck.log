@@ -1,0 +1,299 @@
+=================================================
+AD Replication Health Check Started : 2026-07-09 10:46:40
+=================================================
+
+--- PASSIVE REPLICATION SUMMARY ---
+Replication Summary Start Time: 2026-07-09 10:46:41
+
+
+
+Beginning data collection for replication summary, this may take awhile:
+
+  ....
+
+
+
+
+
+Source DSA          largest delta    fails/total %%   error
+
+ SFOFLEX-DC2               56m:50s    0 /   5    0  
+
+ ZUSW-DC01             02h:41m:50s    0 /   5    0  
+
+
+
+
+
+Destination DSA     largest delta    fails/total %%   error
+
+ SFOFLEX-DC1           02h:41m:51s    0 /  10    0  
+
+
+
+
+
+
+=========================================
+Checking DC: SFOFLEX-DC1
+=========================================
+Native replication engine reports healthy.
+SFO\SFOFLEX-DC1
+
+DSA Options: IS_GC 
+
+Site Options: (none)
+
+DSA object GUID: 49b8572d-91ea-4346-a772-dd627c86d9d6
+
+DSA invocationID: eb2ad30e-88a3-4eb3-b014-7fde21e07129
+
+
+
+==== INBOUND NEIGHBORS ======================================
+
+
+
+DC=apcflex,DC=aero
+
+    Azure-ZUSW\ZUSW-DC01 via RPC
+
+        DSA object GUID: 294f5ccb-e139-4a56-afb6-40ee8f6abfec
+
+        Last attempt @ 2026-07-09 08:04:51 was successful.
+
+    SFO\SFOFLEX-DC2 via RPC
+
+        DSA object GUID: 56c21dcc-81bc-43b1-9dca-e0cfc62134e1
+
+        Last attempt @ 2026-07-09 10:46:32 was successful.
+
+
+
+CN=Configuration,DC=apcflex,DC=aero
+
+    Azure-ZUSW\ZUSW-DC01 via RPC
+
+        DSA object GUID: 294f5ccb-e139-4a56-afb6-40ee8f6abfec
+
+        Last attempt @ 2026-07-09 08:04:51 was successful.
+
+    SFO\SFOFLEX-DC2 via RPC
+
+        DSA object GUID: 56c21dcc-81bc-43b1-9dca-e0cfc62134e1
+
+        Last attempt @ 2026-07-09 09:49:51 was successful.
+
+
+
+CN=Schema,CN=Configuration,DC=apcflex,DC=aero
+
+    Azure-ZUSW\ZUSW-DC01 via RPC
+
+        DSA object GUID: 294f5ccb-e139-4a56-afb6-40ee8f6abfec
+
+        Last attempt @ 2026-07-09 08:04:51 was successful.
+
+    SFO\SFOFLEX-DC2 via RPC
+
+        DSA object GUID: 56c21dcc-81bc-43b1-9dca-e0cfc62134e1
+
+        Last attempt @ 2026-07-09 09:49:51 was successful.
+
+
+
+DC=DomainDnsZones,DC=apcflex,DC=aero
+
+    Azure-ZUSW\ZUSW-DC01 via RPC
+
+        DSA object GUID: 294f5ccb-e139-4a56-afb6-40ee8f6abfec
+
+        Last attempt @ 2026-07-09 08:04:54 was successful.
+
+    SFO\SFOFLEX-DC2 via RPC
+
+        DSA object GUID: 56c21dcc-81bc-43b1-9dca-e0cfc62134e1
+
+        Last attempt @ 2026-07-09 10:44:55 was successful.
+
+
+
+DC=ForestDnsZones,DC=apcflex,DC=aero
+
+    Azure-ZUSW\ZUSW-DC01 via RPC
+
+        DSA object GUID: 294f5ccb-e139-4a56-afb6-40ee8f6abfec
+
+        Last attempt @ 2026-07-09 08:04:55 was successful.
+
+    SFO\SFOFLEX-DC2 via RPC
+
+        DSA object GUID: 56c21dcc-81bc-43b1-9dca-e0cfc62134e1
+
+        Last attempt @ 2026-07-09 09:49:51 was successful.
+
+
+
+
+Directory Server Diagnosis
+
+
+Performing initial setup:
+
+   * Identified AD Forest. 
+   Done gathering initial info.
+
+
+Doing initial required tests
+
+   
+   Testing server: SFO\SFOFLEX-DC1
+
+      Starting test: Connectivity
+
+         ......................... SFOFLEX-DC1 passed test Connectivity
+
+
+
+Doing primary tests
+
+   
+   Testing server: SFO\SFOFLEX-DC1
+
+      Starting test: Advertising
+
+         ......................... SFOFLEX-DC1 passed test Advertising
+
+      Starting test: SysVolCheck
+
+         ......................... SFOFLEX-DC1 passed test SysVolCheck
+
+   
+   
+   Running partition tests on : ForestDnsZones
+
+   
+   Running partition tests on : DomainDnsZones
+
+   
+   Running partition tests on : Schema
+
+   
+   Running partition tests on : Configuration
+
+   
+   Running partition tests on : apcflex
+
+   
+   Running enterprise tests on : apcflex.aero
+
+
+--- DFSR BACKLOG CHECK ---
+
+Member <sfoflex-dc1> Backlog File Count: 635
+Backlog File Names (first 100 files)
+     1. F:\ADDSData\SYSVOL\domain\Policies\{3DEEDADA-9539-4EE1-B8CA-4EC065D28A78}\User\Documents & Settings\fdeploy.ini
+     2. F:\ADDSData\SYSVOL\domain\Policies\{3DEEDADA-9539-4EE1-B8CA-4EC065D28A78}\User\comment.cmtx
+     3. F:\ADDSData\SYSVOL\domain\Policies\{3DEEDADA-9539-4EE1-B8CA-4EC065D28A78}\User\Documents & Settings\fdeploy1.ini
+     4. F:\ADDSData\SYSVOL\domain\Policies\{3DEEDADA-9539-4EE1-B8CA-4EC065D28A78}\User\Preferences\Drives\Drives.xml
+     5. F:\ADDSData\SYSVOL\domain\Policies\{3DEEDADA-9539-4EE1-B8CA-4EC065D28A78}\gpt.ini
+     6. F:\ADDSData\SYSVOL\domain\Policies\{3DEEDADA-9539-4EE1-B8CA-4EC065D28A78}\User\registry.pol
+     7. F:\ADDSData\SYSVOL\domain\Policies\{FE11C521-C1C7-402F-9A59-77D2C56C267D}\GPT.INI
+     8. F:\ADDSData\SYSVOL\domain\Policies\{FE11C521-C1C7-402F-9A59-77D2C56C267D}\Group Policy\GPE.INI
+     9. F:\ADDSData\SYSVOL\domain\Policies\{6A21AE48-09E0-4173-A026-112702F27887}\GPT.INI
+     10. F:\ADDSData\SYSVOL\domain\Policies\{FE11C521-C1C7-402F-9A59-77D2C56C267D}\Group Policy
+     11. F:\ADDSData\SYSVOL\domain\Policies\{6A21AE48-09E0-4173-A026-112702F27887}\User\Scripts\scripts.ini
+     12. F:\ADDSData\SYSVOL\domain\Policies\{FE11C521-C1C7-402F-9A59-77D2C56C267D}
+     13. F:\ADDSData\SYSVOL\domain\Policies\{6A21AE48-09E0-4173-A026-112702F27887}\Group Policy\GPE.INI
+     14. F:\ADDSData\SYSVOL\domain\Policies\{21CC5AA9-66C3-410D-92CC-677D94FE3A06}\User\registry.pol
+     15. F:\ADDSData\SYSVOL\domain\Policies\{063A7F38-6AA8-4FE2-B6B4-F5A07E4DF461}\Machine\Registry.pol
+     16. F:\ADDSData\SYSVOL\domain\Policies\{2B7B3C2D-1E45-4938-9E16-6693CE46D5D5}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     17. F:\ADDSData\SYSVOL\domain\Policies\{3F72D475-FBB4-4568-9788-9530C7BBF8D8}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     18. F:\ADDSData\SYSVOL\domain\Policies\{6AD5D9BE-FED1-4E5C-9D5A-EE110B006D5C}\GPT.INI
+     19. F:\ADDSData\SYSVOL\domain\Policies\{6AD5D9BE-FED1-4E5C-9D5A-EE110B006D5C}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     20. F:\ADDSData\SYSVOL\domain\Policies\{3CB3EDB1-A386-43AA-8C7F-B91AF79C9CD4}\Machine\microsoft\windows nt\SecEdit\GptTmpl.inf
+     21. F:\ADDSData\SYSVOL\domain\Policies\{11B95C3C-3B8B-4391-88C3-4223CEA598EB}\User\registry.pol
+     22. F:\ADDSData\SYSVOL\domain\Policies\{5B4231D1-5EDD-49C9-824F-EDBD6D90206E}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     23. F:\ADDSData\SYSVOL\domain\Policies\{9F2055C7-722C-4DA7-821B-25F7BB4D7393}\Machine\registry.pol
+     24. F:\ADDSData\SYSVOL\domain\Policies\{9F2055C7-722C-4DA7-821B-25F7BB4D7393}\User\registry.pol
+     25. F:\ADDSData\SYSVOL\domain\Policies\{F97B875A-4B40-41BD-9B81-D366AD42E755}\User\registry.pol
+     26. F:\ADDSData\SYSVOL\domain\Policies\{9A3B82BE-BC3D-45F8-9D9A-217424277D3B}\User\registry.pol
+     27. F:\ADDSData\SYSVOL\domain\Policies\{6D9CADE0-CB47-4767-A73A-1C479E755F2E}\User\registry.pol
+     28. F:\ADDSData\SYSVOL\domain\Policies\{6D9CADE0-CB47-4767-A73A-1C479E755F2E}\User\Scripts\Logon\cussshell.bat
+     29. F:\ADDSData\SYSVOL\domain\Policies\{6D9CADE0-CB47-4767-A73A-1C479E755F2E}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     30. F:\ADDSData\SYSVOL\domain\Policies\{986F3DE0-24B9-46F2-A94B-BD816E41F6C9}\GPT.INI
+     31. F:\ADDSData\SYSVOL\domain\Policies\{986F3DE0-24B9-46F2-A94B-BD816E41F6C9}\User\Preferences\Registry\Registry.xml
+     32. F:\ADDSData\SYSVOL\domain\Policies\{CF7018D3-B3D3-488D-B697-BCAFA3C2564A}\User\registry.pol
+     33. F:\ADDSData\SYSVOL\domain\Policies\{1214590D-1B9B-4107-9569-29516C815E14}\Machine\microsoft\windows nt\Audit\audit.csv
+     34. F:\ADDSData\SYSVOL\domain\Policies\{86784B04-66E7-4C67-9D25-1D5953A273AD}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     35. F:\ADDSData\SYSVOL\domain\Policies\{88D80EB4-46B5-4C4D-911B-A59DC68AB72D}\Machine\microsoft\windows nt\SecEdit\GptTmpl.inf
+     36. F:\ADDSData\SYSVOL\domain\Policies\{D278FFB9-49A1-4B39-83D6-C8E48382C51C}\Machine\microsoft\windows nt\SecEdit\GptTmpl.inf
+     37. F:\ADDSData\SYSVOL\domain\Policies\{96D76479-B950-4E76-93BB-316552F79CBA}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     38. F:\ADDSData\SYSVOL\domain\Policies\{3AE3D492-1540-4B88-BFB4-8A562AE6311A}\Machine\Preferences\Registry\Registry.xml
+     39. F:\ADDSData\SYSVOL\domain\Policies\{0D202D31-AE2F-4C50-93EE-F4930D584C37}\User\Scripts\scripts.ini
+     40. F:\ADDSData\SYSVOL\domain\Policies\{42FF5140-3489-48C6-9F4B-F1EA9AFCD254}\Machine\Registry.pol
+     41. F:\ADDSData\SYSVOL\domain\Policies\{3DC23311-4CA9-45A0-816E-79B0AAB42A8F}\User\registry.pol
+     42. F:\ADDSData\SYSVOL\domain\Policies\{43B89EEE-D1D5-46E5-9037-66D63B2C6FB9}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     43. F:\ADDSData\SYSVOL\domain\Policies\{0FDE6609-5C9D-4797-AFE9-49E46B0372EE}\User\Scripts\Logon\cussshell.bat
+     44. F:\ADDSData\SYSVOL\domain\Policies\{BE835468-1B82-4E0D-82E4-CFB7FD272EF1}\Machine\microsoft\windows nt\SecEdit\GptTmpl.inf
+     45. F:\ADDSData\SYSVOL\domain\Policies\{6C683B44-1754-4B6A-AB37-D272E1C37B3D}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     46. F:\ADDSData\SYSVOL\domain\Policies\{8AD27E7F-7278-425B-A2FA-A7971FB9A6AB}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     47. F:\ADDSData\SYSVOL\domain\Policies\{0A065E6A-81EE-4C67-8364-351B02850C52}\Machine\registry.pol
+     48. F:\ADDSData\SYSVOL\domain\Policies\{084B278D-51B9-493F-A4C4-820DD822A289}\Machine\microsoft\windows nt\Audit\audit.csv
+     49. F:\ADDSData\SYSVOL\domain\Policies\{666BE696-6343-4AF8-B35F-820AAD4CE159}\Machine\Registry.pol
+     50. F:\ADDSData\SYSVOL\domain\Policies\{2D02523B-4301-4E9F-91BC-1D0A7702A4E9}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     51. F:\ADDSData\SYSVOL\domain\Policies\{04E95F66-26BB-4DB7-BD5E-6E89593EE373}\Machine\microsoft\windows nt\Audit\audit.csv
+     52. F:\ADDSData\SYSVOL\domain\Policies\{29EFE085-4A9F-44F0-BA98-E5F2F18FA5F0}\User\Scripts\Logon\cute-logon-nqy.cmd
+     53. F:\ADDSData\SYSVOL\domain\Policies\{377F9E09-F724-49C4-B0E8-CFC22AAC975E}\User\Preferences\Registry\Registry.xml
+     54. F:\ADDSData\SYSVOL\domain\Policies\{AB390097-B17C-46E4-9404-D656FE201746}\Machine\Preferences\Registry\Registry.xml
+     55. F:\ADDSData\SYSVOL\domain\Policies\{CED60ADC-FFEC-4DB4-9DB1-78489213C6AC}\User\Scripts\PSscripts.ini
+     56. F:\ADDSData\SYSVOL\domain\Policies\{4BEAF205-C04C-4F5F-9254-4305B8FEE460}\User\Scripts\Logon\cute-logon-qqq.cmd
+     57. F:\ADDSData\SYSVOL\domain\Policies\{6B450883-B6D6-4E0E-AAB1-BF8329CB57C3}\Machine\Preferences\Registry\Registry.xml
+     58. F:\ADDSData\SYSVOL\domain\Policies\{F40A65E3-48E7-4654-A2AB-9A9FB74841D7}\Machine\Preferences\Registry\Registry.xml
+     59. F:\ADDSData\SYSVOL\domain\Policies\{A55D01E5-607E-42D3-93F0-A0D96358A7AD}\Adm\CredentialProviderLogoffWow6432Nodev2.adm
+     60. F:\ADDSData\SYSVOL\domain\Policies\{2F4B3389-F940-4F41-B83D-214F2B4ABDC9}\Machine\microsoft\windows nt\SecEdit\GptTmpl.inf
+     61. F:\ADDSData\SYSVOL\domain\Policies\{EDE666B3-1BFA-452B-9E83-2A8F6F545189}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     62. F:\ADDSData\SYSVOL\domain\Policies\{BFECABF1-CE70-47E3-9C90-A25B4A691015}\Machine\microsoft\windows nt\SecEdit\GptTmpl.inf
+     63. F:\ADDSData\SYSVOL\domain\Policies\{AFF7283F-80A2-4C7D-8999-8B9A7D6D1417}\User\registry.pol
+     64. F:\ADDSData\SYSVOL\domain\Policies\{FA270E6F-99D2-416A-A8F4-FD485DF4D086}\GPT.INI
+     65. F:\ADDSData\SYSVOL\domain\Policies\{DDDA7328-DED3-432B-9628-57353334E245}\Machine\Preferences\Registry\Registry.xml
+     66. F:\ADDSData\SYSVOL\domain\Policies\{AFF7283F-80A2-4C7D-8999-8B9A7D6D1417}\User\Preferences\Registry\Registry.xml
+     67. F:\ADDSData\SYSVOL\domain\Policies\{DDDA7328-DED3-432B-9628-57353334E245}\User\Preferences\Registry\Registry.xml
+     68. F:\ADDSData\SYSVOL\domain\Policies\{DB5BFF80-82EF-4757-B48C-1E750553FEA5}\Machine\microsoft\windows nt\SecEdit\GptTmpl.inf
+     69. F:\ADDSData\SYSVOL\domain\Policies\{B93E93B2-3884-4F00-96BF-CBA1B4ABC50C}\Machine\Preferences\Registry\Registry.xml
+     70. F:\ADDSData\SYSVOL\domain\Policies\{AFF7283F-80A2-4C7D-8999-8B9A7D6D1417}\Machine\Preferences\Registry\Registry.xml
+     71. F:\ADDSData\SYSVOL\domain\Policies\{4ED6E3CB-F14A-423A-8BEF-C95803E67E06}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     72. F:\ADDSData\SYSVOL\domain\Policies\{409D58DB-5D39-41F7-971A-42B759124B7D}\User\Preferences\InternetSettings\InternetSettings.xml
+     73. F:\ADDSData\SYSVOL\domain\Policies\{409D58DB-5D39-41F7-971A-42B759124B7D}\Machine\Preferences\Registry\Registry.xml
+     74. F:\ADDSData\SYSVOL\domain\Policies\{78DE834B-B989-475E-80EA-CB9BEF4D234C}\Machine\Preferences\Registry\Registry.xml
+     75. F:\ADDSData\SYSVOL\domain\Policies\{409D58DB-5D39-41F7-971A-42B759124B7D}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     76. F:\ADDSData\SYSVOL\domain\Policies\{7AABECAD-12C9-4AD4-BE73-70811AAE7494}\User\registry.pol
+     77. F:\ADDSData\SYSVOL\domain\Policies\{1CC3692C-2D57-4EB9-B11B-8C94407B2999}\User\Scripts\Logon\cute-logon-qqq.cmd
+     78. F:\ADDSData\SYSVOL\domain\Policies\{9A114E3A-D5EF-41D6-ABE9-42962F64DB42}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     79. F:\ADDSData\SYSVOL\domain\Policies\{36085268-A09A-49EA-86C3-60B90C728BCD}\User\Scripts\Logon\cussshell.bat
+     80. F:\ADDSData\SYSVOL\domain\Policies\{CF3CA180-9F1A-40F9-9C35-DDDA47EE273F}\User\Scripts\Logon\cute-logon-hdo.cmd
+     81. F:\ADDSData\SYSVOL\domain\Policies\{6A44EA48-3E92-41A9-B95C-60031DE6CB97}\User\Scripts\Logon\cussshell.bat
+     82. F:\ADDSData\SYSVOL\domain\Policies\{6A44EA48-3E92-41A9-B95C-60031DE6CB97}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     83. F:\ADDSData\SYSVOL\domain\Policies\{5888E2B1-F8B8-4C1A-81E1-BA486634B09E}\User\Preferences\InternetSettings\InternetSettings.xml
+     84. F:\ADDSData\SYSVOL\domain\Policies\{EDABF6CD-5183-4AD0-8D97-C3D851320B31}\User\Preferences\Registry\Registry.xml
+     85. F:\ADDSData\SYSVOL\domain\Policies\{EDABF6CD-5183-4AD0-8D97-C3D851320B31}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     86. F:\ADDSData\SYSVOL\domain\Policies\{9C96B199-4E74-4467-9F71-7A5FC91E7EB1}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     87. F:\ADDSData\SYSVOL\domain\Policies\{27706BCF-EDE8-4879-A378-43FA7F46C30F}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     88. F:\ADDSData\SYSVOL\domain\Policies\{EDABF6CD-5183-4AD0-8D97-C3D851320B31}\Machine\Preferences\Registry\Registry.xml
+     89. F:\ADDSData\SYSVOL\domain\Policies\{5888E2B1-F8B8-4C1A-81E1-BA486634B09E}\User\Preferences\Registry\Registry.xml
+     90. F:\ADDSData\SYSVOL\domain\Policies\{CEC1FD6C-8142-40AD-9E59-7F6E1E87E48F}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     91. F:\ADDSData\SYSVOL\domain\Policies\{573A57E3-027F-44A3-8A7A-93439C457451}\User\Scripts\Logon\cussshell.bat
+     92. F:\ADDSData\SYSVOL\domain\Policies\{5535D68B-C882-4B1C-B968-D6EE6B59D6AF}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     93. F:\ADDSData\SYSVOL\domain\Policies\{63340598-E67C-4205-83D2-D5A91CF00135}\User\Scripts\Logon\Delete_Store.cmd
+     94. F:\ADDSData\SYSVOL\domain\Policies\{5988FD7B-20D6-4E85-97FA-9201CDEFD080}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     95. F:\ADDSData\SYSVOL\domain\Policies\{16CEBB56-7D6A-4383-94ED-CCFB93F8A25A}\Machine\microsoft\windows nt\SecEdit\GptTmpl.inf
+     96. F:\ADDSData\SYSVOL\domain\Policies\{B3ACC4C7-BB6A-4C9C-835A-9985C652A258}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+     97. F:\ADDSData\SYSVOL\domain\Policies\{B44E5AEC-14F9-4CAB-AE03-E013736A8E9C}\GPT.INI
+     98. F:\ADDSData\SYSVOL\domain\Policies\{B44E5AEC-14F9-4CAB-AE03-E013736A8E9C}\User\Preferences\Registry\Registry.xml
+     99. F:\ADDSData\SYSVOL\domain\Policies\{B44E5AEC-14F9-4CAB-AE03-E013736A8E9C}\Machine\Preferences\Registry\Registry.xml
+     100. F:\ADDSData\SYSVOL\domain\Policies\{B44E5AEC-14F9-4CAB-AE03-E013736A8E9C}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+
+Operation Succeeded
+
+
+AD Replication Health Check Completed : 2026-07-09 10:47:01

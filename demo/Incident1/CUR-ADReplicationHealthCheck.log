@@ -1,0 +1,168 @@
+=================================================
+AD Replication Health Check Started : 2026-07-09 13:51:14
+=================================================
+=================================================
+AD Replication Health Check Started : 2026-07-09 13:53:30
+=================================================
+
+--- PASSIVE REPLICATION SUMMARY ---
+Replication Summary Start Time: 2026-07-09 13:53:32
+
+
+
+Beginning data collection for replication summary, this may take awhile:
+
+  ....
+
+
+
+
+
+Source DSA          largest delta    fails/total %%   error
+
+ ZUSW-DC02             02h:52m:15s    0 /   5    0  
+
+
+
+
+
+Destination DSA     largest delta    fails/total %%   error
+
+ CURFLEX-DC01          02h:52m:15s    0 /   5    0  
+
+
+
+
+
+
+=========================================
+Checking DC: CURFLEX-DC01
+=========================================
+Native replication engine reports healthy.
+CUR\CURFLEX-DC01
+
+DSA Options: IS_GC 
+
+Site Options: (none)
+
+DSA object GUID: c47425dc-cb3f-45c1-9b17-7e236eea70bd
+
+DSA invocationID: 1d72d42e-3f6c-4594-b950-940efdef71cb
+
+
+
+==== INBOUND NEIGHBORS ======================================
+
+
+
+DC=apcflex,DC=aero
+
+    Azure-ZUSW\ZUSW-DC02 via RPC
+
+        DSA object GUID: 600db924-89fc-4e3b-a88f-7c05348afb5a
+
+        Last attempt @ 2026-07-09 11:02:49 was successful.
+
+
+
+CN=Configuration,DC=apcflex,DC=aero
+
+    Azure-ZUSW\ZUSW-DC02 via RPC
+
+        DSA object GUID: 600db924-89fc-4e3b-a88f-7c05348afb5a
+
+        Last attempt @ 2026-07-09 11:01:17 was successful.
+
+
+
+CN=Schema,CN=Configuration,DC=apcflex,DC=aero
+
+    Azure-ZUSW\ZUSW-DC02 via RPC
+
+        DSA object GUID: 600db924-89fc-4e3b-a88f-7c05348afb5a
+
+        Last attempt @ 2026-07-09 11:01:17 was successful.
+
+
+
+DC=DomainDnsZones,DC=apcflex,DC=aero
+
+    Azure-ZUSW\ZUSW-DC02 via RPC
+
+        DSA object GUID: 600db924-89fc-4e3b-a88f-7c05348afb5a
+
+        Last attempt @ 2026-07-09 11:02:58 was successful.
+
+
+
+DC=ForestDnsZones,DC=apcflex,DC=aero
+
+    Azure-ZUSW\ZUSW-DC02 via RPC
+
+        DSA object GUID: 600db924-89fc-4e3b-a88f-7c05348afb5a
+
+        Last attempt @ 2026-07-09 11:02:58 was successful.
+
+
+
+
+Directory Server Diagnosis
+
+
+Performing initial setup:
+
+   * Identified AD Forest. 
+   Done gathering initial info.
+
+
+Doing initial required tests
+
+   
+   Testing server: CUR\CURFLEX-DC01
+
+      Starting test: Connectivity
+
+         ......................... CURFLEX-DC01 passed test Connectivity
+
+
+
+Doing primary tests
+
+   
+   Testing server: CUR\CURFLEX-DC01
+
+      Starting test: Advertising
+
+         ......................... CURFLEX-DC01 passed test Advertising
+
+      Starting test: SysVolCheck
+
+         ......................... CURFLEX-DC01 passed test SysVolCheck
+
+   
+   
+   Running partition tests on : ForestDnsZones
+
+   
+   Running partition tests on : DomainDnsZones
+
+   
+   Running partition tests on : Schema
+
+   
+   Running partition tests on : Configuration
+
+   
+   Running partition tests on : apcflex
+
+   
+   Running enterprise tests on : apcflex.aero
+
+
+--- DFSR BACKLOG CHECK ---
+[ERROR] Failed to connect to WMI services on computer: zusw-dc02.apcflex.aero
+
+Operation Failed
+
+
+AD Replication Health Check Completed : 2026-07-09 13:53:40

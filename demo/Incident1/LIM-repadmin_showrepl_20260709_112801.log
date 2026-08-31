@@ -1,0 +1,58 @@
+﻿LIM2\LIM2FLEX-DC01
+
+DSA Options: IS_GC 
+
+Site Options: (none)
+
+DSA object GUID: 7c5ae038-7dcc-4190-a668-9589360c46d9
+
+DSA invocationID: 502fa682-1c1d-48a5-9c2e-76d1669dd652
+
+
+
+==== INBOUND NEIGHBORS ======================================
+
+
+
+Source: Azure-USE\zuse-prd-dc03
+
+******* 1871 CONSECUTIVE FAILURES since 2026-06-18 04:10:05
+
+Last error: 1722 (0x6ba):
+
+            The RPC server is unavailable.
+
+
+
+Naming Context: CN=Configuration,DC=apcflex,DC=aero
+
+Source: Azure-USE\zuse-prd-dc03
+
+******* WARNING: KCC could not add this REPLICA LINK due to error.
+
+
+
+Naming Context: DC=ForestDnsZones,DC=apcflex,DC=aero
+
+Source: Azure-USE\zuse-prd-dc03
+
+******* WARNING: KCC could not add this REPLICA LINK due to error.
+
+
+
+Naming Context: DC=apcflex,DC=aero
+
+Source: Azure-USE\zuse-prd-dc03
+
+******* WARNING: KCC could not add this REPLICA LINK due to error.
+
+
+
+Naming Context: DC=DomainDnsZones,DC=apcflex,DC=aero
+
+Source: Azure-USE\zuse-prd-dc03
+
+******* WARNING: KCC could not add this REPLICA LINK due to error.
+
+
+

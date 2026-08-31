@@ -1,0 +1,42 @@
+[
+  {
+    "DomainController": "SFOFLEX-DC1",
+    "Site": "SFO",
+    "ComputerName": "SFOFLEX-DC1",
+    "OperatingSystem": "Windows Server 2019",
+    "OsVersion": "10.0",
+    "BuildNumber": "17763",
+    "Edition": "Standard",
+    "Architecture": "x64",
+    "InstallDate": "2022-06-15T10:00:00Z",
+    "LastBootTime": "2026-07-08T03:15:00Z",
+    "TimeZone": "UTC",
+    "LogicalProcessors": 8,
+    "PhysicalMemoryGb": 32,
+    "SystemDriveFreeSpaceGb": 2.1,
+    "VirtualMachine": true,
+    "Hypervisor": "Azure",
+    "PowerShellVersion": "7.5",
+    "DotNetVersion": "10.0"
+  },
+  {
+    "DomainController": "ZUSW-DC1",
+    "Site": "ZUSW",
+    "ComputerName": "ZUSW-DC1",
+    "OperatingSystem": "Windows Server 2019",
+    "OsVersion": "10.0",
+    "BuildNumber": "17763",
+    "Edition": "Standard",
+    "Architecture": "x64",
+    "InstallDate": "2022-06-15T10:00:00Z",
+    "LastBootTime": "2026-07-08T04:00:00Z",
+    "TimeZone": "UTC",
+    "LogicalProcessors": 8,
+    "PhysicalMemoryGb": 32,
+    "SystemDriveFreeSpaceGb": 80,
+    "VirtualMachine": true,
+    "Hypervisor": "Azure",
+    "PowerShellVersion": "7.5",
+    "DotNetVersion": "10.0"
+  }
+]

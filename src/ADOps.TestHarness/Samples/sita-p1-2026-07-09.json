@@ -1,0 +1,52 @@
+{
+  "IncidentName": "SITA P1 AD Replication Failure",
+  "InvestigationId": "INV-SITA-20260709",
+  "Evidence": [
+    {
+      "EvidenceId": "EVD-001",
+      "InvestigationId": "INV-SITA-20260709",
+      "Type": "ReplicationFailure",
+      "Source": "ReplicationCollector",
+      "Target": "SFOFLEX-DC1",
+      "CollectedUtc": "2026-07-09T12:00:00Z",
+      "Summary": "AD replication failed between SFO domain controllers and Azure hub domain controllers",
+      "ErrorCode": "1722",
+      "Details": "RPC server unavailable",
+      "IsValid": true
+    },
+    {
+      "EvidenceId": "EVD-002",
+      "InvestigationId": "INV-SITA-20260709",
+      "Type": "RpcFailure",
+      "Source": "ReplicationCollector",
+      "Target": "SFOFLEX-DC1",
+      "CollectedUtc": "2026-07-09T12:05:00Z",
+      "Summary": "RPC communication failure detected during replication",
+      "ErrorCode": "1722",
+      "Details": "Unable to establish RPC connection",
+      "IsValid": true
+    },
+    {
+      "EvidenceId": "EVD-003",
+      "InvestigationId": "INV-SITA-20260709",
+      "Type": "InfrastructureHealth",
+      "Source": "InfrastructureCollector",
+      "Target": "SFOFLEX-DC1",
+      "CollectedUtc": "2026-07-09T12:10:00Z",
+      "Summary": "Low disk space detected on system volume",
+      "Details": "System drive approaching capacity",
+      "IsValid": true
+    },
+    {
+      "EvidenceId": "EVD-004",
+      "InvestigationId": "INV-SITA-20260709",
+      "Type": "Patch",
+      "Source": "PatchCollector",
+      "Target": "SFOFLEX-DC1",
+      "CollectedUtc": "2026-07-09T12:15:00Z",
+      "Summary": "June security patch baseline mismatch detected",
+      "Details": "Domain controller patch level differs from Azure hub baseline",
+      "IsValid": true
+    }
+  ]
+}

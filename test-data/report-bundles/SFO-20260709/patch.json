@@ -1,0 +1,22 @@
+[
+  {
+    "DomainController": "SFOFLEX-DC1",
+    "Site": "SFO",
+    "OperatingSystem": "Microsoft Windows Server 2019",
+    "OsBuild": "17763",
+    "KnowledgeBaseArticle": "KB5060531",
+    "PatchVersion": "June 2026 Cumulative Update",
+    "InstalledUtc": null,
+    "Installed": false
+  },
+  {
+    "DomainController": "ZUSW-DC1",
+    "Site": "ZUSW",
+    "OperatingSystem": "Microsoft Windows Server 2019",
+    "OsBuild": "17763",
+    "KnowledgeBaseArticle": "KB5060531",
+    "PatchVersion": "June 2026 Cumulative Update",
+    "InstalledUtc": "2026-07-09T11:00:00Z",
+    "Installed": true
+  }
+]

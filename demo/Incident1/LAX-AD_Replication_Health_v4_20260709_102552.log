@@ -1,0 +1,14 @@
+[2026-07-09 10:25:53] Script SHA256: 2A78AA16CD276D719054686AAEDF8AB5B9F41F1319F2603E9F30666C96E6FD94
+[2026-07-09 10:25:53] Starting AD Replication Health v4. Computer=LAXFLEX-DC1 Targets=LAXFLEX-DC1
+[2026-07-09 10:25:53] Resolved Invoke-PortScan path: C:\SITA\scripts\Invoke-PortScan.ps1
+[2026-07-09 10:25:53] Resolved ADHealth_Check path : C:\SITA\scripts\ADHealth_Check.ps1
+[2026-07-09 10:25:53] Running: repadmin /showrepl LAXFLEX-DC1 /errorsonly /verbose
+[2026-07-09 10:25:53] Saved repadmin raw output to: C:\Logs\AD_Replication_Health\repadmin_showrepl_20260709_102552.log
+[2026-07-09 10:25:53] Failures detected: 0. Running additional diagnostics for attachments...
+[2026-07-09 10:25:53] Executing ADHealth_Check: C:\SITA\scripts\ADHealth_Check.ps1
+[2026-07-09 10:26:10] Attached ADHealth_Check main log: C:\Logs\ADReplicationHealthCheck.log
+[2026-07-09 10:26:10] Invoke-PortScan script not found or Skipped.
+[2026-07-09 10:26:10] Sending email to: sameh.bashatly@sita.aero, Ecosystem.and.Integration.Services@sita.aero, Danny.Lavardera@sita.aero
+[2026-07-09 10:26:10] Subject: Flex Domain AD Replication report on LAXFLEX-DC1 (0 failures)
+[2026-07-09 10:27:50] Email sent successfully.
+[2026-07-09 10:27:50] Completed AD Replication Health v4 run.

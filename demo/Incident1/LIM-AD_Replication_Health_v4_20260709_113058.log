@@ -1,0 +1,12 @@
+[2026-07-09 11:30:58] Script SHA256: 9C5B2DA9E12955AB2EEDBC916D993282155B460A35DEEA723C5C668592A35F73
+[2026-07-09 11:30:58] Starting AD Replication Health v4. Computer=LIM2FLEX-DC01 Targets=LIM2FLEX-DC01
+[2026-07-09 11:30:58] Resolved Invoke-PortScan path: C:\SITA\scripts\Invoke-PortScan.ps1
+[2026-07-09 11:30:58] Resolved ADHealth_Check path : C:\SITA\scripts\ADHealth_Check.ps1
+[2026-07-09 11:30:58] Running: repadmin /showrepl LIM2FLEX-DC01 /errorsonly /verbose
+[2026-07-09 11:30:58] Saved repadmin raw output to: C:\Logs\AD_Replication_Health\repadmin_showrepl_20260709_113058.log
+[2026-07-09 11:30:58] Failures detected: 0. Running additional diagnostics for attachments...
+[2026-07-09 11:30:58] Executing ADHealth_Check: C:\SITA\scripts\ADHealth_Check.ps1
+[2026-07-09 11:31:06] Attached ADHealth_Check main log: C:\Logs\ADReplicationHealthCheck.log
+[2026-07-09 11:31:06] Invoke-PortScan script not found or Skipped.
+[2026-07-09 11:31:06] Sending email to: PSO.PAX.SRE.FLEX@sita.aero, Cluj.Infra.Team@sita.aero
+[2026-07-09 11:31:06] Subject: Flex Domain AD Replication report on LIM2FLEX-DC01 (0 failures)

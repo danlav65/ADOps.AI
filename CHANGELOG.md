@@ -1,0 +1,25 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+
+    <Nullable>enable</Nullable>
+
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
+    <LangVersion>latest</LangVersion>
+
+    <AnalysisLevel>latest</AnalysisLevel>
+
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <Deterministic>true</Deterministic>
+
+    <Company>SITA</Company>
+
+    <Product>ADOps AI</Product>
+
+    <Authors>Danny LaVardera</Authors>
+  </PropertyGroup>
+</Project>
