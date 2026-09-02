@@ -1,4 +1,4 @@
-﻿using ADOps.Application.Investigation;
+using ADOps.Application.Investigation;
 using ADOps.Application.Presentation;
 using ADOps.Core.Entities;
 using ADOps.Core.Entities.Replication;
@@ -519,6 +519,57 @@ public sealed class InvestigationServiceTests
             "Investigation snapshot does not contain topology information.",
             exception.Message);
     }
+    [Fact]
+    public async Task InvestigateAsync_PropagatesSnapshotBuilderFailure()
+    {
+        // Arrange
+
+        var service =
+            new InvestigationService(
+                new ThrowingSnapshotBuilder(),
+                new CorrelationEngine(),
+                new RootCauseAnalyzer(),
+                new RecommendationEngine(),
+                new InvestigationPresenter());
+
+        var investigation =
+            new ADOps.Core.Entities.Investigation
+            {
+                InvestigationNumber = "INV-TEST",
+                Incident =
+                    new Incident
+                    {
+                        IncidentNumber = "INC-TEST",
+                        Title = "Test investigation",
+                        Environment = "Production",
+                        SiteCode = "SFO",
+                        DetectedUtc = DateTimeOffset.UtcNow
+                    }
+            };
+
+        var context =
+            new CollectorContext
+            {
+                InvestigationId = "INC-TEST",
+                Site = "SFO",
+                DomainName = "apcflex.aero",
+                DomainControllers = ["SFOFLEX-DC1"]
+            };
+
+        // Act & Assert
+
+        var exception =
+            await Assert.ThrowsAsync<InvalidOperationException>(
+                () =>
+                    service.InvestigateAsync(
+                        investigation,
+                        context));
+
+        Assert.Equal(
+            "Snapshot builder should not be called for snapshot-based investigation.",
+            exception.Message);
+    }
+
     private sealed class FakeReplicationCollector
         : IReplicationCollector
     {
@@ -726,5 +777,7 @@ public sealed class InvestigationServiceTests
         }
     }
 }
+
+
 
 
