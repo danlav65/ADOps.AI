@@ -1,4 +1,4 @@
-using ADOps.Application.Investigation;
+﻿using ADOps.Application.Investigation;
 using ADOps.Application.Presentation;
 using ADOps.Core.Entities;
 using ADOps.Core.Entities.Replication;
@@ -277,121 +277,248 @@ public sealed class InvestigationServiceTests
                     {
                         ReplicationPartners =
                         [
-                        new ReplicationPartnerRelationship
-                        {
-                            SourceDomainController =
-                                "SFOFLEX-DC1",
+                            new ReplicationPartnerRelationship
+                            {
+                                SourceDomainController =
+                                    "SFOFLEX-DC1",
 
-                            PartnerDomainController =
-                                "ZUSW-DC1",
+                                PartnerDomainController =
+                                    "ZUSW-DC1",
 
-                            SourceSite = "SFO",
-                            PartnerSite = "ZUSW",
-                            DiscoveredUtc = collectedUtc,
-                            IsActive = true
-                        }
-                    ]
-                }
-        };
+                                SourceSite = "SFO",
+                                PartnerSite = "ZUSW",
+                                DiscoveredUtc = collectedUtc,
+                                IsActive = true
+                            }
+                        ]
+                    }
+            };
 
-    snapshot.Evidence.AddRange(
-    [
-        new Evidence
-        {
-            EvidenceId = "EV-000001",
-            InvestigationId = "INC-SFO-20260709",
-            Type = EvidenceType.ReplicationFailure,
-            Source = "SFOFLEX-DC1",
-            Target = "ZUSW-DC1",
-            CollectedUtc = collectedUtc,
-            Summary =
-                "Replication failed from SFOFLEX-DC1 to ZUSW-DC1."
-        },
+        snapshot.Evidence.AddRange(
+        [
+            new Evidence
+            {
+                EvidenceId = "EV-000001",
+                InvestigationId = "INC-SFO-20260709",
+                Type = EvidenceType.ReplicationFailure,
+                Source = "SFOFLEX-DC1",
+                Target = "ZUSW-DC1",
+                CollectedUtc = collectedUtc,
+                Summary =
+                    "Replication failed from SFOFLEX-DC1 to ZUSW-DC1."
+            },
 
-        new Evidence
-        {
-            EvidenceId = "EV-000002",
-            InvestigationId = "INC-SFO-20260709",
-            Type = EvidenceType.RpcFailure,
-            Source = "SFOFLEX-DC1",
-            Target = "ZUSW-DC1",
-            CollectedUtc = collectedUtc,
-            Summary =
-                "RPC connectivity failed from SFOFLEX-DC1 to ZUSW-DC1."
-        },
+            new Evidence
+            {
+                EvidenceId = "EV-000002",
+                InvestigationId = "INC-SFO-20260709",
+                Type = EvidenceType.RpcFailure,
+                Source = "SFOFLEX-DC1",
+                Target = "ZUSW-DC1",
+                CollectedUtc = collectedUtc,
+                Summary =
+                    "RPC connectivity failed from SFOFLEX-DC1 to ZUSW-DC1."
+            },
 
-        new Evidence
-        {
-            EvidenceId = "EV-000003",
-            InvestigationId = "INC-SFO-20260709",
-            Type = EvidenceType.Patch,
-            Source = "ReportBundle",
-            Target = "SFOFLEX-DC1",
-            CollectedUtc = collectedUtc,
-            Summary =
-                "Patch baseline is missing on SFOFLEX-DC1."
-        },
+            new Evidence
+            {
+                EvidenceId = "EV-000003",
+                InvestigationId = "INC-SFO-20260709",
+                Type = EvidenceType.Patch,
+                Source = "ReportBundle",
+                Target = "SFOFLEX-DC1",
+                CollectedUtc = collectedUtc,
+                Summary =
+                    "Patch baseline is missing on SFOFLEX-DC1."
+            },
 
-        new Evidence
-        {
-            EvidenceId = "EV-000004",
-            InvestigationId = "INC-SFO-20260709",
-            Type = EvidenceType.Patch,
-            Source = "ReportBundle",
-            Target = "ZUSW-DC1",
-            CollectedUtc = collectedUtc,
-            Summary =
-                "Patch baseline is present on ZUSW-DC1."
-        }
-    ]);
+            new Evidence
+            {
+                EvidenceId = "EV-000004",
+                InvestigationId = "INC-SFO-20260709",
+                Type = EvidenceType.Patch,
+                Source = "ReportBundle",
+                Target = "ZUSW-DC1",
+                CollectedUtc = collectedUtc,
+                Summary =
+                    "Patch baseline is present on ZUSW-DC1."
+            }
+        ]);
 
-    var service =
-        new InvestigationService(
-            new ThrowingSnapshotBuilder(),
-            new CorrelationEngine(),
-            new RootCauseAnalyzer(),
-            new RecommendationEngine(),
-            new InvestigationPresenter());
+        var service =
+            new InvestigationService(
+                new ThrowingSnapshotBuilder(),
+                new CorrelationEngine(),
+                new RootCauseAnalyzer(),
+                new RecommendationEngine(),
+                new InvestigationPresenter());
 
-    // Act
+        // Act
 
-    var report =
-        await service.InvestigateAsync(
-            investigation,
-            snapshot);
+        var report =
+            await service.InvestigateAsync(
+                investigation,
+                snapshot);
 
-    // Assert
+        // Assert
 
-    Assert.Equal(
-        investigation.Id.ToString(),
-        report.InvestigationId);
+        Assert.Equal(
+            investigation.Id.ToString(),
+            report.InvestigationId);
 
-    Assert.Equal(
-        "INC-SFO-20260709",
-        report.IncidentNumber);
+        Assert.Equal(
+            "INC-SFO-20260709",
+            report.IncidentNumber);
 
-    Assert.Equal(
-        4,
-        report.Evidence.Count);
+        Assert.Equal(
+            4,
+            report.Evidence.Count);
 
-    Assert.NotEmpty(
-        report.Correlations);
+        Assert.NotEmpty(
+            report.Correlations);
 
-    Assert.NotNull(
-        report.RootCause);
+        Assert.NotNull(
+            report.RootCause);
 
-    Assert.Contains(
-        "Patch baseline",
-        report.RootCause,
-        StringComparison.OrdinalIgnoreCase);
+        Assert.Contains(
+            "Patch baseline",
+            report.RootCause,
+            StringComparison.OrdinalIgnoreCase);
 
-    Assert.NotEmpty(
-        report.Recommendations);
+        Assert.NotEmpty(
+            report.Recommendations);
 
-    Assert.True(
-        report.OverallConfidence > 0);
-}
+        Assert.True(
+            report.OverallConfidence > 0);
+    }
 
+    [Fact]
+    public async Task InvestigateAsync_Throws_WhenInvestigationIsNull()
+    {
+        // Arrange
+
+        var service =
+            new InvestigationService(
+                new ThrowingSnapshotBuilder(),
+                new CorrelationEngine(),
+                new RootCauseAnalyzer(),
+                new RecommendationEngine(),
+                new InvestigationPresenter());
+
+        var context =
+            new CollectorContext
+            {
+                InvestigationId = "INC-TEST",
+                Site = "SFO",
+                DomainName = "apcflex.aero",
+                DomainControllers =
+                [
+                    "SFOFLEX-DC1"
+                ]
+            };
+
+        // Act & Assert
+
+        await Assert.ThrowsAsync<ArgumentNullException>(
+            () =>
+                service.InvestigateAsync(
+                    null!,
+                    context));
+    }
+
+    [Fact]
+    public async Task InvestigateAsync_Throws_WhenContextIsNull()
+    {
+        // Arrange
+
+        var service =
+            new InvestigationService(
+                new ThrowingSnapshotBuilder(),
+                new CorrelationEngine(),
+                new RootCauseAnalyzer(),
+                new RecommendationEngine(),
+                new InvestigationPresenter());
+
+        var investigation =
+            new ADOps.Core.Entities.Investigation
+            {
+                InvestigationNumber = "INV-TEST",
+                Incident =
+                    new Incident
+                    {
+                        IncidentNumber = "INC-TEST",
+                        Title = "Test investigation",
+                        Environment = "Production",
+                        SiteCode = "SFO",
+                        DetectedUtc = DateTimeOffset.UtcNow
+                    }
+            };
+
+        // Act & Assert
+
+        await Assert.ThrowsAsync<ArgumentNullException>(
+            () =>
+                service.InvestigateAsync(
+                    investigation,
+                    null!));
+    }
+
+    [Fact]
+    public async Task InvestigateAsync_FromSnapshot_Throws_WhenTopologyIsMissing()
+    {
+        // Arrange
+
+        var service =
+            new InvestigationService(
+                new ThrowingSnapshotBuilder(),
+                new CorrelationEngine(),
+                new RootCauseAnalyzer(),
+                new RecommendationEngine(),
+                new InvestigationPresenter());
+
+        var investigation =
+            new ADOps.Core.Entities.Investigation
+            {
+                InvestigationNumber = "INV-TEST",
+                Incident =
+                    new Incident
+                    {
+                        IncidentNumber = "INC-TEST",
+                        Title = "Test investigation",
+                        Environment = "Production",
+                        SiteCode = "SFO",
+                        DetectedUtc = DateTimeOffset.UtcNow
+                    }
+            };
+
+        var snapshot =
+            new InvestigationSnapshot
+            {
+                InvestigationId = "INC-TEST",
+                StartedUtc = DateTimeOffset.UtcNow,
+                CompletedUtc = DateTimeOffset.UtcNow,
+                OperationalContext =
+                    new OperationalContext
+                    {
+                        Target = "apcflex.aero",
+                        Site = "SFO",
+                        Environment = "Production"
+                    }
+            };
+
+        // Act & Assert
+
+        var exception =
+            await Assert.ThrowsAsync<InvalidOperationException>(
+                () =>
+                    service.InvestigateAsync(
+                        investigation,
+                        snapshot));
+
+        Assert.Equal(
+            "Investigation snapshot does not contain topology information.",
+            exception.Message);
+    }
     private sealed class FakeReplicationCollector
         : IReplicationCollector
     {
@@ -599,3 +726,5 @@ public sealed class InvestigationServiceTests
         }
     }
 }
+
+

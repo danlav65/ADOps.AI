@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Temp\\ADOps.AI\\src\\ADOps.Infrastructure\\ADOps.Infrastructure.csproj": {}
+    "C:\\temp\\ADOps.AI\\src\\ADOps.Infrastructure\\ADOps.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Temp\\ADOps.AI\\src\\ADOps.Core\\ADOps.Core.csproj": {
+    "C:\\temp\\ADOps.AI\\src\\ADOps.Core\\ADOps.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Temp\\ADOps.AI\\src\\ADOps.Core\\ADOps.Core.csproj",
+        "projectUniqueName": "C:\\temp\\ADOps.AI\\src\\ADOps.Core\\ADOps.Core.csproj",
         "projectName": "ADOps.Core",
-        "projectPath": "C:\\Temp\\ADOps.AI\\src\\ADOps.Core\\ADOps.Core.csproj",
+        "projectPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Core\\ADOps.Core.csproj",
         "packagesPath": "C:\\Users\\Danny.Lavardera\\.nuget\\packages\\",
-        "outputPath": "C:\\Temp\\ADOps.AI\\src\\ADOps.Core\\obj\\",
+        "outputPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Core\\obj\\",
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "fallbackFolders": [
@@ -356,14 +356,14 @@
         }
       }
     },
-    "C:\\Temp\\ADOps.AI\\src\\ADOps.Infrastructure\\ADOps.Infrastructure.csproj": {
+    "C:\\temp\\ADOps.AI\\src\\ADOps.Infrastructure\\ADOps.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Temp\\ADOps.AI\\src\\ADOps.Infrastructure\\ADOps.Infrastructure.csproj",
+        "projectUniqueName": "C:\\temp\\ADOps.AI\\src\\ADOps.Infrastructure\\ADOps.Infrastructure.csproj",
         "projectName": "ADOps.Infrastructure",
-        "projectPath": "C:\\Temp\\ADOps.AI\\src\\ADOps.Infrastructure\\ADOps.Infrastructure.csproj",
+        "projectPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Infrastructure\\ADOps.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Danny.Lavardera\\.nuget\\packages\\",
-        "outputPath": "C:\\Temp\\ADOps.AI\\src\\ADOps.Infrastructure\\obj\\",
+        "outputPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "fallbackFolders": [
@@ -387,8 +387,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Temp\\ADOps.AI\\src\\ADOps.Core\\ADOps.Core.csproj": {
-                "projectPath": "C:\\Temp\\ADOps.AI\\src\\ADOps.Core\\ADOps.Core.csproj"
+              "C:\\temp\\ADOps.AI\\src\\ADOps.Core\\ADOps.Core.csproj": {
+                "projectPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Core\\ADOps.Core.csproj"
               }
             }
           }

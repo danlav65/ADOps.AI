@@ -11,3 +11,4 @@ C:\Temp\ADOps.AI\src\ADOps.Core\obj\Debug\net10.0\refint\ADOps.Core.dll
 C:\Temp\ADOps.AI\src\ADOps.Core\obj\Debug\net10.0\ADOps.Core.xml
 C:\Temp\ADOps.AI\src\ADOps.Core\obj\Debug\net10.0\ADOps.Core.pdb
 C:\Temp\ADOps.AI\src\ADOps.Core\obj\Debug\net10.0\ref\ADOps.Core.dll
+C:\temp\ADOps.AI\src\ADOps.Core\obj\Debug\net10.0\ADOps.Core.sourcelink.json

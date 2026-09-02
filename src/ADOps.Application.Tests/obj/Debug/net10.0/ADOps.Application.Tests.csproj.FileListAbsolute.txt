@@ -109,3 +109,4 @@ C:\Temp\ADOps.AI\src\ADOps.Application.Tests\obj\Debug\net10.0\ADOps.Application
 C:\Temp\ADOps.AI\src\ADOps.Application.Tests\obj\Debug\net10.0\ADOps.Application.Tests.genruntimeconfig.cache
 C:\Temp\ADOps.AI\src\ADOps.Application.Tests\obj\Debug\net10.0\ref\ADOps.Application.Tests.dll
 C:\Temp\ADOps.AI\src\ADOps.Application.Tests\bin\Debug\net10.0\Microsoft.Extensions.DependencyInjection.dll
+C:\temp\ADOps.AI\src\ADOps.Application.Tests\obj\Debug\net10.0\ADOps.Application.Tests.sourcelink.json

@@ -16,3 +16,4 @@ C:\Temp\ADOps.AI\src\ADOps.Infrastructure\obj\Debug\net10.0\refint\ADOps.Infrast
 C:\Temp\ADOps.AI\src\ADOps.Infrastructure\obj\Debug\net10.0\ADOps.Infrastructure.xml
 C:\Temp\ADOps.AI\src\ADOps.Infrastructure\obj\Debug\net10.0\ADOps.Infrastructure.pdb
 C:\Temp\ADOps.AI\src\ADOps.Infrastructure\obj\Debug\net10.0\ref\ADOps.Infrastructure.dll
+C:\temp\ADOps.AI\src\ADOps.Infrastructure\obj\Debug\net10.0\ADOps.Infrastructure.sourcelink.json

@@ -16,3 +16,4 @@ C:\Temp\ADOps.AI\src\AdOps.Application\obj\Debug\net10.0\AdOps.Application.xml
 C:\Temp\ADOps.AI\src\AdOps.Application\obj\Debug\net10.0\AdOps.Application.pdb
 C:\Temp\ADOps.AI\src\AdOps.Application\obj\Debug\net10.0\ref\AdOps.Application.dll
 C:\Temp\ADOps.AI\src\AdOps.Application\obj\Debug\net10.0\AdOps.Ap.B8E9B09C.Up2Date
+C:\temp\ADOps.AI\src\AdOps.Application\obj\Debug\net10.0\AdOps.Application.sourcelink.json

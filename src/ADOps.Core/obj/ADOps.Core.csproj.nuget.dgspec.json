@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Temp\\ADOps.AI\\src\\ADOps.Core\\ADOps.Core.csproj": {}
+    "C:\\temp\\ADOps.AI\\src\\ADOps.Core\\ADOps.Core.csproj": {}
   },
   "projects": {
-    "C:\\Temp\\ADOps.AI\\src\\ADOps.Core\\ADOps.Core.csproj": {
+    "C:\\temp\\ADOps.AI\\src\\ADOps.Core\\ADOps.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Temp\\ADOps.AI\\src\\ADOps.Core\\ADOps.Core.csproj",
+        "projectUniqueName": "C:\\temp\\ADOps.AI\\src\\ADOps.Core\\ADOps.Core.csproj",
         "projectName": "ADOps.Core",
-        "projectPath": "C:\\Temp\\ADOps.AI\\src\\ADOps.Core\\ADOps.Core.csproj",
+        "projectPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Core\\ADOps.Core.csproj",
         "packagesPath": "C:\\Users\\Danny.Lavardera\\.nuget\\packages\\",
-        "outputPath": "C:\\Temp\\ADOps.AI\\src\\ADOps.Core\\obj\\",
+        "outputPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Core\\obj\\",
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "fallbackFolders": [
