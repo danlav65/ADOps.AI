@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Temp\\ADOps.AI\\src\\ADOps.Reporting\\ADOps.Reporting.csproj": {}
+    "C:\\temp\\ADOps.AI\\src\\ADOps.Reporting\\ADOps.Reporting.csproj": {}
   },
   "projects": {
-    "C:\\Temp\\ADOps.AI\\src\\ADOps.Reporting\\ADOps.Reporting.csproj": {
+    "C:\\temp\\ADOps.AI\\src\\ADOps.Reporting\\ADOps.Reporting.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Temp\\ADOps.AI\\src\\ADOps.Reporting\\ADOps.Reporting.csproj",
+        "projectUniqueName": "C:\\temp\\ADOps.AI\\src\\ADOps.Reporting\\ADOps.Reporting.csproj",
         "projectName": "ADOps.Reporting",
-        "projectPath": "C:\\Temp\\ADOps.AI\\src\\ADOps.Reporting\\ADOps.Reporting.csproj",
+        "projectPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Reporting\\ADOps.Reporting.csproj",
         "packagesPath": "C:\\Users\\Danny.Lavardera\\.nuget\\packages\\",
-        "outputPath": "C:\\Temp\\ADOps.AI\\src\\ADOps.Reporting\\obj\\",
+        "outputPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Reporting\\obj\\",
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "fallbackFolders": [

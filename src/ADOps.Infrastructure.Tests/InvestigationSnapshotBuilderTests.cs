@@ -11,59 +11,59 @@ namespace ADOps.Infrastructure.Tests;
 public sealed class InvestigationSnapshotBuilderTests
 {
     [Fact]
-public async Task BuildAsync_DerivesTopologyFromReplicationRecords()
-{
-    var firstCollectedUtc =
-        new DateTimeOffset(
-            2026,
-            7,
-            9,
-            14,
-            25,
-            0,
-            TimeSpan.Zero);
+    public async Task BuildAsync_DerivesTopologyFromReplicationRecords()
+    {
+        var firstCollectedUtc =
+            new DateTimeOffset(
+                2026,
+                7,
+                9,
+                14,
+                25,
+                0,
+                TimeSpan.Zero);
 
-    var secondCollectedUtc =
-        firstCollectedUtc.AddMinutes(5);
+        var secondCollectedUtc =
+            firstCollectedUtc.AddMinutes(5);
 
-    var context =
-        new CollectorContext
-        {
-            InvestigationId = "INC-SFO-20260709",
-            Site = "SFO",
-            DomainName = "apcflex.aero",
-            DomainControllers =
+        var context =
+            new CollectorContext
+            {
+                InvestigationId = "INC-SFO-20260709",
+                Site = "SFO",
+                DomainName = "apcflex.aero",
+                DomainControllers =
                 ["SFOFLEX-DC1"]
-        };
+            };
 
-    var replicationRecords =
-        new[]
-        {
-            new ReplicationRecord
+        var replicationRecords =
+            new[]
             {
-                SourceDomainController = "SFOFLEX-DC1",
-                PartnerDomainController = "ZUSW-DC1",
-                SourceSite = "SFO",
-                PartnerSite = "ZUSW",
-                Success = false,
-                ErrorCode = 1722,
-                ErrorMessage = "RPC server unavailable",
-                CollectedUtc = firstCollectedUtc
-            },
+                new ReplicationRecord
+                {
+                    SourceDomainController = "SFOFLEX-DC1",
+                    PartnerDomainController = "ZUSW-DC1",
+                    SourceSite = "SFO",
+                    PartnerSite = "ZUSW",
+                    Success = false,
+                    ErrorCode = 1722,
+                    ErrorMessage = "RPC server unavailable",
+                    CollectedUtc = firstCollectedUtc
+                },
 
-            new ReplicationRecord
-            {
-                SourceDomainController = "SFOFLEX-DC1",
-                PartnerDomainController = "ZUSW-DC1",
-                SourceSite = "SFO",
-                PartnerSite = "ZUSW",
-                Success = true,
-                CollectedUtc = secondCollectedUtc
-            }
-        };
+                new ReplicationRecord
+                {
+                    SourceDomainController = "SFOFLEX-DC1",
+                    PartnerDomainController = "ZUSW-DC1",
+                    SourceSite = "SFO",
+                    PartnerSite = "ZUSW",
+                    Success = true,
+                    CollectedUtc = secondCollectedUtc
+                }
+            };
 
-    var builder =
-        new InvestigationSnapshotBuilder(
+        var builder =
+            new InvestigationSnapshotBuilder(
             new FakeReplicationCollector(
                 replicationRecords),
             new FakePatchCollector([]),
@@ -71,14 +71,97 @@ public async Task BuildAsync_DerivesTopologyFromReplicationRecords()
             new FakeRpcCollector([]),
             new FakeEvidenceNormalizer());
 
-    var snapshot =
-        await builder.BuildAsync(context);
+        var snapshot =
+            await builder.BuildAsync(context);
 
-    Assert.NotNull(snapshot.Topology);
+        Assert.NotNull(snapshot.Topology);
+
+        var relationship =
+            Assert.Single(
+            snapshot.Topology.ReplicationPartners);
+
+        Assert.Equal(
+            "SFOFLEX-DC1",
+            relationship.SourceDomainController);
+
+        Assert.Equal(
+            "ZUSW-DC1",
+            relationship.PartnerDomainController);
+
+        Assert.Equal(
+            "SFO",
+            relationship.SourceSite);
+
+        Assert.Equal(
+            "ZUSW",
+            relationship.PartnerSite);
+
+        Assert.True(
+            relationship.IsActive);
+
+        Assert.Equal(
+            secondCollectedUtc,
+            relationship.DiscoveredUtc);
+    }
+
+    [Fact]
+    public async Task BuildAsync_PassesDerivedTopologyToRpcCollector()
+    {
+        var collectedUtc =
+            new DateTimeOffset(
+                2026,
+                7,
+                9,
+                14,
+                25,
+                0,
+                TimeSpan.Zero);
+
+        var context =
+            new CollectorContext
+            {
+                InvestigationId = "INC-SFO-20260709",
+                Site = "SFO",
+                DomainName = "apcflex.aero",
+                DomainControllers =
+                ["SFOFLEX-DC1"]
+            };
+
+        var replicationRecords =
+            new[]
+            {
+                new ReplicationRecord
+                {
+                    SourceDomainController = "SFOFLEX-DC1",
+                    PartnerDomainController = "ZUSW-DC1",
+                    SourceSite = "SFO",
+                    PartnerSite = "ZUSW",
+                    Success = false,
+                    ErrorCode = 1722,
+                    ErrorMessage = "RPC server unavailable",
+                    CollectedUtc = collectedUtc
+                }
+            };
+
+        var rpcCollector =
+            new FakeRpcCollector([]);
+
+        var builder =
+            new InvestigationSnapshotBuilder(
+            new FakeReplicationCollector(
+                replicationRecords),
+            new FakePatchCollector([]),
+            new FakeSystemInfoCollector([]),
+            rpcCollector,
+            new FakeEvidenceNormalizer());
+
+    await builder.BuildAsync(context);
+
+    Assert.NotNull(rpcCollector.TopologyReceived);
 
     var relationship =
         Assert.Single(
-            snapshot.Topology.ReplicationPartners);
+            rpcCollector.TopologyReceived!.ReplicationPartners);
 
     Assert.Equal(
         "SFOFLEX-DC1",
@@ -95,14 +178,133 @@ public async Task BuildAsync_DerivesTopologyFromReplicationRecords()
     Assert.Equal(
         "ZUSW",
         relationship.PartnerSite);
+    }
 
-    Assert.True(
-        relationship.IsActive);
+    [Fact]
+    public async Task BuildAsync_AddsCollectorResultsToSnapshot()
+    {
+        var collectedUtc =
+            new DateTimeOffset(
+                2026,
+                7,
+                9,
+                14,
+                25,
+                0,
+                TimeSpan.Zero);
 
-    Assert.Equal(
-        secondCollectedUtc,
-        relationship.DiscoveredUtc);
-}
+        var context =
+            new CollectorContext
+            {
+                InvestigationId = "INC-SFO-20260709",
+                Site = "SFO",
+                DomainName = "apcflex.aero",
+                DomainControllers =
+                    ["SFOFLEX-DC1"]
+            };
+
+                var replicationRecords =
+            new[]
+            {
+                new ReplicationRecord
+                {
+                    SourceDomainController = "SFOFLEX-DC1",
+                    PartnerDomainController = "ZUSW-DC1",
+                    SourceSite = "SFO",
+                    PartnerSite = "ZUSW",
+                    Success = false,
+                    ErrorCode = 1722,
+                    ErrorMessage = "RPC server unavailable",
+                    CollectedUtc = collectedUtc
+                }
+            };
+
+        var patchRecords =
+            new[]
+            {
+                new PatchRecord
+                {
+                    DomainController = "SFOFLEX-DC1",
+                    Site = "SFO",
+                    OperatingSystem = "Windows Server 2019",
+                    OsBuild = "17763",
+                    KnowledgeBaseArticle = "KB0000000",
+                    PatchVersion = "June 2026 CU",
+                    InstalledUtc = collectedUtc,
+                    Installed = false,
+                    CollectedUtc = collectedUtc
+                }
+            };
+
+        var systemInfoRecords =
+            new[]
+            {
+                new SystemInfoRecord
+                {
+                    DomainController = "SFOFLEX-DC1",
+                    Site = "SFO",
+                    ComputerName = "SFOFLEX-DC1",
+                    OperatingSystem = "Windows Server 2019",
+                    OsVersion = "10.0",
+                    BuildNumber = "17763",
+                    Edition = "Standard",
+                    Architecture = "x64",
+                    TimeZone = "UTC",
+                    PowerShellVersion = "5.1",
+                    DotNetVersion = "8.0",
+                    CollectedUtc = collectedUtc
+                }
+            };
+
+        var rpcRecords =
+            new[]
+            {
+                new RpcRecord
+                {
+                    DomainController = "SFOFLEX-DC1",
+                    Target = "SFOFLEX-DC1",
+                    Success = false,
+                    ErrorCode = 1722,
+                    ErrorMessage = "RPC server unavailable",
+                    CollectedUtc = collectedUtc
+                }
+            };
+
+        var builder =
+            new InvestigationSnapshotBuilder(
+            new FakeReplicationCollector(
+                replicationRecords),
+            new FakePatchCollector(
+                patchRecords),
+            new FakeSystemInfoCollector(
+                systemInfoRecords),
+            new FakeRpcCollector(
+                rpcRecords),
+            new FakeEvidenceNormalizer());
+
+        var snapshot =
+            await builder.BuildAsync(context);
+
+        Assert.Single(snapshot.Replication);
+        Assert.Equal(
+            "SFOFLEX-DC1",
+            snapshot.Replication.Single().SourceDomainController);
+
+        Assert.Single(snapshot.Patches);
+        Assert.Equal(
+            "SFOFLEX-DC1",
+            snapshot.Patches.Single().DomainController);
+
+        Assert.Single(snapshot.SystemInfo);
+        Assert.Equal(
+            "SFOFLEX-DC1",
+            snapshot.SystemInfo.Single().DomainController);
+
+        Assert.Single(snapshot.Rpc);
+        Assert.Equal(
+            "SFOFLEX-DC1",
+            snapshot.Rpc.Single().Target);
+    }
 
     private sealed class FakeReplicationCollector
         : IReplicationCollector
@@ -162,14 +364,16 @@ public async Task BuildAsync_DerivesTopologyFromReplicationRecords()
     }
 
     private sealed class FakeRpcCollector
-    : IRpcCollector
+        : IRpcCollector
     {
         private readonly IReadOnlyCollection<RpcRecord> _records;
+
+        public TopologyContext? TopologyReceived { get; private set; }
 
         public FakeRpcCollector(
             IReadOnlyCollection<RpcRecord> records)
         {
-        _records = records;
+            _records = records;
         }
 
         public Task<IReadOnlyCollection<RpcRecord>> CollectAsync(
@@ -177,6 +381,8 @@ public async Task BuildAsync_DerivesTopologyFromReplicationRecords()
             TopologyContext topology,
             CancellationToken cancellationToken = default)
         {
+            TopologyReceived = topology;
+
             return Task.FromResult(_records);
         }
     }

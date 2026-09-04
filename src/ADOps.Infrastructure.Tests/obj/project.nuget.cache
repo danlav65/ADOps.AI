@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+E9xGWNvwcQ=",
+  "dgSpecHash": "2GLaoq8xLxY=",
   "success": true,
-  "projectFilePath": "C:\\Temp\\ADOps.AI\\src\\ADOps.Infrastructure.Tests\\ADOps.Infrastructure.Tests.csproj",
+  "projectFilePath": "C:\\temp\\ADOps.AI\\src\\ADOps.Infrastructure.Tests\\ADOps.Infrastructure.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Danny.Lavardera\\.nuget\\packages\\coverlet.collector\\6.0.4\\coverlet.collector.6.0.4.nupkg.sha512",
     "C:\\Users\\Danny.Lavardera\\.nuget\\packages\\microsoft.codecoverage\\17.14.1\\microsoft.codecoverage.17.14.1.nupkg.sha512",

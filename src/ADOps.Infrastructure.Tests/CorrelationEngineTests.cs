@@ -148,6 +148,42 @@ public void Correlate_IncidentWithMultipleSignals_ProducesDistinctCorrelationFin
 }
     
     [Fact]
+    public void Correlate_Throws_WhenEvidenceIsNull()
+    {
+        var engine =
+            new CorrelationEngine();
+
+        var exception =
+            Assert.Throws<ArgumentNullException>(
+                () =>
+                    engine.Correlate(
+                        null!,
+                        CreateTopology()));
+
+        Assert.Equal(
+            "evidence",
+            exception.ParamName);
+    }
+
+    [Fact]
+    public void Correlate_Throws_WhenTopologyIsNull()
+    {
+        var engine =
+            new CorrelationEngine();
+
+        var exception =
+            Assert.Throws<ArgumentNullException>(
+                () =>
+                    engine.Correlate(
+                        [],
+                        null!));
+
+        Assert.Equal(
+            "topology",
+            exception.ParamName);
+    }
+
+    [Fact]
     public void Correlate_ReplicationFailureAndRpcFailure_ProducesFinding()
     {
         var collectedUtc =

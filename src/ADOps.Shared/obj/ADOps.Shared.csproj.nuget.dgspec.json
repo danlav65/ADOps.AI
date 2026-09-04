@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Temp\\ADOps.AI\\src\\ADOps.Shared\\ADOps.Shared.csproj": {}
+    "C:\\temp\\ADOps.AI\\src\\ADOps.Shared\\ADOps.Shared.csproj": {}
   },
   "projects": {
-    "C:\\Temp\\ADOps.AI\\src\\ADOps.Shared\\ADOps.Shared.csproj": {
+    "C:\\temp\\ADOps.AI\\src\\ADOps.Shared\\ADOps.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Temp\\ADOps.AI\\src\\ADOps.Shared\\ADOps.Shared.csproj",
+        "projectUniqueName": "C:\\temp\\ADOps.AI\\src\\ADOps.Shared\\ADOps.Shared.csproj",
         "projectName": "ADOps.Shared",
-        "projectPath": "C:\\Temp\\ADOps.AI\\src\\ADOps.Shared\\ADOps.Shared.csproj",
+        "projectPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Shared\\ADOps.Shared.csproj",
         "packagesPath": "C:\\Users\\Danny.Lavardera\\.nuget\\packages\\",
-        "outputPath": "C:\\Temp\\ADOps.AI\\src\\ADOps.Shared\\obj\\",
+        "outputPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "fallbackFolders": [
