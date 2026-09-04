@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vzuQf/dYHMk=",
+  "dgSpecHash": "Pyo5rRSN6r4=",
   "success": true,
-  "projectFilePath": "C:\\temp\\ADOps.AI\\src\\AdOps.Application\\AdOps.Application.csproj",
+  "projectFilePath": "C:\\temp\\ADOps.AI\\src\\ADOps.Application\\ADOps.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Danny.Lavardera\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.0\\microsoft.extensions.dependencyinjection.abstractions.10.0.0.nupkg.sha512"
   ],

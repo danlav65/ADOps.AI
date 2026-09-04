@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\temp\\ADOps.AI\\src\\AdOps.Application\\AdOps.Application.csproj": {}
+    "C:\\temp\\ADOps.AI\\src\\ADOps.Application\\ADOps.Application.csproj": {}
   },
   "projects": {
-    "C:\\temp\\ADOps.AI\\src\\AdOps.Application\\AdOps.Application.csproj": {
+    "C:\\temp\\ADOps.AI\\src\\ADOps.Application\\ADOps.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\temp\\ADOps.AI\\src\\AdOps.Application\\AdOps.Application.csproj",
-        "projectName": "AdOps.Application",
-        "projectPath": "C:\\temp\\ADOps.AI\\src\\AdOps.Application\\AdOps.Application.csproj",
+        "projectUniqueName": "C:\\temp\\ADOps.AI\\src\\ADOps.Application\\ADOps.Application.csproj",
+        "projectName": "ADOps.Application",
+        "projectPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Application\\ADOps.Application.csproj",
         "packagesPath": "C:\\Users\\Danny.Lavardera\\.nuget\\packages\\",
-        "outputPath": "C:\\temp\\ADOps.AI\\src\\AdOps.Application\\obj\\",
+        "outputPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Application\\obj\\",
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "fallbackFolders": [

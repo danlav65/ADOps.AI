@@ -429,7 +429,7 @@
           "build/net8.0/xunit.runner.visualstudio.props": {}
         }
       },
-      "AdOps.Application/1.0.0": {
+      "ADOps.Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
@@ -437,10 +437,10 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0"
         },
         "compile": {
-          "bin/placeholder/AdOps.Application.dll": {}
+          "bin/placeholder/ADOps.Application.dll": {}
         },
         "runtime": {
-          "bin/placeholder/AdOps.Application.dll": {}
+          "bin/placeholder/ADOps.Application.dll": {}
         }
       },
       "ADOps.Core/1.0.0": {
@@ -1039,10 +1039,10 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
-    "AdOps.Application/1.0.0": {
+    "ADOps.Application/1.0.0": {
       "type": "project",
-      "path": "../AdOps.Application/AdOps.Application.csproj",
-      "msbuildProject": "../AdOps.Application/AdOps.Application.csproj"
+      "path": "../ADOps.Application/ADOps.Application.csproj",
+      "msbuildProject": "../ADOps.Application/ADOps.Application.csproj"
     },
     "ADOps.Core/1.0.0": {
       "type": "project",
@@ -1057,8 +1057,8 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "ADOps.Application >= 1.0.0",
       "ADOps.Infrastructure >= 1.0.0",
-      "AdOps.Application >= 1.0.0",
       "Microsoft.Extensions.DependencyInjection >= 10.0.0",
       "Microsoft.NET.Test.Sdk >= 17.14.1",
       "coverlet.collector >= 6.0.4",
@@ -1101,8 +1101,8 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\temp\\ADOps.AI\\src\\AdOps.Application\\AdOps.Application.csproj": {
-              "projectPath": "C:\\temp\\ADOps.AI\\src\\AdOps.Application\\AdOps.Application.csproj"
+            "C:\\temp\\ADOps.AI\\src\\ADOps.Application\\ADOps.Application.csproj": {
+              "projectPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Application\\ADOps.Application.csproj"
             },
             "C:\\temp\\ADOps.AI\\src\\ADOps.Infrastructure\\ADOps.Infrastructure.csproj": {
               "projectPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Infrastructure\\ADOps.Infrastructure.csproj"

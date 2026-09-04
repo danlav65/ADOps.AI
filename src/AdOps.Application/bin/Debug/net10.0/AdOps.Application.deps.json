@@ -6,13 +6,13 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v10.0": {
-      "AdOps.Application/1.0.0": {
+      "ADOps.Application/1.0.0": {
         "dependencies": {
           "ADOps.Core": "1.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0"
         },
         "runtime": {
-          "AdOps.Application.dll": {}
+          "ADOps.Application.dll": {}
         }
       },
       "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.0": {
@@ -34,7 +34,7 @@
     }
   },
   "libraries": {
-    "AdOps.Application/1.0.0": {
+    "ADOps.Application/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

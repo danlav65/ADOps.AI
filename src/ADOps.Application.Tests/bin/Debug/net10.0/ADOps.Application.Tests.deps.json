@@ -8,8 +8,8 @@
     ".NETCoreApp,Version=v10.0": {
       "ADOps.Application.Tests/1.0.0": {
         "dependencies": {
+          "ADOps.Application": "1.0.0",
           "ADOps.Infrastructure": "1.0.0",
-          "AdOps.Application": "1.0.0",
           "Microsoft.Extensions.DependencyInjection": "10.0.0",
           "Microsoft.NET.Test.Sdk": "17.14.1",
           "xunit": "2.9.3"
@@ -352,13 +352,13 @@
           }
         }
       },
-      "AdOps.Application/1.0.0": {
+      "ADOps.Application/1.0.0": {
         "dependencies": {
           "ADOps.Core": "1.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0"
         },
         "runtime": {
-          "AdOps.Application.dll": {
+          "ADOps.Application.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -483,7 +483,7 @@
       "path": "xunit.extensibility.execution/2.9.3",
       "hashPath": "xunit.extensibility.execution.2.9.3.nupkg.sha512"
     },
-    "AdOps.Application/1.0.0": {
+    "ADOps.Application/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -2,17 +2,17 @@
   "version": 4,
   "targets": {
     "net10.0": {
-      "AdOps.Application/1.0.0": {
+      "ADOps.Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
           "ADOps.Core": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/AdOps.Application.dll": {}
+          "bin/placeholder/ADOps.Application.dll": {}
         },
         "runtime": {
-          "bin/placeholder/AdOps.Application.dll": {}
+          "bin/placeholder/ADOps.Application.dll": {}
         }
       },
       "ADOps.Core/1.0.0": {
@@ -41,10 +41,10 @@
     }
   },
   "libraries": {
-    "AdOps.Application/1.0.0": {
+    "ADOps.Application/1.0.0": {
       "type": "project",
-      "path": "../AdOps.Application/AdOps.Application.csproj",
-      "msbuildProject": "../AdOps.Application/AdOps.Application.csproj"
+      "path": "../ADOps.Application/ADOps.Application.csproj",
+      "msbuildProject": "../ADOps.Application/ADOps.Application.csproj"
     },
     "ADOps.Core/1.0.0": {
       "type": "project",
@@ -59,8 +59,8 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "ADOps.Infrastructure >= 1.0.0",
-      "AdOps.Application >= 1.0.0"
+      "ADOps.Application >= 1.0.0",
+      "ADOps.Infrastructure >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -98,8 +98,8 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\temp\\ADOps.AI\\src\\AdOps.Application\\AdOps.Application.csproj": {
-              "projectPath": "C:\\temp\\ADOps.AI\\src\\AdOps.Application\\AdOps.Application.csproj"
+            "C:\\temp\\ADOps.AI\\src\\ADOps.Application\\ADOps.Application.csproj": {
+              "projectPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Application\\ADOps.Application.csproj"
             },
             "C:\\temp\\ADOps.AI\\src\\ADOps.Infrastructure\\ADOps.Infrastructure.csproj": {
               "projectPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Infrastructure\\ADOps.Infrastructure.csproj"

@@ -181,6 +181,51 @@ public sealed class InvestigationSnapshotBuilderTests
     }
 
     [Fact]
+    public async Task BuildAsync_NormalizesEvidenceFromCompletedSnapshot()
+    {
+        var collectedUtc =
+            new DateTimeOffset(
+                2026,
+                7,
+                9,
+                14,
+                25,
+                0,
+                TimeSpan.Zero);
+
+        var context =
+            new CollectorContext
+            {
+                InvestigationId = "INC-SFO-20260709",
+                Site = "SFO",
+                DomainName = "apcflex.aero",
+                DomainControllers =
+                    ["SFOFLEX-DC1"]
+            };
+
+        var normalizer =
+            new FakeEvidenceNormalizer();
+
+        var builder =
+            new InvestigationSnapshotBuilder(
+            new FakeReplicationCollector([]),
+            new FakePatchCollector([]),
+            new FakeSystemInfoCollector([]),
+            new FakeRpcCollector([]),
+            normalizer);
+
+        var snapshot =
+            await builder.BuildAsync(context);
+
+        Assert.True(
+            normalizer.WasCalled);
+
+        Assert.Same(
+            snapshot,
+            normalizer.SnapshotReceived);
+    }
+
+    [Fact]
     public async Task BuildAsync_AddsCollectorResultsToSnapshot()
     {
         var collectedUtc =
@@ -248,10 +293,15 @@ public sealed class InvestigationSnapshotBuilderTests
                     OsVersion = "10.0",
                     BuildNumber = "17763",
                     Edition = "Standard",
-                    Architecture = "x64",
+                    Architecture = "64-bit",
                     TimeZone = "UTC",
+                    SystemDriveFreeSpaceGb = 3.2,
+                    LogicalProcessors = 8,
+                    PhysicalMemoryGb = 32,
+                    VirtualMachine = true,
+                    Hypervisor = "Microsoft Hyper-V",
                     PowerShellVersion = "5.1",
-                    DotNetVersion = "8.0",
+                    DotNetVersion = "4.8",
                     CollectedUtc = collectedUtc
                 }
             };
@@ -304,6 +354,32 @@ public sealed class InvestigationSnapshotBuilderTests
         Assert.Equal(
             "SFOFLEX-DC1",
             snapshot.Rpc.Single().Target);
+
+        var systemInfo =
+            snapshot.SystemInfo.Single();
+
+        Assert.Equal(
+            "SFOFLEX-DC1",
+            systemInfo.DomainController);
+
+        Assert.Equal(
+            3.2,
+            systemInfo.SystemDriveFreeSpaceGb);
+
+        Assert.Equal(
+            "64-bit",
+            systemInfo.Architecture);
+
+        Assert.Equal(
+            "4.8",
+            systemInfo.DotNetVersion);
+
+        Assert.True(
+            systemInfo.VirtualMachine);
+
+        Assert.Equal(
+            "Microsoft Hyper-V",
+            systemInfo.Hypervisor);
     }
 
     private sealed class FakeReplicationCollector

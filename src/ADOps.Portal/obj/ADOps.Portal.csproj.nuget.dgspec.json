@@ -4,14 +4,14 @@
     "C:\\temp\\ADOps.AI\\src\\ADOps.Portal\\ADOps.Portal.csproj": {}
   },
   "projects": {
-    "C:\\temp\\ADOps.AI\\src\\AdOps.Application\\AdOps.Application.csproj": {
+    "C:\\temp\\ADOps.AI\\src\\ADOps.Application\\ADOps.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\temp\\ADOps.AI\\src\\AdOps.Application\\AdOps.Application.csproj",
-        "projectName": "AdOps.Application",
-        "projectPath": "C:\\temp\\ADOps.AI\\src\\AdOps.Application\\AdOps.Application.csproj",
+        "projectUniqueName": "C:\\temp\\ADOps.AI\\src\\ADOps.Application\\ADOps.Application.csproj",
+        "projectName": "ADOps.Application",
+        "projectPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Application\\ADOps.Application.csproj",
         "packagesPath": "C:\\Users\\Danny.Lavardera\\.nuget\\packages\\",
-        "outputPath": "C:\\temp\\ADOps.AI\\src\\AdOps.Application\\obj\\",
+        "outputPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Application\\obj\\",
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "fallbackFolders": [
@@ -1113,8 +1113,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\temp\\ADOps.AI\\src\\AdOps.Application\\AdOps.Application.csproj": {
-                "projectPath": "C:\\temp\\ADOps.AI\\src\\AdOps.Application\\AdOps.Application.csproj"
+              "C:\\temp\\ADOps.AI\\src\\ADOps.Application\\ADOps.Application.csproj": {
+                "projectPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Application\\ADOps.Application.csproj"
               },
               "C:\\temp\\ADOps.AI\\src\\ADOps.Infrastructure\\ADOps.Infrastructure.csproj": {
                 "projectPath": "C:\\temp\\ADOps.AI\\src\\ADOps.Infrastructure\\ADOps.Infrastructure.csproj"
