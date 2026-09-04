@@ -138,12 +138,6 @@ public sealed class InvestigationServiceTests
                 correlation.Type ==
                 "Replication + Patch Baseline");
 
-        Assert.Contains(
-            report.Correlations,
-            correlation =>
-                correlation.Type ==
-                "Replication Partner + Patch Baseline");
-
         // Assert - RCA
 
         Assert.NotNull(report.RootCause);
@@ -374,22 +368,30 @@ public sealed class InvestigationServiceTests
             4,
             report.Evidence.Count);
 
-        Assert.NotEmpty(
-            report.Correlations);
+        Assert.Equal(
+            2,
+            report.Correlations.Count);
+
+        Assert.Contains(
+            report.Correlations,
+            correlation =>
+            correlation.Type ==
+            "Replication + RPC");
 
         Assert.NotNull(
             report.RootCause);
 
         Assert.Contains(
-            "Patch baseline",
+            "Patch baseline drift",
             report.RootCause,
             StringComparison.OrdinalIgnoreCase);
 
         Assert.NotEmpty(
             report.Recommendations);
 
-        Assert.True(
-            report.OverallConfidence > 0);
+        Assert.Equal(
+            0.75,
+            report.OverallConfidence);
     }
 
     [Fact]
