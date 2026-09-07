@@ -1,5 +1,6 @@
 using ADOps.Application;
 using ADOps.Infrastructure;
+using ADOps.Portal.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,8 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure();
+
+builder.Services.AddScoped<SfoDemoInvestigationProvider>();
 
 var app = builder.Build();
 

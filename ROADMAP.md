@@ -1,45 +1,42 @@
-MVP-0 - Foundation
+MVP-0 — Investigation Foundation
+────────────────────────────────
 ✔ Solution
 ✔ Core Contracts
-⬜ Collector Framework
-⬜ Evidence Builder
-⬜ AI Orchestrator
-⬜ First RCA
+✔ Collector Framework
+✔ Report Bundle Ingestion
+✔ Evidence Normalization
+✔ Topology Derivation
+✔ Correlation Engine
+✔ Root Cause Analysis
+✔ Recommendation Engine
+✔ Investigation Orchestration
+✔ Evidence Traceability
+✔ Automated Tests
+✔ SFO Incident Test Harness
 
-MVP-1 - Operational Intelligence
-⬜ Topology Collector
-⬜ Dashboard
-⬜ Incident Library
+
+MVP-1 — Operational Intelligence
+────────────────────────────────
+⬜ Investigation Dashboard       ← NEXT
+⬜ Investigation Detail
+⬜ Evidence Explorer
+⬜ SFO P1 Demo Experience
+⬜ Topology Visualization
 ⬜ Interactive Reports
+⬜ Incident Library
 
-MVP-2 - Enterprise Knowledge
+
+MVP-2 — Enterprise Knowledge
+────────────────────────────────
 ⬜ Azure AI Search
 ⬜ SITA Documentation
 ⬜ Knowledge Retrieval
 ⬜ Historical Incident Search
 
-MVP-3 - Enterprise Platform
+
+MVP-3 — Enterprise Operations
+────────────────────────────────
 ⬜ Azure DevOps Pipeline
 ⬜ Live Data Collection
 ⬜ Production Deployment
 ⬜ Operations Pilot
-
-✔ Architecture Complete
-
-⬜ Solution Builds
-
-⬜ First Collector
-
-⬜ First Evidence Package
-
-⬜ First AI RCA
-
-⬜ First Dashboard
-
-⬜ First Topology Map
-
-⬜ First Management Demo
-
-⬜ Operations Pilot
-
-⬜ Azure DevOps Migration
