@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SITA")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8cdadc3dac78cbbe1d46111ac4770f86cf0ba270")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f38479949b4d62bd296db9fd558af9c0e4a0ecf7")]
 [assembly: System.Reflection.AssemblyProductAttribute("ADOps AI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ADOps.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

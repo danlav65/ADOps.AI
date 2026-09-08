@@ -45,7 +45,7 @@ public sealed class CorrelationEngine : ICorrelationEngine
 
         findings.AddRange(
             CorrelateReplicationAndInfrastructure(evidenceList));
-
+        
         findings.AddRange(
             CorrelateReplicationAndPatch(evidenceList));
 
@@ -112,48 +112,46 @@ public sealed class CorrelationEngine : ICorrelationEngine
         CorrelateReplicationAndInfrastructure(
             IReadOnlyCollection<EvidenceEntity> evidence)
     {
-        var replicationEvidence = evidence
+        var replicationFailures = evidence
             .Where(x =>
                 x.Type == EvidenceType.ReplicationFailure)
             .ToList();
 
         var infrastructureEvidence = evidence
             .Where(x =>
-                x.Type ==
-                EvidenceType.InfrastructureHealth)
+                x.Type == EvidenceType.InfrastructureHealth)
             .ToList();
 
-        foreach (var replication in replicationEvidence)
+        foreach (var replication in replicationFailures)
         {
             foreach (var infrastructure in infrastructureEvidence)
             {
                 if (!string.Equals(
-                        replication.Source,
-                        infrastructure.Target,
-                        StringComparison.OrdinalIgnoreCase))
-                {
-                    continue;
-                }
-
-                if (!WithinCorrelationWindow(
-                        replication,
-                        infrastructure))
-                {
-                    continue;
-                }
-
-                yield return CreateFinding(
-                    replication,
-                    infrastructure,
-                    "Replication + Infrastructure",
-                    $"Replication issue on " +
-                    $"{replication.Source} correlates with " +
-                    $"an infrastructure health issue on the " +
-                    $"same target.",
-                    0.80);
+                    replication.Source,
+                    infrastructure.Target,
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                continue;
             }
+
+            if (!WithinCorrelationWindow(
+                    replication,
+                    infrastructure))
+            {
+                continue;
+            }
+
+            yield return CreateFinding(
+                replication,
+                infrastructure,
+                "Replication + Infrastructure",
+                $"Replication failure on " +
+                $"{replication.Source} correlates with " +
+                $"an infrastructure health issue.",
+                0.80);
         }
     }
+}
 
     private static IEnumerable<CorrelatedFinding>
         CorrelateReplicationAndPatch(

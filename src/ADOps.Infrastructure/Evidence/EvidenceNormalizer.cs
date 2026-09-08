@@ -57,6 +57,43 @@ public sealed class EvidenceNormalizer
         return evidence;
     }
 
+    private EvidenceEntity NormalizeSystemInfo(
+        string investigationId,
+        SystemInfoRecord record)
+    {
+        var summary =
+            record.SystemDriveFreeSpaceGb > 0 &&
+            record.SystemDriveFreeSpaceGb < 10
+                ? $"Low system drive free space detected on {record.DomainController}: " +
+                $"{record.SystemDriveFreeSpaceGb:F1} GB remaining."
+                : $"System health information collected from {record.DomainController}.";
+
+        return new EvidenceEntity
+        {
+            EvidenceId = _evidenceIdGenerator.Generate(),
+            InvestigationId = investigationId,
+            Type = EvidenceType.InfrastructureHealth,
+            Source = "SystemInfoCollector",
+            Target = record.DomainController,
+            CollectedUtc = record.CollectedUtc,
+            Summary = summary,
+            Details =
+                $"Site: {record.Site}; " +
+                $"Computer: {record.ComputerName}; " +
+                $"Operating System: {record.OperatingSystem}; " +
+                $"OS Version: {record.OsVersion}; " +
+                $"Build: {record.BuildNumber}; " +
+                $"Edition: {record.Edition}; " +
+                $"Architecture: {record.Architecture}; " +
+                $"Logical Processors: {record.LogicalProcessors}; " +
+                $"Memory GB: {record.PhysicalMemoryGb}; " +
+                $"System Drive Free Space GB: {record.SystemDriveFreeSpaceGb}; " +
+                $"Virtual Machine: {record.VirtualMachine}; " +
+                $"Hypervisor: {record.Hypervisor ?? "Unknown"}",
+            IsValid = true
+    };
+}
+
     private EvidenceEntity NormalizeReplication(
         string investigationId,
         ADOps.Core.Entities.Replication.ReplicationRecord record)
@@ -133,37 +170,5 @@ public sealed class EvidenceNormalizer
             IsValid = true
         };
     }
-
-    private EvidenceEntity NormalizeSystemInfo(
-        string investigationId,
-        SystemInfoRecord record)
-    {
-        var summary =
-            $"System health information collected from {record.DomainController}.";
-
-        return new EvidenceEntity
-        {
-            EvidenceId = _evidenceIdGenerator.Generate(),
-            InvestigationId = investigationId,
-            Type = EvidenceType.InfrastructureHealth,
-            Source = "SystemInfoCollector",
-            Target = record.DomainController,
-            CollectedUtc = record.CollectedUtc,
-            Summary = summary,
-            Details =
-                $"Site: {record.Site}; " +
-                $"Computer: {record.ComputerName}; " +
-                $"Operating System: {record.OperatingSystem}; " +
-                $"OS Version: {record.OsVersion}; " +
-                $"Build: {record.BuildNumber}; " +
-                $"Edition: {record.Edition}; " +
-                $"Architecture: {record.Architecture}; " +
-                $"Logical Processors: {record.LogicalProcessors}; " +
-                $"Memory GB: {record.PhysicalMemoryGb}; " +
-                $"System Drive Free Space GB: {record.SystemDriveFreeSpaceGb}; " +
-                $"Virtual Machine: {record.VirtualMachine}; " +
-                $"Hypervisor: {record.Hypervisor ?? "Unknown"}",
-            IsValid = true
-        };
-    }
+    
 }

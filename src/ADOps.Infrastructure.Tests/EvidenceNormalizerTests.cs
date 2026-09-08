@@ -229,6 +229,63 @@ public sealed class EvidenceNormalizerTests
     }
 
     [Fact]
+    public void Normalize_SystemInfoWithLowDiskSpace_DescribesLowDiskCondition()
+    {
+        var collectedUtc =
+            new DateTimeOffset(
+                2026,
+                7,
+                9,
+                14,
+                35,
+                0,
+                TimeSpan.Zero);
+
+        var snapshot =
+            CreateSnapshot();
+
+        snapshot.SystemInfo.Add(
+            new SystemInfoRecord
+            {
+                DomainController = "SFOFLEX-DC1",
+                Site = "SFO",
+                ComputerName = "SFOFLEX-DC1",
+                OperatingSystem = "Windows Server 2022",
+                OsVersion = "10.0",
+                BuildNumber = "20348",
+                Edition = "Standard",
+                Architecture = "x64",
+                TimeZone = "UTC",
+                PowerShellVersion = "7",
+                DotNetVersion = "8",
+                SystemDriveFreeSpaceGb = 3.2,
+                CollectedUtc = collectedUtc
+            });
+
+        var normalizer =
+            new EvidenceNormalizer(
+                new FakeEvidenceIdGenerator());
+
+        var evidence =
+            normalizer.Normalize(snapshot);
+
+        var item =
+            Assert.Single(evidence);
+
+        Assert.Equal(
+            EvidenceType.InfrastructureHealth,
+            item.Type);
+
+        Assert.Contains(
+            "Low system drive free space detected",
+            item.Summary);
+
+        Assert.Contains(
+            "3.2 GB",
+            item.Summary);
+    }
+
+    [Fact]
     public void Normalize_ConvertsSystemInfoToInfrastructureEvidence()
     {
         var collectedUtc =

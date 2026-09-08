@@ -104,9 +104,9 @@ public void Correlate_IncidentWithMultipleSignals_ProducesDistinctCorrelationFin
     Assert.Contains(
         findings,
         x =>
-            x.CorrelationType ==
-            "Replication + Infrastructure");
-
+        x.CorrelationType ==
+        "Replication + Infrastructure");
+    
     Assert.Contains(
         findings,
         x =>
@@ -234,10 +234,17 @@ public void Correlate_IncidentWithMultipleSignals_ProducesDistinctCorrelationFin
     }
 
     [Fact]
-    public void Correlate_ReplicationFailureAndInfrastructureIssue_ProducesFinding()
+    public void Correlate_ReplicationFailureAndInfrastructureEvidence_ProducesFinding()
     {
         var collectedUtc =
-            new DateTimeOffset(2026, 7, 9, 14, 30, 0, TimeSpan.Zero);
+            new DateTimeOffset(
+                2026,
+                7,
+                9,
+                14,
+                30,
+                0,
+                TimeSpan.Zero);
 
         var replication =
             CreateEvidence(
@@ -253,7 +260,7 @@ public void Correlate_IncidentWithMultipleSignals_ProducesDistinctCorrelationFin
                 EvidenceType.InfrastructureHealth,
                 "SFOFLEX-DC1",
                 collectedUtc.AddMinutes(10),
-                summary: "Low disk space on system drive.");
+                summary: "Low system drive free space detected.");
 
         var engine =
             new CorrelationEngine();
