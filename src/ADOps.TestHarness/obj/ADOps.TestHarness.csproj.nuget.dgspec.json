@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\temp\\ADOps.AI\\src\\ADOps.TestHarness\\ADOps.TestHarness.csproj": {}
+    "C:\\Temp\\ADOps.AI\\src\\ADOps.TestHarness\\ADOps.TestHarness.csproj": {}
   },
   "projects": {
     "C:\\temp\\ADOps.AI\\src\\ADOps.Application\\ADOps.Application.csproj": {
@@ -1082,14 +1082,14 @@
         }
       }
     },
-    "C:\\temp\\ADOps.AI\\src\\ADOps.TestHarness\\ADOps.TestHarness.csproj": {
+    "C:\\Temp\\ADOps.AI\\src\\ADOps.TestHarness\\ADOps.TestHarness.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\temp\\ADOps.AI\\src\\ADOps.TestHarness\\ADOps.TestHarness.csproj",
+        "projectUniqueName": "C:\\Temp\\ADOps.AI\\src\\ADOps.TestHarness\\ADOps.TestHarness.csproj",
         "projectName": "ADOps.TestHarness",
-        "projectPath": "C:\\temp\\ADOps.AI\\src\\ADOps.TestHarness\\ADOps.TestHarness.csproj",
+        "projectPath": "C:\\Temp\\ADOps.AI\\src\\ADOps.TestHarness\\ADOps.TestHarness.csproj",
         "packagesPath": "C:\\Users\\Danny.Lavardera\\.nuget\\packages\\",
-        "outputPath": "C:\\temp\\ADOps.AI\\src\\ADOps.TestHarness\\obj\\",
+        "outputPath": "C:\\Temp\\ADOps.AI\\src\\ADOps.TestHarness\\obj\\",
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "fallbackFolders": [

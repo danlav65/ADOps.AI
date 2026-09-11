@@ -466,6 +466,43 @@ public sealed class InvestigationServiceTests
     }
 
     [Fact]
+    public async Task InvestigateAsync_FromSnapshot_Throws_WhenSnapshotIsNull()
+    {
+        // Arrange
+
+        var service =
+            new InvestigationService(
+                new ThrowingSnapshotBuilder(),
+                new CorrelationEngine(),
+                new RootCauseAnalyzer(),
+                new RecommendationEngine(),
+                new InvestigationPresenter());
+
+        var investigation =
+            new ADOps.Core.Entities.Investigation
+            {
+                InvestigationNumber = "INV-TEST",
+                Incident =
+                    new Incident
+                    {
+                        IncidentNumber = "INC-TEST",
+                        Title = "Test investigation",
+                        Environment = "Production",
+                        SiteCode = "SFO",
+                        DetectedUtc = DateTimeOffset.UtcNow
+                    }
+            };
+
+        // Act & Assert
+
+        await Assert.ThrowsAsync<ArgumentNullException>(
+            () =>
+                service.InvestigateAsync(
+                    investigation,
+                    null!));
+    }
+
+    [Fact]
     public async Task InvestigateAsync_FromSnapshot_Throws_WhenTopologyIsMissing()
     {
         // Arrange
