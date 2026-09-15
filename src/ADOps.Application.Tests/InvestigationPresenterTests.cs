@@ -417,4 +417,124 @@ public sealed class InvestigationPresenterTests
         };
     }
 
+    [Fact]
+    public void Build_UsesFallbackExecutiveSummaryValuesWhenRcaValuesAreMissing()
+    {
+        var collectedUtc =
+            new DateTimeOffset(
+                2026,
+                7,
+                9,
+                12,
+                0,
+                0,
+                TimeSpan.Zero);
+
+        var investigation =
+            CreateInvestigation(collectedUtc);
+
+        var rootCauseAnalysis =
+            new RootCauseAnalysis
+            {
+                Title =
+                    "Active Directory Incident Root Cause Analysis",
+
+                ExecutiveSummary = "",
+
+                RootCause =
+                    "Test root cause."
+            };
+
+        var presenter =
+            new InvestigationPresenter();
+
+        var report =
+            presenter.Build(
+                investigation,
+                [],
+                [],
+                rootCauseAnalysis,
+                []);
+
+        Assert.Equal(
+            "Investigation INV-SFO-20260709 identified 0 correlated findings.",
+            report.ExecutiveSummary.Summary);
+
+        Assert.Equal(
+            "Incident INC-SFO-20260709 occurred at site SFO.",
+            report.ExecutiveSummary.BusinessImpact);
+
+        Assert.Equal(
+            "Active Directory health indicators require analysis.",
+            report.ExecutiveSummary.TechnicalImpact);
+    }
+
+    [Fact]
+    public void Build_Throws_WhenRequiredArgumentIsNull()
+    {
+        var collectedUtc =
+            new DateTimeOffset(
+                2026,
+                7,
+                9,
+                12,
+                0,
+                0,
+                TimeSpan.Zero);
+
+        var investigation =
+            CreateInvestigation(collectedUtc);
+
+        var rootCauseAnalysis =
+            CreateRootCauseAnalysis();
+
+        var presenter =
+            new InvestigationPresenter();
+
+        Assert.Throws<ArgumentNullException>(
+            () =>
+                presenter.Build(
+                    null!,
+                    [],
+                    [],
+                    rootCauseAnalysis,
+                    []));
+
+        Assert.Throws<ArgumentNullException>(
+            () =>
+                presenter.Build(
+                    investigation,
+                    null!,
+                    [],
+                    rootCauseAnalysis,
+                    []));
+
+        Assert.Throws<ArgumentNullException>(
+            () =>
+                presenter.Build(
+                    investigation,
+                    [],
+                    null!,
+                    rootCauseAnalysis,
+                    []));
+
+        Assert.Throws<ArgumentNullException>(
+            () =>
+                presenter.Build(
+                    investigation,
+                    [],
+                    [],
+                    null!,
+                    []));
+
+        Assert.Throws<ArgumentNullException>(
+            () =>
+                presenter.Build(
+                    investigation,
+                    [],
+                    [],
+                    rootCauseAnalysis,
+                    null!));
+    }
+
 }

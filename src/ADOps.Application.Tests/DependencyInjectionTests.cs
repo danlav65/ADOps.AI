@@ -1,4 +1,5 @@
 using ADOps.Application;
+using ADOps.Application.Presentation;
 using ADOps.Application.Investigation;
 using ADOps.Core.Interfaces;
 using ADOps.Infrastructure;
@@ -25,4 +26,22 @@ public sealed class DependencyInjectionTests
 
         Assert.NotNull(investigationService);
     }
+
+    [Fact]
+    public void AddApplication_ResolvesInvestigationPresenter()
+    {
+        var services =
+            new ServiceCollection();
+
+        services.AddApplication();
+
+        using var provider =
+            services.BuildServiceProvider();
+
+        var presenter =
+            provider.GetRequiredService<InvestigationPresenter>();
+
+        Assert.NotNull(presenter);
+    }
+
 }
