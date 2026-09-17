@@ -17,14 +17,14 @@ MVP-0 — Investigation Foundation
 
 MVP-1 — Operational Intelligence
 ────────────────────────────────
-⬜ Investigation Dashboard       ← NEXT
-⬜ Investigation Detail
-⬜ Evidence Explorer
-⬜ SFO P1 Demo Experience
-⬜ Topology Visualization
-⬜ Interactive Reports
-⬜ Incident Library
-
+MVP-1
+├── Investigation Dashboard     ✅ existing prototype
+├── Investigation Detail        ✅
+├── Evidence Explorer            ✅
+├── Evidence Detail              ✅
+├── SFO P1 Demo Experience       ⬜
+├── Topology Visualization       ⬜
+└── Interactive Reports          ⬜
 
 MVP-2 — Enterprise Knowledge
 ────────────────────────────────

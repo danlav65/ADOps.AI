@@ -1,0 +1,195 @@
+@page
+@model ADOps.Portal.Pages.Investigation.Evidence.DetailsModel
+
+@{
+    ViewData["Title"] = "Evidence Detail";
+}
+
+<div class="container-fluid py-4">
+
+    @if (Model.Evidence is not null && Model.Report is not null)
+    {
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
+            <div>
+                <div class="text-muted text-uppercase small fw-semibold">
+                    ADOps AI
+                </div>
+
+                <h1 class="display-6 fw-bold mb-1">
+                    Evidence Detail
+                </h1>
+
+                <div class="text-muted">
+                    Investigation @Model.Report.IncidentNumber
+                </div>
+            </div>
+
+            <div class="mt-3 mt-md-0">
+                <a asp-page="/Investigation/Evidence"
+                   class="btn btn-outline-primary">
+                    Evidence Explorer
+                </a>
+
+                <a asp-page="/Investigation/Details"
+                   class="btn btn-outline-secondary ms-2">
+                    Investigation Detail
+                </a>
+            </div>
+        </div>
+
+        <section class="mb-4">
+            <div class="card shadow-sm">
+
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span>Evidence Record</span>
+
+                    @if (Model.Evidence.IsValid)
+                    {
+                        <span class="badge text-bg-success">
+                            Valid
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="badge text-bg-danger">
+                            Invalid
+                        </span>
+                    }
+                </div>
+
+                <div class="card-body">
+
+                    <div class="row g-4">
+
+                        <div class="col-md-6">
+                            <dl class="row mb-0">
+
+                                <dt class="col-sm-4">
+                                    Evidence ID
+                                </dt>
+
+                                <dd class="col-sm-8">
+                                    <code>@Model.Evidence.EvidenceId</code>
+                                </dd>
+
+                                <dt class="col-sm-4">
+                                    Type
+                                </dt>
+
+                                <dd class="col-sm-8">
+                                    @Model.Evidence.Type
+                                </dd>
+
+                                <dt class="col-sm-4">
+                                    Source
+                                </dt>
+
+                                <dd class="col-sm-8">
+                                    @Model.Evidence.Source
+                                </dd>
+
+                                <dt class="col-sm-4">
+                                    Target
+                                </dt>
+
+                                <dd class="col-sm-8">
+                                    @Model.Evidence.Target
+                                </dd>
+
+                            </dl>
+                        </div>
+
+                        <div class="col-md-6">
+                            <dl class="row mb-0">
+
+                                <dt class="col-sm-4">
+                                    Collected UTC
+                                </dt>
+
+                                <dd class="col-sm-8">
+                                    @Model.Evidence.CollectedUtc
+                                </dd>
+
+                                <dt class="col-sm-4">
+                                    Status
+                                </dt>
+
+                                <dd class="col-sm-8">
+                                    @if (Model.Evidence.IsValid)
+                                    {
+                                        <span class="badge text-bg-success">
+                                            Valid
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge text-bg-danger">
+                                            Invalid
+                                        </span>
+                                    }
+                                </dd>
+
+                                <dt class="col-sm-4">
+                                    Error Code
+                                </dt>
+
+                                <dd class="col-sm-8">
+                                    @(Model.Evidence.ErrorCode ?? "—")
+                                </dd>
+
+                            </dl>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-4">
+            <div class="card shadow-sm">
+
+                <div class="card-header">
+                    Summary
+                </div>
+
+                <div class="card-body">
+                    <p class="mb-0">
+                        @Model.Evidence.Summary
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="mb-4">
+            <div class="card shadow-sm">
+
+                <div class="card-header">
+                    Details
+                </div>
+
+                <div class="card-body">
+
+                    @if (string.IsNullOrWhiteSpace(Model.Evidence.Details))
+                    {
+                        <span class="text-muted">
+                            No additional details recorded.
+                        </span>
+                    }
+                    else
+                    {
+                        <pre class="mb-0 text-wrap"><code>@Model.Evidence.Details</code></pre>
+                    }
+
+                </div>
+
+            </div>
+        </section>
+
+        <div class="text-muted small border-top pt-3">
+            Evidence @Model.Evidence.EvidenceId
+            is associated with investigation
+            @Model.Report.IncidentNumber.
+        </div>
+    }
+</div>

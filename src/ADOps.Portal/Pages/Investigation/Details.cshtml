@@ -1,0 +1,145 @@
+@page
+@model ADOps.Portal.Pages.Investigation.DetailsModel
+
+@{
+    ViewData["Title"] = "Investigation Detail";
+}
+
+<div class="container py-4">
+
+    @if (Model.Detail is null)
+    {
+        <div class="alert alert-warning">
+            Investigation details are not available.
+        </div>
+    }
+    else
+    {
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="mb-1">Investigation Detail</h1>
+                <p class="text-muted mb-0">
+                    @Model.Detail.InvestigationNumber
+                </p>
+            </div>
+
+            <span class="badge bg-primary fs-6">
+                @Model.Detail.Status
+            </span>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        Investigation
+                    </div>
+
+                    <div class="card-body">
+                        <dl class="row mb-0">
+                            <dt class="col-sm-5">Investigation</dt>
+                            <dd class="col-sm-7">
+                                @Model.Detail.InvestigationNumber
+                            </dd>
+
+                            <dt class="col-sm-5">Status</dt>
+                            <dd class="col-sm-7">
+                                @Model.Detail.Status
+                            </dd>
+
+                            <dt class="col-sm-5">Started</dt>
+                            <dd class="col-sm-7">
+                                @Model.Detail.StartedUtc
+                            </dd>
+
+                            <dt class="col-sm-5">Completed</dt>
+                            <dd class="col-sm-7">
+                                @(Model.Detail.CompletedUtc?.ToString() ?? "—")
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        Incident
+                    </div>
+
+                    <div class="card-body">
+                        <dl class="row mb-0">
+                            <dt class="col-sm-5">Incident</dt>
+                            <dd class="col-sm-7">
+                                @Model.Detail.IncidentNumber
+                            </dd>
+
+                            <dt class="col-sm-5">Title</dt>
+                            <dd class="col-sm-7">
+                                @Model.Detail.Title
+                            </dd>
+
+                            <dt class="col-sm-5">Severity</dt>
+                            <dd class="col-sm-7">
+                                @Model.Detail.Severity
+                            </dd>
+
+                            <dt class="col-sm-5">Status</dt>
+                            <dd class="col-sm-7">
+                                @Model.Detail.IncidentStatus
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        Environment
+                    </div>
+
+                    <div class="card-body">
+                        <dl class="row mb-0">
+                            <dt class="col-sm-5">Environment</dt>
+                            <dd class="col-sm-7">
+                                @Model.Detail.Environment
+                            </dd>
+
+                            <dt class="col-sm-5">Site</dt>
+                            <dd class="col-sm-7">
+                                @Model.Detail.SiteCode
+                            </dd>
+
+                            <dt class="col-sm-5">Detected</dt>
+                            <dd class="col-sm-7">
+                                @Model.Detail.DetectedUtc
+                            </dd>
+
+                            <dt class="col-sm-5">Resolved</dt>
+                            <dd class="col-sm-7">
+                                @(Model.Detail.ResolvedUtc?.ToString() ?? "—")
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        Description
+                    </div>
+
+                    <div class="card-body">
+                        <p class="mb-0">
+                            @(Model.Detail.Description ?? "No description provided.")
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+</div>

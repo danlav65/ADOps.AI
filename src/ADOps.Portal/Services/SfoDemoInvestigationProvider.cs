@@ -36,6 +36,11 @@ public sealed class SfoDemoInvestigationProvider
             throw new ArgumentNullException(nameof(environment));
     }
 
+    public ADOps.Core.Entities.Investigation GetInvestigation()
+    {
+        return BuildSfoInvestigation();
+    }
+
     public async Task<InvestigationReport> GetAsync(
         CancellationToken cancellationToken = default)
     {
