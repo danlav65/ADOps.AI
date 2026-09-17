@@ -382,6 +382,54 @@ public sealed class InvestigationSnapshotBuilderTests
             systemInfo.Hypervisor);
     }
 
+
+    [Fact]
+    public async Task BuildAsync_PopulatesSnapshotContextAndCompletionTimes()
+    {
+        var context =
+            new CollectorContext
+            {
+                InvestigationId = "INC-SFO-20260709",
+                Site = "SFO",
+                DomainName = "apcflex.aero",
+                DomainControllers =
+                    ["SFOFLEX-DC1"]
+            };
+
+        var builder =
+            new InvestigationSnapshotBuilder(
+                new FakeReplicationCollector([]),
+                new FakePatchCollector([]),
+                new FakeSystemInfoCollector([]),
+                new FakeRpcCollector([]),
+                new FakeEvidenceNormalizer());
+
+        var snapshot =
+            await builder.BuildAsync(context);
+
+        Assert.Equal(
+            "INC-SFO-20260709",
+            snapshot.InvestigationId);
+
+        Assert.Equal(
+            "apcflex.aero",
+            snapshot.OperationalContext.Target);
+
+        Assert.Equal(
+            "SFO",
+            snapshot.OperationalContext.Site);
+
+        Assert.NotEqual(
+            default,
+            snapshot.StartedUtc);
+
+        Assert.NotEqual(
+            default,
+            snapshot.CompletedUtc);
+
+        Assert.True(
+            snapshot.CompletedUtc >= snapshot.StartedUtc);
+    }
     private sealed class FakeReplicationCollector
         : IReplicationCollector
     {
