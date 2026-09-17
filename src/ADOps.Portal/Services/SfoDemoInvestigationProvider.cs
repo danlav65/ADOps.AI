@@ -226,4 +226,46 @@ public sealed class SfoDemoInvestigationProvider
 
         return investigation;
     }
+
+    public SfoP1DemoContext GetDemoContext()
+    {
+        return new SfoP1DemoContext
+        {
+            IncidentNumber = InvestigationId,
+            Site = Site,
+            Domain = "apcflex.aero",
+            Environment = "Production",
+            Severity = "P1 / Critical",
+            DetectedUtc =
+                new DateTimeOffset(
+                    2026,
+                    7,
+                    9,
+                    12,
+                    0,
+                    0,
+                    TimeSpan.Zero),
+
+            BusinessImpact =
+                "Approximately 500 workstations and 60 flights were affected during the SFO P1 incident.",
+
+            TechnicalImpact =
+                "Active Directory replication between SFOFLEX domain controllers and the Azure hub replication partner was impaired.",
+
+            AffectedDomainControllers =
+            [
+                "SFOFLEX-DC1",
+                "SFOFLEX-DC2",
+                "ZUSW-DC1"
+            ],
+
+            KeySymptoms =
+            [
+                "Active Directory replication failure",
+                "RPC communication failure",
+                "Domain controller health condition",
+                "Patch baseline drift"
+            ]
+        };
+    }
 }
