@@ -15,6 +15,7 @@ using ADOps.Infrastructure.Ingestion.Rpc;
 using ADOps.Infrastructure.Recommendations;
 using ADOps.Infrastructure.Analysis;
 using ADOps.Infrastructure.Investigation;
+using ADOps.Infrastructure.Knowledge;
 
 namespace ADOps.Infrastructure;
 
@@ -82,6 +83,10 @@ public static class DependencyInjection
         services.AddScoped<
             IEvidenceNormalizer,
             EvidenceNormalizer>();
+
+        services.AddScoped<
+            IKnowledgeRetriever,
+            InMemoryKnowledgeRetriever>();
 
         services.AddScoped<
             IRecommendationEngine,

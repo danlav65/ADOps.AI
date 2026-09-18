@@ -1,6 +1,7 @@
 using ADOps.Application;
 using ADOps.Application.Presentation;
 using ADOps.Application.Investigation;
+using ADOps.Application.Knowledge;
 using ADOps.Core.Interfaces;
 using ADOps.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
@@ -44,4 +45,21 @@ public sealed class DependencyInjectionTests
         Assert.NotNull(presenter);
     }
 
+    [Fact]
+    public void AddApplicationAndInfrastructure_ResolvesKnowledgeService()
+    {
+        var services =
+            new ServiceCollection();
+
+        services.AddApplication();
+        services.AddInfrastructure();
+
+        using var provider =
+            services.BuildServiceProvider();
+
+        var knowledgeService =
+            provider.GetRequiredService<IKnowledgeService>();
+
+        Assert.NotNull(knowledgeService);
+    }
 }

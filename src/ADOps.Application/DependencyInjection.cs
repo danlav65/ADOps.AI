@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using ADOps.Application.Investigation;
 using ADOps.Application.InvestigationDetails;
+using ADOps.Application.Knowledge;
 using ADOps.Application.Presentation;
 
 namespace ADOps.Application;
@@ -19,6 +20,10 @@ public static class DependencyInjection
 
         services.AddScoped<
             InvestigationDetailService>();
+
+        services.AddScoped<
+            IKnowledgeService,
+            KnowledgeService>();
 
         return services;
     }

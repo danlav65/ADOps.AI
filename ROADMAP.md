@@ -17,20 +17,28 @@ MVP-0 — Investigation Foundation
 
 MVP-1 — Operational Intelligence
 ────────────────────────────────
-MVP-1
-SFO P1 Demo Experience       ✅
-Investigation Dashboard      ✅
-Investigation Detail         ✅
-Evidence Explorer            ✅
-Evidence Detail              ✅
-Portal build                 ✅
+MVP-1 capability                    Status
+----------------------------------- ----------------
+SFO P1 Demo Experience              ✅ Complete
+Investigation Dashboard             ✅ Complete
+Investigation Detail                ✅ Complete
+Evidence Explorer                   ✅ Complete
+Evidence Detail                     ✅ Complete
+Portal build                        ✅ Complete
+Portal tests / build                ✅ Complete
+Navigation / Feature services       ⏸ Future architecture
 
 MVP-2 — Enterprise Knowledge
-────────────────────────────────
-⬜ Azure AI Search
-⬜ SITA Documentation
-⬜ Knowledge Retrieval
-⬜ Historical Incident Search
+──────────────────────────────
+MVP-2 capability                    Status
+----------------------------------- ----------------
+Knowledge domain contract           ✅ Complete
+Knowledge infrastructure boundary   ✅ Complete
+Knowledge application boundary      ✅ Complete
+Azure AI Search                     ○ Not started
+SITA Documentation                  ○ Not started
+Knowledge Retrieval                 ○ Not started
+Historical Incident Search          ○ Not started
 
 
 MVP-3 — Enterprise Operations
