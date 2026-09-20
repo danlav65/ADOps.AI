@@ -1,3 +1,4 @@
+using ADOps.Core.Enums;
 using ADOps.Core.Entities;
 using ADOps.Infrastructure.Knowledge;
 
@@ -6,6 +7,58 @@ namespace ADOps.Infrastructure.Tests.Knowledge;
 public sealed class InMemoryKnowledgeRetrieverTests
 {
     private readonly InMemoryKnowledgeRetriever _retriever = new();
+
+    [Fact]
+    public void Retrieve_ReturnsProvenanceForEveryMatch()
+    {
+        var results = _retriever.Retrieve(
+            new KnowledgeQuery
+            {
+                Query = "replication"
+            });
+
+        Assert.NotEmpty(results);
+
+        Assert.All(results, match =>
+        {
+            var provenance = Assert.IsType<KnowledgeSource>(
+                match.Provenance);
+
+            Assert.False(
+                string.IsNullOrWhiteSpace(provenance.SourceId));
+
+            Assert.Equal(
+                "ADOps AI Test Fixture",
+                provenance.Publisher);
+
+            Assert.Equal(
+                KnowledgeSourceType.Unknown,
+                provenance.SourceType);
+
+            Assert.Null(provenance.SourceUri);
+        });
+    }
+
+    [Fact]
+    public void Retrieve_PreservesDistinctFixtureSourceIds()
+    {
+        var results = _retriever.Retrieve(
+            new KnowledgeQuery
+            {
+                Query = "replication",
+                MaxResults = 10
+            });
+
+        var sourceIds = results
+            .Select(match => match.Provenance!.SourceId)
+            .ToArray();
+
+        Assert.NotEmpty(sourceIds);
+
+        Assert.Equal(
+            sourceIds.Length,
+            sourceIds.Distinct().Count());
+    }
 
     [Fact]
     public void Retrieve_ReturnsMatchingKnowledge()

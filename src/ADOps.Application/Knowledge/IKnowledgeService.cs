@@ -12,4 +12,10 @@ public interface IKnowledgeService
     /// </summary>
     IReadOnlyCollection<KnowledgeMatch> Retrieve(
         KnowledgeQuery query);
+
+    /// <summary>
+    /// Retrieves knowledge together with conflict-analysis status.
+    /// </summary>
+    KnowledgeRetrievalResult RetrieveWithContext(
+        KnowledgeQuery query);
 }

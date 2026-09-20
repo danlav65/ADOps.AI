@@ -25,4 +25,19 @@ public sealed class KnowledgeService : IKnowledgeService
 
         return _knowledgeRetriever.Retrieve(query);
     }
+
+    public KnowledgeRetrievalResult RetrieveWithContext(
+        KnowledgeQuery query)
+    {
+        ArgumentNullException.ThrowIfNull(query);
+
+        var matches = _knowledgeRetriever.Retrieve(query);
+
+        return new KnowledgeRetrievalResult
+        {
+            Matches = matches,
+            Conflicts = [],
+            RetrievedUtc = DateTimeOffset.UtcNow
+        };
+    }
 }

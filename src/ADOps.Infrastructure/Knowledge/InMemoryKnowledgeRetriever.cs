@@ -1,3 +1,4 @@
+using ADOps.Core.Enums;
 using ADOps.Core.Entities;
 using ADOps.Core.Interfaces;
 
@@ -8,22 +9,49 @@ namespace ADOps.Infrastructure.Knowledge;
 /// </summary>
 public sealed class InMemoryKnowledgeRetriever : IKnowledgeRetriever
 {
+    private static readonly DateTimeOffset FixtureRetrievedUtc =
+        new(2026, 1, 1, 0, 0, 0, TimeSpan.Zero);
+
     private static readonly IReadOnlyCollection<KnowledgeMatch> Knowledge =
     [
         new KnowledgeMatch
         {
             Source = "SITA AD Architecture",
             Description = "Active Directory replication failures can affect DNS, SYSVOL, GPO processing, and domain authentication.",
+            Provenance = new KnowledgeSource
+            {
+                SourceId = "fixture-sita-ad-architecture",
+                Title = "SITA AD Architecture",
+                Publisher = "ADOps AI Test Fixture",
+                SourceType = KnowledgeSourceType.Unknown,
+                RetrievedUtc = FixtureRetrievedUtc
+            }
         },
         new KnowledgeMatch
         {
             Source = "SITA AD Operations",
             Description = "Kerberos authentication issues should be investigated alongside domain controller replication health and patch baseline consistency.",
+            Provenance = new KnowledgeSource
+            {
+                SourceId = "fixture-sita-ad-operations",
+                Title = "SITA AD Operations",
+                Publisher = "ADOps AI Test Fixture",
+                SourceType = KnowledgeSourceType.Unknown,
+                RetrievedUtc = FixtureRetrievedUtc
+            }
         },
         new KnowledgeMatch
         {
             Source = "SITA Incident RCA",
             Description = "Patch baseline drift between domain controllers can be a contributing factor when investigating replication and authentication incidents.",
+            Provenance = new KnowledgeSource
+            {
+                SourceId = "fixture-sita-incident-rca",
+                Title = "SITA Incident RCA",
+                Publisher = "ADOps AI Test Fixture",
+                SourceType = KnowledgeSourceType.Unknown,
+                RetrievedUtc = FixtureRetrievedUtc
+            }
         }
     ];
 

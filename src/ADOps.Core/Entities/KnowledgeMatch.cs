@@ -6,6 +6,8 @@ public sealed class KnowledgeMatch : EntityBase
 
     public required string Description { get; init; }
 
+    public KnowledgeSource? Provenance { get; init; }
+
     public double SimilarityScore { get; private set; }
 
     public Guid? RelatedInvestigationId { get; init; }
