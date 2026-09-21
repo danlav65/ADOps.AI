@@ -88,6 +88,23 @@ public static class DependencyInjection
             IKnowledgeRetriever,
             InMemoryKnowledgeRetriever>();
 
+        services.AddSingleton<MicrosoftLearnSourcePolicy>();
+
+        services.AddSingleton<MicrosoftLearnDocumentFetcher>(
+            serviceProvider =>
+            {
+                var httpClient =
+                    MicrosoftLearnHttpClientFactory.CreateClient();
+
+                var sourcePolicy =
+                    serviceProvider.GetRequiredService<
+                        MicrosoftLearnSourcePolicy>();
+
+                return new MicrosoftLearnDocumentFetcher(
+                    httpClient,
+                    sourcePolicy);
+            });
+
         services.AddScoped<
             IRecommendationEngine,
             RecommendationEngine>();
