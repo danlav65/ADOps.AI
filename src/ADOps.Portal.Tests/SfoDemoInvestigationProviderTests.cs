@@ -275,6 +275,7 @@ public sealed class SfoDemoInvestigationProviderTests
                 Correlations = [],
                 RootCause = "Test root cause",
                 Recommendations = [],
+                SupportingKnowledge = [],
                 OverallConfidence = 0.75
             };
 

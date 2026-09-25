@@ -1,5 +1,6 @@
 using ADOps.Application.Investigation;
 using ADOps.Application.Presentation;
+using ADOps.Core.Enums;
 using ADOps.Core.Entities;
 using ADOps.Core.Entities.Replication;
 using ADOps.Core.Interfaces;
@@ -9,6 +10,7 @@ using ADOps.Infrastructure.Correlation;
 using ADOps.Infrastructure.Evidence;
 using ADOps.Infrastructure.Investigation;
 using ADOps.Infrastructure.Recommendations;
+using ADOps.Application.Knowledge;
 
 namespace ADOps.Application.Tests;
 
@@ -75,7 +77,8 @@ public sealed class InvestigationServiceTests
                 new CorrelationEngine(),
                 new RootCauseAnalyzer(),
                 new RecommendationEngine(),
-                new InvestigationPresenter());
+                new InvestigationPresenter(),
+                new NoOpKnowledgeService());
 
         // Act
 
@@ -345,7 +348,8 @@ public sealed class InvestigationServiceTests
                 new CorrelationEngine(),
                 new RootCauseAnalyzer(),
                 new RecommendationEngine(),
-                new InvestigationPresenter());
+                new InvestigationPresenter(),
+                new NoOpKnowledgeService());
 
         // Act
 
@@ -405,7 +409,8 @@ public sealed class InvestigationServiceTests
                 new CorrelationEngine(),
                 new RootCauseAnalyzer(),
                 new RecommendationEngine(),
-                new InvestigationPresenter());
+                new InvestigationPresenter(),
+                new NoOpKnowledgeService());
 
         var context =
             new CollectorContext
@@ -439,7 +444,8 @@ public sealed class InvestigationServiceTests
                 new CorrelationEngine(),
                 new RootCauseAnalyzer(),
                 new RecommendationEngine(),
-                new InvestigationPresenter());
+                new InvestigationPresenter(),
+                new NoOpKnowledgeService());
 
         var investigation =
             new ADOps.Core.Entities.Investigation
@@ -476,7 +482,8 @@ public sealed class InvestigationServiceTests
                 new CorrelationEngine(),
                 new RootCauseAnalyzer(),
                 new RecommendationEngine(),
-                new InvestigationPresenter());
+                new InvestigationPresenter(),
+                new NoOpKnowledgeService());
 
         var investigation =
             new ADOps.Core.Entities.Investigation
@@ -513,7 +520,8 @@ public sealed class InvestigationServiceTests
                 new CorrelationEngine(),
                 new RootCauseAnalyzer(),
                 new RecommendationEngine(),
-                new InvestigationPresenter());
+                new InvestigationPresenter(),
+                new NoOpKnowledgeService());
 
         var investigation =
             new ADOps.Core.Entities.Investigation
@@ -558,6 +566,7 @@ public sealed class InvestigationServiceTests
             "Investigation snapshot does not contain topology information.",
             exception.Message);
     }
+    
     [Fact]
     public async Task InvestigateAsync_PropagatesSnapshotBuilderFailure()
     {
@@ -569,7 +578,8 @@ public sealed class InvestigationServiceTests
                 new CorrelationEngine(),
                 new RootCauseAnalyzer(),
                 new RecommendationEngine(),
-                new InvestigationPresenter());
+                new InvestigationPresenter(),
+                new NoOpKnowledgeService());
 
         var investigation =
             new ADOps.Core.Entities.Investigation
@@ -607,6 +617,187 @@ public sealed class InvestigationServiceTests
         Assert.Equal(
             "Snapshot builder should not be called for snapshot-based investigation.",
             exception.Message);
+    }
+
+    [Fact]
+    public async Task InvestigateAsync_RetrievesKnowledgeForRootCause()
+    {
+        // Arrange
+        var collectedUtc =
+            new DateTimeOffset(
+                2026,
+                7,
+                9,
+                12,
+                0,
+                0,
+                TimeSpan.Zero);
+
+        var investigation =
+            new ADOps.Core.Entities.Investigation
+            {
+                InvestigationNumber = "INV-SFO-20260709",
+
+                Incident = new Incident
+                {
+                    IncidentNumber = "INC-SFO-20260709",
+                    Title = "AD replication failure",
+                    Environment = "Production",
+                    SiteCode = "SFO",
+                    DetectedUtc = collectedUtc
+                },
+
+                StartedUtc = collectedUtc
+            };
+
+        var snapshot =
+            new InvestigationSnapshot
+        {
+            InvestigationId =
+                investigation.Id.ToString(),
+
+            StartedUtc =
+                collectedUtc,
+
+            CompletedUtc =
+                collectedUtc.AddMinutes(5),
+
+            OperationalContext =
+                new OperationalContext
+                {
+                    Target = "apcflex.aero",
+                    Site = "SFO",
+                    Environment = "Production"
+                },
+
+            Topology =
+                new TopologyContext
+                {
+                    ReplicationPartners =
+                    [
+                        new ReplicationPartnerRelationship
+                        {
+                            SourceDomainController =
+                                "SFOFLEX-DC1",
+
+                            PartnerDomainController =
+                                "ZUSW-DC1",
+
+                            SourceSite = "SFO",
+                            PartnerSite = "ZUSW",
+                            DiscoveredUtc = collectedUtc,
+                            IsActive = true
+                        }
+                    ]
+                }
+        };
+
+    snapshot.Evidence.AddRange(
+    [
+        new Evidence
+        {
+            EvidenceId = "EV-000001",
+            InvestigationId =
+                investigation.Id.ToString(),
+            Type = EvidenceType.ReplicationFailure,
+            Source = "SFOFLEX-DC1",
+            Target = "ZUSW-DC1",
+            CollectedUtc = collectedUtc,
+            Summary =
+                "Replication failed from SFOFLEX-DC1 to ZUSW-DC1."
+        },
+
+        new Evidence
+        {
+            EvidenceId = "EV-000002",
+            InvestigationId =
+                investigation.Id.ToString(),
+            Type = EvidenceType.RpcFailure,
+            Source = "SFOFLEX-DC1",
+            Target = "ZUSW-DC1",
+            CollectedUtc = collectedUtc,
+            Summary =
+                "RPC connectivity failed from SFOFLEX-DC1 to ZUSW-DC1."
+        },
+
+        new Evidence
+        {
+            EvidenceId = "EV-000003",
+            InvestigationId =
+                investigation.Id.ToString(),
+            Type = EvidenceType.Patch,
+            Source = "ReportBundle",
+            Target = "SFOFLEX-DC1",
+            CollectedUtc = collectedUtc,
+            Summary =
+                "Patch baseline is missing on SFOFLEX-DC1."
+        },
+
+        new Evidence
+        {
+            EvidenceId = "EV-000004",
+            InvestigationId =
+                investigation.Id.ToString(),
+            Type = EvidenceType.Patch,
+            Source = "ReportBundle",
+            Target = "ZUSW-DC1",
+            CollectedUtc = collectedUtc,
+            Summary =
+                "Patch baseline is present on ZUSW-DC1."
+        }
+    ]);
+
+    
+
+        var knowledgeService =
+            new RecordingKnowledgeService();
+
+        var service =
+            new InvestigationService(
+                new ThrowingSnapshotBuilder(),
+                new CorrelationEngine(),
+                new RootCauseAnalyzer(),
+                new RecommendationEngine(),
+                new InvestigationPresenter(),
+                knowledgeService);
+
+        // Act
+        var report =
+            await service.InvestigateAsync(
+                investigation,
+                snapshot);
+
+        // Assert
+        var supportingKnowledge =
+            Assert.Single(
+                report.SupportingKnowledge);
+
+        Assert.Equal(
+            "Microsoft Learn AD Replication",
+            supportingKnowledge.Source);
+
+        Assert.Equal(
+            "RPC connectivity should be validated when investigating replication failures.",
+            supportingKnowledge.Description);
+
+        Assert.Equal(
+            "MicrosoftDocumentation",
+            supportingKnowledge.SourceType);
+
+        Assert.Equal(
+            "https://learn.microsoft.com/ad-replication",
+            supportingKnowledge.SourceUri);
+
+        Assert.NotNull(
+            knowledgeService.ReceivedQuery);
+
+        Assert.False(
+            string.IsNullOrWhiteSpace(
+                knowledgeService.ReceivedQuery.Query));
+
+        Assert.Equal(
+            "SFO",
+            knowledgeService.ReceivedQuery.Site);
     }
 
     private sealed class FakeReplicationCollector
@@ -815,8 +1006,113 @@ public sealed class InvestigationServiceTests
                 "Snapshot builder should not be called for snapshot-based investigation.");
         }
     }
+
+    private sealed class RecordingKnowledgeService
+        : IKnowledgeService
+    {
+        public KnowledgeQuery? ReceivedQuery
+        {
+            get;
+            private set;
+        }
+
+    public IReadOnlyCollection<KnowledgeMatch> Retrieve(
+        KnowledgeQuery query)
+    {
+        ReceivedQuery = query;
+
+        return [];
+    }
+
+    public KnowledgeRetrievalResult RetrieveWithContext(
+        KnowledgeQuery query)
+    {
+        ReceivedQuery = query;
+
+        return new KnowledgeRetrievalResult
+        {
+            Matches =
+            [
+                new KnowledgeMatch
+                {
+                    Source =
+                        "Microsoft Learn AD Replication",
+
+                    Description =
+                        "RPC connectivity should be validated when investigating replication failures.",
+
+                    Provenance =
+                        new KnowledgeSource
+                        {
+                            SourceId =
+                                "https://learn.microsoft.com/ad-replication",
+
+                            Title =
+                                "Microsoft Learn AD Replication",
+
+                            Publisher = "Microsoft",
+
+                            SourceType =
+                                KnowledgeSourceType.MicrosoftDocumentation,
+
+                            SourceUri =
+                                new Uri(
+                                    "https://learn.microsoft.com/ad-replication"),
+
+                            RetrievedUtc =
+                                new DateTimeOffset(
+                                    2026,
+                                    7,
+                                    9,
+                                    12,
+                                    0,
+                                    0,
+                                    TimeSpan.Zero)
+                        }
+                }
+            ],
+
+            Conflicts = [],
+
+            RetrievedUtc =
+                new DateTimeOffset(
+                    2026,
+                    7,
+                    9,
+                    12,
+                    0,
+                    0,
+                    TimeSpan.Zero)
+        };
+    }
 }
 
+private sealed class NoOpKnowledgeService
+    : IKnowledgeService
+{
+    public IReadOnlyCollection<KnowledgeMatch> Retrieve(
+        KnowledgeQuery query)
+    {
+        return [];
+    }
 
-
-
+    public KnowledgeRetrievalResult RetrieveWithContext(
+        KnowledgeQuery query)
+    {
+        return new KnowledgeRetrievalResult
+        {
+            Matches = [],
+            Conflicts = [],
+            RetrievedUtc =
+                new DateTimeOffset(
+                    2026,
+                    7,
+                    9,
+                    12,
+                    0,
+                    0,
+                    TimeSpan.Zero)
+        };
+    }
+}
+}

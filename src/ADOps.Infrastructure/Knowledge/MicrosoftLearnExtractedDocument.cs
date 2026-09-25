@@ -15,4 +15,11 @@ public sealed class MicrosoftLearnExtractedDocument
     public required IReadOnlyCollection<string> Headings { get; init; }
 
     public required DateTimeOffset RetrievedUtc { get; init; }
+
+    /// <summary>
+    /// Optional structured representation of the article.
+    /// Older callers can continue using ArticleText alone.
+    /// </summary>
+    public IReadOnlyCollection<MicrosoftLearnContentBlock> Blocks
+        { get; init; } = [];
 }

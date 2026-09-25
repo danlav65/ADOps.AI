@@ -120,7 +120,8 @@ public sealed class InvestigationPresenterTests
                 evidence,
                 findings,
                 rootCauseAnalysis,
-                recommendations);
+                recommendations,
+                CreateEmptyKnowledge(collectedUtc));
 
         Assert.Equal(
             investigation.Id.ToString(),
@@ -273,7 +274,8 @@ public sealed class InvestigationPresenterTests
                 [],
                 findings,
                 rootCauseAnalysis,
-                []);
+                [],
+                CreateEmptyKnowledge(collectedUtc));
 
         Assert.Equal(
             0.95,
@@ -315,7 +317,8 @@ public sealed class InvestigationPresenterTests
                 [],
                 findings,
                 rootCauseAnalysis,
-                []);
+                [],
+                CreateEmptyKnowledge(collectedUtc));
 
         Assert.Equal(
             0.70,
@@ -350,7 +353,8 @@ public sealed class InvestigationPresenterTests
                 [],
                 [],
                 rootCauseAnalysis,
-                []);
+                [],
+                CreateEmptyKnowledge(collectedUtc));
 
         Assert.Equal(
             0,
@@ -417,6 +421,17 @@ public sealed class InvestigationPresenterTests
         };
     }
 
+    private static KnowledgeRetrievalResult CreateEmptyKnowledge(
+        DateTimeOffset retrievedUtc)
+    {
+        return new KnowledgeRetrievalResult
+        {
+            Matches = [],
+            Conflicts = [],
+            RetrievedUtc = retrievedUtc
+        };
+    }
+
     [Fact]
     public void Build_UsesFallbackExecutiveSummaryValuesWhenRcaValuesAreMissing()
     {
@@ -454,7 +469,8 @@ public sealed class InvestigationPresenterTests
                 [],
                 [],
                 rootCauseAnalysis,
-                []);
+                [],
+                CreateEmptyKnowledge(collectedUtc));
 
         Assert.Equal(
             "Investigation INV-SFO-20260709 identified 0 correlated findings.",
@@ -494,47 +510,159 @@ public sealed class InvestigationPresenterTests
         Assert.Throws<ArgumentNullException>(
             () =>
                 presenter.Build(
-                    null!,
-                    [],
-                    [],
-                    rootCauseAnalysis,
-                    []));
-
-        Assert.Throws<ArgumentNullException>(
-            () =>
-                presenter.Build(
-                    investigation,
-                    null!,
-                    [],
-                    rootCauseAnalysis,
-                    []));
-
-        Assert.Throws<ArgumentNullException>(
-            () =>
-                presenter.Build(
-                    investigation,
-                    [],
-                    null!,
-                    rootCauseAnalysis,
-                    []));
-
-        Assert.Throws<ArgumentNullException>(
-            () =>
-                presenter.Build(
-                    investigation,
-                    [],
-                    [],
-                    null!,
-                    []));
-
-        Assert.Throws<ArgumentNullException>(
-            () =>
-                presenter.Build(
                     investigation,
                     [],
                     [],
                     rootCauseAnalysis,
+                    [],
                     null!));
+
+        Assert.Throws<ArgumentNullException>(
+            () =>
+                presenter.Build(
+                    investigation,
+                    null!,
+                    [],
+                    rootCauseAnalysis,
+                    [],
+                    CreateEmptyKnowledge(collectedUtc)));
+
+        Assert.Throws<ArgumentNullException>(
+            () =>
+                presenter.Build(
+                    investigation,
+                    [],
+                    null!,
+                    rootCauseAnalysis,
+                    [],
+                    CreateEmptyKnowledge(collectedUtc)));
+
+        Assert.Throws<ArgumentNullException>(
+            () =>
+                presenter.Build(
+                    investigation,
+                    [],
+                    [],
+                    null!,
+                    [],
+                    CreateEmptyKnowledge(collectedUtc)));
+
+        Assert.Throws<ArgumentNullException>(
+            () =>
+                presenter.Build(
+                    investigation,
+                    [],
+                    [],
+                    rootCauseAnalysis,
+                    null!,
+                    CreateEmptyKnowledge(collectedUtc)));
+
+        Assert.Throws<ArgumentNullException>(
+            () =>
+                presenter.Build(
+                    null!,
+                    [],
+                    [],
+                    rootCauseAnalysis,
+                    [],
+                    CreateEmptyKnowledge(collectedUtc)));
     }
 
+    [Fact]
+    public void Build_MapsSupportingKnowledgeSeparatelyFromEvidence()
+    {
+        // Arrange
+        var collectedUtc =
+            new DateTimeOffset(
+                2026,
+                7,
+                9,
+                12,
+                0,
+                0,
+                TimeSpan.Zero);
+
+        var investigation =
+            CreateInvestigation(collectedUtc);
+
+        var rootCauseAnalysis =
+            CreateRootCauseAnalysis();
+
+        var knowledge =
+            new KnowledgeRetrievalResult
+            {
+                Matches =
+                [
+                    new KnowledgeMatch
+                    {
+                        Source =
+                            "Troubleshooting Active Directory Replication Problems",
+
+                        Description =
+                            "Replication failures can result from RPC connectivity problems.",
+
+                        Provenance =
+                            new KnowledgeSource
+                            {
+                                SourceId =
+                                    "https://learn.microsoft.com/test",
+
+                                Title =
+                                    "Troubleshooting Active Directory Replication Problems",
+
+                                Publisher = "Microsoft",
+
+                                SourceType =
+                                    KnowledgeSourceType.MicrosoftDocumentation,
+
+                                SourceUri =
+                                    new Uri(
+                                        "https://learn.microsoft.com/test"),
+
+                                RetrievedUtc =
+                                    collectedUtc
+                            }
+                    }
+                ],
+
+                Conflicts = [],
+
+                RetrievedUtc =
+                    collectedUtc
+            };
+
+        var presenter =
+            new InvestigationPresenter();
+
+        // Act
+        var report =
+            presenter.Build(
+                investigation,
+                [],
+                [],
+                rootCauseAnalysis,
+                [],
+                knowledge);
+
+        // Assert
+        var item =
+            Assert.Single(
+                report.SupportingKnowledge);
+
+        Assert.Equal(
+            "Troubleshooting Active Directory Replication Problems",
+            item.Source);
+
+        Assert.Equal(
+            "Replication failures can result from RPC connectivity problems.",
+            item.Description);
+
+        Assert.Equal(
+            "MicrosoftDocumentation",
+            item.SourceType);
+
+        Assert.Equal(
+            "https://learn.microsoft.com/test",
+            item.SourceUri);
+    }
 }

@@ -84,9 +84,11 @@ public static class DependencyInjection
             IEvidenceNormalizer,
             EvidenceNormalizer>();
 
+        services.AddScoped<InMemoryKnowledgeRetriever>();
+
         services.AddScoped<
             IKnowledgeRetriever,
-            InMemoryKnowledgeRetriever>();
+            CompositeKnowledgeRetriever>();
 
         services.AddSingleton<MicrosoftLearnSourcePolicy>();
 
@@ -105,6 +107,22 @@ public static class DependencyInjection
                     sourcePolicy);
             });
 
+        services.AddSingleton<
+            IMicrosoftLearnDocumentExtractor,
+            MicrosoftLearnDocumentExtractor>();
+
+        services.AddSingleton<
+            MicrosoftLearnDocumentIngestionService>();
+
+        services.AddSingleton<
+            MicrosoftLearnDocumentChunker>();
+
+        services.AddSingleton<
+            InMemoryKnowledgeChunkIndex>();
+
+        services.AddScoped<
+            MicrosoftLearnKnowledgeIndexingService>();
+        
         services.AddScoped<
             IRecommendationEngine,
             RecommendationEngine>();

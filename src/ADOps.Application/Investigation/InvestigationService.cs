@@ -1,3 +1,4 @@
+using ADOps.Application.Knowledge;
 using ADOps.Application.Presentation;
 using ADOps.Application.Reports;
 using ADOps.Core.Entities;
@@ -12,13 +13,15 @@ public sealed class InvestigationService : IInvestigationService
     private readonly IRootCauseAnalyzer _rootCauseAnalyzer;
     private readonly IRecommendationEngine _recommendationEngine;
     private readonly InvestigationPresenter _presenter;
+    private readonly IKnowledgeService _knowledgeService;
 
     public InvestigationService(
         IInvestigationSnapshotBuilder snapshotBuilder,
         ICorrelationEngine correlationEngine,
         IRootCauseAnalyzer rootCauseAnalyzer,
         IRecommendationEngine recommendationEngine,
-        InvestigationPresenter presenter)
+        InvestigationPresenter presenter,
+        IKnowledgeService knowledgeService)
     {
         _snapshotBuilder =
             snapshotBuilder ??
@@ -39,6 +42,10 @@ public sealed class InvestigationService : IInvestigationService
         _presenter =
             presenter ??
             throw new ArgumentNullException(nameof(presenter));
+
+        _knowledgeService =
+            knowledgeService ??
+            throw new ArgumentNullException(nameof(knowledgeService));
     }
 
     public async Task<InvestigationReport> InvestigateAsync(
@@ -98,11 +105,20 @@ public sealed class InvestigationService : IInvestigationService
                 rootCauseAnalysis,
                 findings);
 
+        var knowledge =
+            _knowledgeService.RetrieveWithContext(
+                new KnowledgeQuery
+                {
+                    Query = rootCauseAnalysis.RootCause,
+                    Site = investigation.Incident.SiteCode
+                });
+        
         return _presenter.Build(
             investigation,
             snapshot.Evidence,
             findings,
             rootCauseAnalysis,
-            recommendations);
+            recommendations,
+            knowledge);
     }
 }

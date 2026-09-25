@@ -10,13 +10,15 @@ public sealed class InvestigationPresenter
         IReadOnlyCollection<Evidence> evidence,
         IReadOnlyCollection<CorrelatedFinding> findings,
         RootCauseAnalysis rootCauseAnalysis,
-        IReadOnlyCollection<Recommendation> recommendations)
+        IReadOnlyCollection<Recommendation> recommendations,
+        KnowledgeRetrievalResult knowledge)
     {
         ArgumentNullException.ThrowIfNull(investigation);
         ArgumentNullException.ThrowIfNull(evidence);
         ArgumentNullException.ThrowIfNull(findings);
         ArgumentNullException.ThrowIfNull(rootCauseAnalysis);
         ArgumentNullException.ThrowIfNull(recommendations);
+        ArgumentNullException.ThrowIfNull(knowledge);
 
         return new InvestigationReport
         {
@@ -55,7 +57,12 @@ public sealed class InvestigationPresenter
 
             OverallConfidence =
                 rootCauseAnalysis.Confidence
-                ?? CalculateConfidence(findings)
+                ?? CalculateConfidence(findings),
+
+            SupportingKnowledge =
+                knowledge.Matches
+                    .Select(MapSupportingKnowledge)
+                    .ToList(),
         };
     }
 
@@ -106,6 +113,23 @@ public sealed class InvestigationPresenter
             IsValid = evidence.IsValid,
             ErrorCode = evidence.ErrorCode,
             Details = evidence.Details
+        };
+    }
+
+    private static SupportingKnowledgeItem MapSupportingKnowledge(
+        KnowledgeMatch match)
+    {
+        return new SupportingKnowledgeItem
+        {
+            Source = match.Source,
+
+            Description = match.Description,
+
+            SourceType =
+                match.Provenance?.SourceType.ToString(),
+
+            SourceUri =
+                match.Provenance?.SourceUri?.AbsoluteUri
         };
     }
 

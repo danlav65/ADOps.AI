@@ -19,4 +19,7 @@ public sealed class InvestigationReport
     public required IReadOnlyCollection<RecommendationItem> Recommendations { get; init; }
 
     public required double OverallConfidence { get; init; }
+
+    public required IReadOnlyCollection<SupportingKnowledgeItem>
+        SupportingKnowledge { get; init; }
 }

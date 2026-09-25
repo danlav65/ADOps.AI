@@ -7,6 +7,63 @@ public sealed class MicrosoftLearnDocumentExtractorTests
     private readonly MicrosoftLearnDocumentExtractor _extractor = new();
 
     [Fact]
+    public void Extract_PopulatesStructuredContentBlocksInDocumentOrder()
+    {
+        // Arrange
+        var document = CreateDocument("""
+        <main>
+            <article>
+                <h1>Replication troubleshooting</h1>
+                <p>Run these commands:</p>
+                <pre><code>repadmin /replsummary
+        repadmin /showrepl</code></pre>
+                <h2>Validation</h2>
+                <p>Review the results.</p>
+            </article>
+        </main>
+        """);
+
+        // Act
+        var result = _extractor.Extract(document);
+
+        // Assert
+        var blocks = result.Blocks.ToArray();
+
+        Assert.Equal(5, blocks.Length);
+
+        Assert.Equal(
+            [
+                MicrosoftLearnContentBlockType.Heading,
+                MicrosoftLearnContentBlockType.Paragraph,
+                MicrosoftLearnContentBlockType.Code,
+                MicrosoftLearnContentBlockType.Heading,
+                MicrosoftLearnContentBlockType.Paragraph
+            ],
+            blocks.Select(block => block.Type).ToArray());
+
+        Assert.Equal(
+            [
+                "Replication troubleshooting",
+                "Run these commands:",
+                "repadmin /replsummary\nrepadmin /showrepl",
+                "Validation",
+                "Review the results."
+            ],
+            blocks.Select(block => block.Content).ToArray());
+
+        Assert.Equal(
+            [0, 1, 2, 3, 4],
+            blocks.Select(block => block.Sequence).ToArray());
+
+        // Preserve the existing plain-text representation.
+        Assert.Equal(
+            string.Join(
+                "\n",
+                blocks.Select(block => block.Content)),
+            result.ArticleText);
+    }
+    
+    [Fact]
     public void Extract_PreservesNestedTroubleshootingProcedure()
     {
         var document = CreateDocument("""

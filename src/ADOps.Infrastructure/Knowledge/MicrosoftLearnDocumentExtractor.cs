@@ -50,7 +50,13 @@ public sealed class MicrosoftLearnDocumentExtractor
             .Where(value => !string.IsNullOrWhiteSpace(value))
             .ToArray();
 
-        var articleText = ExtractArticleText(article);
+        var blocks = new List<MicrosoftLearnContentBlock>();
+
+        AppendBlocks(article, blocks);
+
+        var articleText = string.Join(
+            "\n",
+            blocks.Select(block => block.Content));
 
         if (string.IsNullOrWhiteSpace(articleText))
         {
@@ -64,22 +70,14 @@ public sealed class MicrosoftLearnDocumentExtractor
             Title = title,
             ArticleText = articleText,
             Headings = headings,
-            RetrievedUtc = document.RetrievedUtc
+            RetrievedUtc = document.RetrievedUtc,
+            Blocks = blocks
         };
-    }
-
-    private static string ExtractArticleText(IElement article)
-    {
-        var blocks = new List<string>();
-
-        AppendBlocks(article, blocks);
-
-        return string.Join("\n", blocks);
     }
 
     private static void AppendBlocks(
         IElement parent,
-        List<string> blocks)
+        List<MicrosoftLearnContentBlock> blocks)
     {
         foreach (var child in parent.Children)
         {
@@ -87,28 +85,33 @@ public sealed class MicrosoftLearnDocumentExtractor
 
             if (tag == "pre")
             {
-                var code = child.TextContent
-                    .Replace("\r\n", "\n")
-                    .Replace('\r', '\n')
-                    .Trim('\n');
+                var code = ExtractCode(child);
 
-                if (!string.IsNullOrWhiteSpace(code))
-                {
-                    blocks.Add(code);
-                }
+                AddBlock(
+                    blocks,
+                    MicrosoftLearnContentBlockType.Code,
+                    code);
 
                 continue;
             }
 
             if (tag is "h1" or "h2" or "h3" or
-                "h4" or "h5" or "h6" or "p")
+                "h4" or "h5" or "h6")
             {
-                var text = Normalize(child.TextContent);
+                AddBlock(
+                    blocks,
+                    MicrosoftLearnContentBlockType.Heading,
+                    Normalize(child.TextContent));
 
-                if (!string.IsNullOrWhiteSpace(text))
-                {
-                    blocks.Add(text);
-                }
+                continue;
+            }
+
+            if (tag == "p")
+            {
+                AddBlock(
+                    blocks,
+                    MicrosoftLearnContentBlockType.Paragraph,
+                    Normalize(child.TextContent));
 
                 continue;
             }
@@ -131,19 +134,17 @@ public sealed class MicrosoftLearnDocumentExtractor
             }
             else
             {
-                var text = Normalize(child.TextContent);
-
-                if (!string.IsNullOrWhiteSpace(text))
-                {
-                    blocks.Add(text);
-                }
+                AddBlock(
+                    blocks,
+                    MicrosoftLearnContentBlockType.Paragraph,
+                    Normalize(child.TextContent));
             }
         }
     }
 
     private static void AppendTable(
         IElement table,
-        List<string> blocks)
+        List<MicrosoftLearnContentBlock> blocks)
     {
         foreach (var row in table.QuerySelectorAll("tr"))
         {
@@ -158,13 +159,16 @@ public sealed class MicrosoftLearnDocumentExtractor
                 continue;
             }
 
-            blocks.Add(string.Join(" | ", cells));
+            AddBlock(
+                blocks,
+                MicrosoftLearnContentBlockType.TableRow,
+                string.Join(" | ", cells));
         }
     }
-    
+
     private static void AppendList(
         IElement list,
-        List<string> blocks,
+        List<MicrosoftLearnContentBlock> blocks,
         int depth = 0)
     {
         var ordered = list.LocalName == "ol";
@@ -178,8 +182,8 @@ public sealed class MicrosoftLearnDocumentExtractor
                 ? $"{index}. "
                 : "- ";
 
-            // Capture the item's own text without flattening nested lists
-            // or code blocks into it.
+            // Capture the item's own text without flattening
+            // nested lists or code blocks into it.
             var ownText = Normalize(string.Join(
                 " ",
                 item.ChildNodes
@@ -197,7 +201,10 @@ public sealed class MicrosoftLearnDocumentExtractor
 
             if (!string.IsNullOrWhiteSpace(ownText))
             {
-                blocks.Add(indent + prefix + ownText);
+                AddBlock(
+                    blocks,
+                    MicrosoftLearnContentBlockType.ListItem,
+                    indent + prefix + ownText);
             }
 
             foreach (var child in item.Children)
@@ -208,23 +215,23 @@ public sealed class MicrosoftLearnDocumentExtractor
                 }
                 else if (child.LocalName == "pre")
                 {
-                    AppendIndentedCode(child, blocks, depth + 1);
+                    AppendIndentedCode(
+                        child,
+                        blocks,
+                        depth + 1);
                 }
-        }
+            }
 
-        index++;
+            index++;
         }
     }
 
     private static void AppendIndentedCode(
         IElement pre,
-        List<string> blocks,
+        List<MicrosoftLearnContentBlock> blocks,
         int depth)
     {
-        var code = pre.TextContent
-            .Replace("\r\n", "\n")
-            .Replace('\r', '\n')
-            .Trim('\n');
+        var code = ExtractCode(pre);
 
         if (string.IsNullOrWhiteSpace(code))
         {
@@ -233,12 +240,43 @@ public sealed class MicrosoftLearnDocumentExtractor
 
         var indent = new string(' ', depth * 2);
 
-        foreach (var line in code.Split('\n'))
-        {
-            blocks.Add(indent + line);
-        }
+        var indentedCode = string.Join(
+            "\n",
+            code.Split('\n')
+                .Select(line => indent + line));
+
+        AddBlock(
+            blocks,
+            MicrosoftLearnContentBlockType.Code,
+            indentedCode);
     }
-    
+
+    private static string ExtractCode(IElement pre)
+    {
+        return pre.TextContent
+            .Replace("\r\n", "\n")
+            .Replace('\r', '\n')
+            .Trim('\n');
+    }
+
+    private static void AddBlock(
+        List<MicrosoftLearnContentBlock> blocks,
+        MicrosoftLearnContentBlockType type,
+        string content)
+    {
+        if (string.IsNullOrWhiteSpace(content))
+        {
+            return;
+        }
+
+        blocks.Add(new MicrosoftLearnContentBlock
+        {
+            Type = type,
+            Content = content,
+            Sequence = blocks.Count
+        });
+    }
+
     private static string Normalize(string value)
     {
         return Regex.Replace(
