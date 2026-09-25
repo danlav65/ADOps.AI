@@ -140,9 +140,44 @@
                         }
                     </div>
                 }
+                </div>
             </div>
         </div>
-    </div>
     }
 
+    @if (Model.Report!.Recommendations.Count > 0)
+    {
+        <div class="card shadow-sm mt-4">
+            <div class="card-header">
+                Recommendations
+            </div>
+
+            <div class="card-body">
+                <p class="text-muted">
+                    Recommended actions based on the investigation findings.
+                </p>
+
+                <div class="list-group list-group-flush">
+                    @foreach (var recommendation in Model.Report.Recommendations)
+                    {
+                        <div class="list-group-item px-0">
+                            <div class="d-flex flex-column flex-md-row justify-content-between gap-2 mb-2">
+                                <h5 class="mb-0">
+                                    @recommendation.Action
+                                </h5>
+
+                                <span class="badge text-bg-secondary align-self-start">
+                                    @recommendation.Priority
+                                </span>
+                            </div>
+
+                            <p class="mb-0">
+                                @recommendation.Reason
+                            </p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
 </div>
