@@ -101,4 +101,48 @@
         </div>
     }
 
+    @if (Model.Report!.Correlations.Count > 0)
+    {
+        <div class="card shadow-sm mt-4">
+            <div class="card-header">
+                Correlation Findings
+            </div>
+
+            <div class="card-body">
+                <p class="text-muted">
+                    Relationships identified across the collected investigation evidence.
+                </p>
+
+            <div class="list-group list-group-flush">
+                @foreach (var correlation in Model.Report.Correlations)
+                {
+                    <div class="list-group-item px-0">
+                        <div class="d-flex flex-column flex-md-row justify-content-between gap-2 mb-2">
+                            <h5 class="mb-0">
+                                @correlation.Type
+                            </h5>
+
+                            <span class="badge text-bg-secondary align-self-start">
+                                @correlation.Confidence.ToString("P0")
+                            </span>
+                        </div>
+
+                        <p class="mb-2">
+                            @correlation.Summary
+                        </p>
+
+                        @if (correlation.EvidenceIds.Count > 0)
+                        {
+                            <div class="small text-muted">
+                                Evidence:
+                                @string.Join(", ", correlation.EvidenceIds)
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    }
+
 </div>
