@@ -135,7 +135,15 @@
                         {
                             <div class="small text-muted">
                                 Evidence:
-                                @string.Join(", ", correlation.EvidenceIds)
+
+                                @foreach (var evidenceId in correlation.EvidenceIds)
+                                {
+                                    <a asp-page="/Investigation/Evidence/Details"
+                                        asp-route-id="@evidenceId"
+                                        class="text-decoration-none me-2">
+                                         <code>@evidenceId</code>
+                                    </a>
+                                }
                             </div>
                         }
                     </div>
