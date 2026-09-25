@@ -62,51 +62,6 @@
                 </div>
             </div>
 
-        @if (Model.SupportingKnowledge.Count > 0)
-        {
-            <div class="card mt-4">
-                <div class="card-header">
-                    Supporting Knowledge
-                </div>
-
-                <div class="card-body">
-                    <p class="text-muted">
-                        Reference material related to the investigation analysis.
-                    </p>
-
-                    <div class="list-group list-group-flush">
-                        @foreach (var item in Model.SupportingKnowledge)
-                        {
-                            <div class="list-group-item px-0">
-                                <h5 class="mb-1">
-                                    @item.Source
-                                </h5>
-
-                                <p class="mb-2">
-                                    @item.Description
-                                </p>
-
-                                @if (!string.IsNullOrWhiteSpace(item.SourceType))
-                                {
-                                    <div class="small text-muted mb-1">
-                                        Source type:
-                                        @item.SourceType
-                                    </div>
-                                }
-
-                                @if (!string.IsNullOrWhiteSpace(item.SourceUri))
-                                {
-                                    <div class="small text-muted text-break">
-                                        @item.SourceUri
-                                    </div>
-                                }
-                            </div>
-                        }
-                    </div>
-                </div>
-            </div>
-        }
-
             <div class="col-md-6">
                 <div class="card h-100">
                     <div class="card-header">
@@ -186,5 +141,50 @@
             </div>
 
         </div>
+
+        @if (Model.SupportingKnowledge.Count > 0)
+        {
+            <div class="card mt-4">
+                <div class="card-header">
+                    Supporting Knowledge
+                </div>
+
+                <div class="card-body">
+                    <p class="text-muted">
+                        Reference material related to the investigation analysis.
+                    </p>
+
+                    <div class="list-group list-group-flush">
+                        @foreach (var item in Model.SupportingKnowledge)
+                        {
+                            <div class="list-group-item px-0">
+                                <h5 class="mb-1">
+                                    @item.Source
+                                </h5>
+
+                                <p class="mb-2">
+                                    @item.Description
+                                </p>
+
+                                @if (!string.IsNullOrWhiteSpace(item.SourceType))
+                                {
+                                    <div class="small text-muted mb-1">
+                                        Source type:
+                                        @item.SourceType
+                                    </div>
+                                }
+
+                                @if (!string.IsNullOrWhiteSpace(item.SourceUri))
+                                {
+                                    <div class="small text-muted text-break">
+                                        @item.SourceUri
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
     }
 </div>
