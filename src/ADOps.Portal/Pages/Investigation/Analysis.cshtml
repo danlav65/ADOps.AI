@@ -104,8 +104,13 @@
     @if (Model.Report!.Correlations.Count > 0)
     {
         <div class="card shadow-sm mt-4">
-            <div class="card-header">
-                Correlation Findings
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span>Correlation Findings</span>
+
+                <a asp-page="/Investigation/Evidence/Index"
+                    class="btn btn-sm btn-outline-primary">
+                     View all evidence
+                </a>
             </div>
 
             <div class="card-body">
@@ -113,7 +118,7 @@
                     Relationships identified across the collected investigation evidence.
                 </p>
 
-            <div class="list-group list-group-flush">
+                <div class="list-group list-group-flush">
                 @foreach (var correlation in Model.Report.Correlations)
                 {
                     <div class="list-group-item px-0">
