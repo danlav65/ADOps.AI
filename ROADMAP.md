@@ -44,7 +44,7 @@ In-memory knowledge index                ✅ Complete
 Composite knowledge retrieval            ✅ Complete
 Investigation supporting knowledge       ✅ Complete
 Searchable knowledge-store abstraction   ○ Not started
-Async enterprise retrieval boundary      ○ Not started
+Async enterprise retrieval boundary      ✅ Complete
 Azure AI Search                          ○ Not started
 SITA Documentation                       ○ Not started
 Historical Incident Search               ○ Not started

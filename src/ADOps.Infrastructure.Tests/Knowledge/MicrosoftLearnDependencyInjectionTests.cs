@@ -107,7 +107,7 @@ public sealed class MicrosoftLearnDependencyInjectionTests
     }
 
     [Fact]
-    public void AddInfrastructure_IndexedKnowledgeIsRetrievableThroughInterface()
+    public async Task AddInfrastructure_IndexedKnowledgeIsRetrievableThroughInterface()
     {
         // Arrange
         var services = new ServiceCollection();
@@ -179,7 +179,8 @@ public sealed class MicrosoftLearnDependencyInjectionTests
         };
 
         // Act
-        var results = retriever.Retrieve(query);
+        var results =
+        await retriever.RetrieveAsync(query);
 
         // Assert
         Assert.Contains(

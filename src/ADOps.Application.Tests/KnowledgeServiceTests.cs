@@ -1,4 +1,5 @@
 using System.IO.Pipelines;
+using System.Security.Cryptography.X509Certificates;
 using ADOps.Application.Knowledge;
 using ADOps.Core.Entities;
 using ADOps.Core.Interfaces;
@@ -16,7 +17,7 @@ public sealed class KnowledgeServiceTests
     }
 
     [Fact]
-    public void RetrieveWithContext_ReturnsMatchesAndMarksAnalysisNotPerformed()
+    public async Task RetrieveWithContext_ReturnsMatchesAndMarksAnalysisNotPerformed()
     {
         var query = new KnowledgeQuery
         {
@@ -44,7 +45,8 @@ public sealed class KnowledgeServiceTests
 
         var service = new KnowledgeService(retriever);
 
-        var result = service.RetrieveWithContext(query);
+        var result =
+            await service.RetrieveWithContextAsync(query);
 
         Assert.Same(match, Assert.Single(result.Matches));
         Assert.Same(
@@ -61,12 +63,13 @@ public sealed class KnowledgeServiceTests
     }
 
     [Fact]
-    public void RetrieveWithContext_ReturnsEmptyMatches_WhenNoneFound()
+    public async Task RetrieveWithContext_ReturnsEmptyMatches_WhenNoneFound()
     {
         var service = new KnowledgeService(
             new FakeKnowledgeRetriever());
 
-        var result = service.RetrieveWithContext(
+        var result =
+            await service.RetrieveWithContextAsync(
             new KnowledgeQuery
             {
                 Query = "unknown"
@@ -77,17 +80,17 @@ public sealed class KnowledgeServiceTests
     }
 
     [Fact]
-    public void RetrieveWithContext_Throws_WhenQueryIsNull()
+    public async Task RetrieveWithContext_Throws_WhenQueryIsNull()
     {
         var service = new KnowledgeService(
             new FakeKnowledgeRetriever());
 
-        Assert.Throws<ArgumentNullException>(
-            () => service.RetrieveWithContext(null!));
+        await Assert.ThrowsAsync<ArgumentNullException>(
+            () => service.RetrieveWithContextAsync(null!));
     }
 
     [Fact]
-    public void Retrieve_DelegatesQueryToRetriever()
+    public async Task Retrieve_DelegatesQueryToRetriever()
     {
         var query =
             new KnowledgeQuery
@@ -103,7 +106,7 @@ public sealed class KnowledgeServiceTests
         var service =
             new KnowledgeService(retriever);
 
-        service.Retrieve(query);
+        await service.RetrieveAsync(query);
 
         Assert.Same(
             query,
@@ -111,7 +114,7 @@ public sealed class KnowledgeServiceTests
     }
 
     [Fact]
-    public void Retrieve_ReturnsMatchesFromRetriever()
+    public async Task Retrieve_ReturnsMatchesFromRetriever()
     {
         var query =
             new KnowledgeQuery
@@ -136,7 +139,7 @@ public sealed class KnowledgeServiceTests
             new KnowledgeService(retriever);
 
         var result =
-            service.Retrieve(query);
+            await service.RetrieveAsync(query);
 
         var returnedMatch =
             Assert.Single(result);
@@ -147,7 +150,7 @@ public sealed class KnowledgeServiceTests
     }
 
     [Fact]
-    public void Retrieve_ReturnsEmpty_WhenRetrieverReturnsNoMatches()
+    public async Task Retrieve_ReturnsEmpty_WhenRetrieverReturnsNoMatches()
     {
         var query =
             new KnowledgeQuery
@@ -165,13 +168,13 @@ public sealed class KnowledgeServiceTests
             new KnowledgeService(retriever);
 
         var result =
-            service.Retrieve(query);
+            await service.RetrieveAsync(query);
 
         Assert.Empty(result);
     }
 
     [Fact]
-    public void Retrieve_Throws_WhenQueryIsNull()
+    public async Task Retrieve_Throws_WhenQueryIsNull()
     {
         var retriever =
             new FakeKnowledgeRetriever();
@@ -179,23 +182,61 @@ public sealed class KnowledgeServiceTests
         var service =
             new KnowledgeService(retriever);
 
-        Assert.Throws<ArgumentNullException>(
-            () => service.Retrieve(null!));
+        await Assert.ThrowsAsync<ArgumentNullException>(
+            () => service.RetrieveAsync(null!));
     }
 
     private sealed class FakeKnowledgeRetriever : IKnowledgeRetriever
     {
         public KnowledgeQuery? ReceivedQuery { get; private set; }
 
+        public CancellationToken ReceivedCancellationToken
+        {
+            get;
+            private set;
+        }
+
         public IReadOnlyCollection<KnowledgeMatch> Result { get; init; } =
             [];
 
-        public IReadOnlyCollection<KnowledgeMatch> Retrieve(
-            KnowledgeQuery query)
+        public Task<IReadOnlyCollection<KnowledgeMatch>> RetrieveAsync(
+            KnowledgeQuery query,
+            CancellationToken cancellationToken = default)
         {
             ReceivedQuery = query;
+            ReceivedCancellationToken = cancellationToken;
 
-            return Result;
+            return Task.FromResult(Result);
         }
+    }
+
+    [Fact]
+    public async Task RetrieveWithContextAsync_PassesCancellationTokenToRetriever()
+    {
+        // Arrange
+        using var cancellationTokenSource =
+            new CancellationTokenSource();
+
+        var retriever =
+            new FakeKnowledgeRetriever();
+
+        var service =
+            new KnowledgeService(retriever);
+
+        var query =
+            new KnowledgeQuery
+            {
+                Query = "replication"
+            };
+
+        // Act
+        await service.RetrieveWithContextAsync(
+            query,
+            cancellationTokenSource.Token);
+
+        // Assert
+        Assert.Equal(
+            cancellationTokenSource.Token,
+            retriever.ReceivedCancellationToken);
     }
 }

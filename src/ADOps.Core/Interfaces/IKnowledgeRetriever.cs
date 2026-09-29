@@ -8,7 +8,9 @@ namespace ADOps.Core.Interfaces;
 public interface IKnowledgeRetriever
 {
     /// <summary>
-    /// Retrieves knowledge matches for the supplied query.
+    /// Asynchronously retrieves knowledge matches for the supplied query.
     /// </summary>
-    IReadOnlyCollection<KnowledgeMatch> Retrieve(KnowledgeQuery query);
+    Task<IReadOnlyCollection<KnowledgeMatch>> RetrieveAsync(
+        KnowledgeQuery query,
+        CancellationToken cancellationToken = default);
 }

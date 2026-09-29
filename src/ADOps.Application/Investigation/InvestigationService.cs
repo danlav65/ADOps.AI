@@ -61,9 +61,10 @@ public sealed class InvestigationService : IInvestigationService
                 context,
                 cancellationToken);
 
-        return Investigate(
+        return await InvestigateAsync(
             investigation,
-            snapshot);
+            snapshot,
+            cancellationToken);
     }
 
     public Task<InvestigationReport> InvestigateAsync(
@@ -73,15 +74,16 @@ public sealed class InvestigationService : IInvestigationService
         ArgumentNullException.ThrowIfNull(investigation);
         ArgumentNullException.ThrowIfNull(snapshot);
 
-        return Task.FromResult(
-            Investigate(
-                investigation,
-                snapshot));
-    }
+        return InvestigateAsync(
+            investigation,
+            snapshot,
+            CancellationToken.None);
+}
 
-    private InvestigationReport Investigate(
+    private async Task<InvestigationReport> InvestigateAsync(
         ADOps.Core.Entities.Investigation investigation,
-        InvestigationSnapshot snapshot)
+        InvestigationSnapshot snapshot,
+        CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(investigation);
         ArgumentNullException.ThrowIfNull(snapshot);
@@ -106,12 +108,13 @@ public sealed class InvestigationService : IInvestigationService
                 findings);
 
         var knowledge =
-            _knowledgeService.RetrieveWithContext(
+            await _knowledgeService.RetrieveWithContextAsync(
                 new KnowledgeQuery
                 {
                     Query = rootCauseAnalysis.RootCause,
                     Site = investigation.Incident.SiteCode
-                });
+                },
+                cancellationToken);
         
         return _presenter.Build(
             investigation,

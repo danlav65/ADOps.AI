@@ -9,9 +9,10 @@ public sealed class InMemoryKnowledgeRetrieverTests
     private readonly InMemoryKnowledgeRetriever _retriever = new();
 
     [Fact]
-    public void Retrieve_ReturnsProvenanceForEveryMatch()
+    public async Task Retrieve_ReturnsProvenanceForEveryMatch()
     {
-        var results = _retriever.Retrieve(
+        var results =
+            await _retriever.RetrieveAsync(
             new KnowledgeQuery
             {
                 Query = "replication"
@@ -40,9 +41,10 @@ public sealed class InMemoryKnowledgeRetrieverTests
     }
 
     [Fact]
-    public void Retrieve_PreservesDistinctFixtureSourceIds()
+    public async Task Retrieve_PreservesDistinctFixtureSourceIds()
     {
-        var results = _retriever.Retrieve(
+        var results =
+            await _retriever.RetrieveAsync(
             new KnowledgeQuery
             {
                 Query = "replication",
@@ -61,14 +63,15 @@ public sealed class InMemoryKnowledgeRetrieverTests
     }
 
     [Fact]
-    public void Retrieve_ReturnsMatchingKnowledge()
+    public async Task Retrieve_ReturnsMatchingKnowledge()
     {
         var query = new KnowledgeQuery
         {
             Query = "replication DNS"
         };
 
-        var results = _retriever.Retrieve(query);
+        var results =
+            await _retriever.RetrieveAsync(query);
 
         Assert.NotEmpty(results);
         Assert.Contains(
@@ -77,14 +80,15 @@ public sealed class InMemoryKnowledgeRetrieverTests
     }
 
     [Fact]
-    public void Retrieve_IsCaseInsensitive()
+    public async Task Retrieve_IsCaseInsensitive()
     {
         var query = new KnowledgeQuery
         {
             Query = "KERBEROS"
         };
 
-        var results = _retriever.Retrieve(query);
+        var results =
+            await _retriever.RetrieveAsync(query);
 
         Assert.NotEmpty(results);
         Assert.Contains(
@@ -93,7 +97,7 @@ public sealed class InMemoryKnowledgeRetrieverTests
     }
 
     [Fact]
-    public void Retrieve_RespectsMaximumResults()
+    public async Task Retrieve_RespectsMaximumResults()
     {
         var query = new KnowledgeQuery
         {
@@ -101,28 +105,30 @@ public sealed class InMemoryKnowledgeRetrieverTests
             MaxResults = 1
         };
 
-        var results = _retriever.Retrieve(query);
+        var results =
+        await _retriever.RetrieveAsync(query);
 
         Assert.Single(results);
     }
 
     [Fact]
-    public void Retrieve_ReturnsEmptyForBlankQuery()
+    public async Task Retrieve_ReturnsEmptyForBlankQuery()
     {
         var query = new KnowledgeQuery
         {
             Query = " "
         };
 
-        var results = _retriever.Retrieve(query);
+        var results =
+            await _retriever.RetrieveAsync(query);
 
         Assert.Empty(results);
     }
 
     [Fact]
-    public void Retrieve_ThrowsForNullQuery()
+    public async Task Retrieve_ThrowsForNullQuery()
     {
-        Assert.Throws<ArgumentNullException>(
-            () => _retriever.Retrieve(null!));
+        await Assert.ThrowsAsync<ArgumentNullException>(
+            () => _retriever.RetrieveAsync(null!));
     }
 }

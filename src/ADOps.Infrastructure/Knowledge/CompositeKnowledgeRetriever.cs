@@ -25,10 +25,13 @@ public sealed class CompositeKnowledgeRetriever : IKnowledgeRetriever
                 nameof(chunkIndex));
     }
 
-    public IReadOnlyCollection<KnowledgeMatch> Retrieve(
-        KnowledgeQuery query)
+    public async Task<IReadOnlyCollection<KnowledgeMatch>> RetrieveAsync(
+        KnowledgeQuery query,
+        CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(query);
+
+        cancellationToken.ThrowIfCancellationRequested();
 
         if (string.IsNullOrWhiteSpace(query.Query) ||
             query.MaxResults <= 0)
@@ -37,7 +40,11 @@ public sealed class CompositeKnowledgeRetriever : IKnowledgeRetriever
         }
 
         var fixtureMatches =
-            _fixtureRetriever.Retrieve(query);
+            await _fixtureRetriever.RetrieveAsync(
+                query,
+                cancellationToken);
+
+        cancellationToken.ThrowIfCancellationRequested();
 
         var indexedMatches =
             _chunkIndex.Search(query);

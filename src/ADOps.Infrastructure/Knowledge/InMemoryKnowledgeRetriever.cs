@@ -55,26 +55,39 @@ public sealed class InMemoryKnowledgeRetriever : IKnowledgeRetriever
         }
     ];
 
-    public IReadOnlyCollection<KnowledgeMatch> Retrieve(KnowledgeQuery query)
+    public Task<IReadOnlyCollection<KnowledgeMatch>> RetrieveAsync(
+        KnowledgeQuery query,
+        CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(query);
 
+        cancellationToken.ThrowIfCancellationRequested();
+
         if (string.IsNullOrWhiteSpace(query.Query))
         {
-            return [];
+            return Task.FromResult<IReadOnlyCollection<KnowledgeMatch>>(
+                []);
         }
 
         var terms = query.Query
-            .Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+            .Split(
+                ' ',
+                StringSplitOptions.RemoveEmptyEntries |
+                StringSplitOptions.TrimEntries);
 
-        var matches = Knowledge
-            .Where(match =>
-                terms.Any(term =>
-                    match.Description.Contains(term, StringComparison.OrdinalIgnoreCase) ||
-                    match.Source.Contains(term, StringComparison.OrdinalIgnoreCase)))
-            .Take(Math.Max(0, query.MaxResults))
-            .ToList();
+        IReadOnlyCollection<KnowledgeMatch> matches =
+            Knowledge
+                .Where(match =>
+                    terms.Any(term =>
+                        match.Description.Contains(
+                            term,
+                            StringComparison.OrdinalIgnoreCase) ||
+                        match.Source.Contains(
+                            term,
+                            StringComparison.OrdinalIgnoreCase)))
+                .Take(Math.Max(0, query.MaxResults))
+                .ToList();
 
-        return matches;
+        return Task.FromResult(matches);
     }
 }

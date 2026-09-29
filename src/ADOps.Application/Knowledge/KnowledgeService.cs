@@ -18,20 +18,27 @@ public sealed class KnowledgeService : IKnowledgeService
             throw new ArgumentNullException(nameof(knowledgeRetriever));
     }
 
-    public IReadOnlyCollection<KnowledgeMatch> Retrieve(
-        KnowledgeQuery query)
+    public async Task<IReadOnlyCollection<KnowledgeMatch>> RetrieveAsync(
+        KnowledgeQuery query,
+        CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(query);
 
-        return _knowledgeRetriever.Retrieve(query);
+        return await _knowledgeRetriever.RetrieveAsync(
+            query,
+            cancellationToken);
     }
 
-    public KnowledgeRetrievalResult RetrieveWithContext(
-        KnowledgeQuery query)
+    public async Task<KnowledgeRetrievalResult> RetrieveWithContextAsync(
+        KnowledgeQuery query,
+        CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(query);
 
-        var matches = _knowledgeRetriever.Retrieve(query);
+        var matches =
+            await _knowledgeRetriever.RetrieveAsync(
+                query,
+                cancellationToken);
 
         return new KnowledgeRetrievalResult
         {

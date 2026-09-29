@@ -1016,103 +1016,115 @@ public sealed class InvestigationServiceTests
             private set;
         }
 
-    public IReadOnlyCollection<KnowledgeMatch> Retrieve(
-        KnowledgeQuery query)
-    {
-        ReceivedQuery = query;
-
-        return [];
-    }
-
-    public KnowledgeRetrievalResult RetrieveWithContext(
-        KnowledgeQuery query)
-    {
-        ReceivedQuery = query;
-
-        return new KnowledgeRetrievalResult
+        public Task<IReadOnlyCollection<KnowledgeMatch>> RetrieveAsync(
+            KnowledgeQuery query,
+            CancellationToken cancellationToken = default)
         {
-            Matches =
-            [
-                new KnowledgeMatch
+            ReceivedQuery = query;
+
+            return Task.FromResult<IReadOnlyCollection<KnowledgeMatch>>(
+                []);
+        }
+
+        public Task<KnowledgeRetrievalResult> RetrieveWithContextAsync(
+            KnowledgeQuery query,
+            CancellationToken cancellationToken = default)
+        {
+            ReceivedQuery = query;
+
+            var result =
+                new KnowledgeRetrievalResult
                 {
-                    Source =
-                        "Microsoft Learn AD Replication",
-
-                    Description =
-                        "RPC connectivity should be validated when investigating replication failures.",
-
-                    Provenance =
-                        new KnowledgeSource
+                    Matches =
+                    [
+                        new KnowledgeMatch
                         {
-                            SourceId =
-                                "https://learn.microsoft.com/ad-replication",
-
-                            Title =
+                            Source =
                                 "Microsoft Learn AD Replication",
 
-                            Publisher = "Microsoft",
+                            Description =
+                                "RPC connectivity should be validated when investigating replication failures.",
 
-                            SourceType =
-                                KnowledgeSourceType.MicrosoftDocumentation,
+                            Provenance =
+                                new KnowledgeSource
+                                {
+                                    SourceId =
+                                        "https://learn.microsoft.com/ad-replication",
 
-                            SourceUri =
-                                new Uri(
-                                    "https://learn.microsoft.com/ad-replication"),
+                                    Title =
+                                        "Microsoft Learn AD Replication",
 
-                            RetrievedUtc =
-                                new DateTimeOffset(
-                                    2026,
-                                    7,
-                                    9,
-                                    12,
-                                    0,
-                                    0,
-                                    TimeSpan.Zero)
+                                    Publisher = "Microsoft",
+
+                                    SourceType =
+                                        KnowledgeSourceType.MicrosoftDocumentation,
+
+                                    SourceUri =
+                                        new Uri(
+                                            "https://learn.microsoft.com/ad-replication"),
+
+                                    RetrievedUtc =
+                                        new DateTimeOffset(
+                                            2026,
+                                            7,
+                                            9,
+                                            12,
+                                            0,
+                                            0,
+                                            TimeSpan.Zero)
+                                }
                         }
-                }
-            ],
+                    ],
 
-            Conflicts = [],
+                    Conflicts = [],
 
-            RetrievedUtc =
-                new DateTimeOffset(
-                    2026,
-                    7,
-                    9,
-                    12,
-                    0,
-                    0,
-                    TimeSpan.Zero)
-        };
-    }
-}
+                    RetrievedUtc =
+                        new DateTimeOffset(
+                            2026,
+                            7,
+                            9,
+                            12,
+                            0,
+                            0,
+                            TimeSpan.Zero)
+                };
 
-private sealed class NoOpKnowledgeService
-    : IKnowledgeService
-{
-    public IReadOnlyCollection<KnowledgeMatch> Retrieve(
-        KnowledgeQuery query)
-    {
-        return [];
+            return Task.FromResult(result);
+        }
     }
 
-    public KnowledgeRetrievalResult RetrieveWithContext(
-        KnowledgeQuery query)
+    private sealed class NoOpKnowledgeService
+        : IKnowledgeService
     {
-        return new KnowledgeRetrievalResult
+        public Task<IReadOnlyCollection<KnowledgeMatch>> RetrieveAsync(
+            KnowledgeQuery query,
+            CancellationToken cancellationToken = default)
         {
-            Matches = [],
-            Conflicts = [],
-            RetrievedUtc =
-                new DateTimeOffset(
-                    2026,
-                    7,
-                    9,
-                    12,
-                    0,
-                    0,
-                    TimeSpan.Zero)
-        };
+            return Task.FromResult<IReadOnlyCollection<KnowledgeMatch>>(
+                []);
+        }
+
+        public Task<KnowledgeRetrievalResult> RetrieveWithContextAsync(
+            KnowledgeQuery query,
+            CancellationToken cancellationToken = default)
+        {
+            var result =
+                new KnowledgeRetrievalResult
+                {
+                    Matches = [],
+                    Conflicts = [],
+                    RetrievedUtc =
+                        new DateTimeOffset(
+                            2026,
+                            7,
+                            9,
+                            12,
+                            0,
+                            0,
+                            TimeSpan.Zero)
+                };
+
+            return Task.FromResult(result);
+        }
     }
-}
 }

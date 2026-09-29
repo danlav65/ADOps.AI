@@ -8,14 +8,16 @@ namespace ADOps.Application.Knowledge;
 public interface IKnowledgeService
 {
     /// <summary>
-    /// Retrieves knowledge relevant to the supplied query.
+    /// Asynchronously retrieves knowledge relevant to the supplied query.
     /// </summary>
-    IReadOnlyCollection<KnowledgeMatch> Retrieve(
-        KnowledgeQuery query);
+    Task<IReadOnlyCollection<KnowledgeMatch>> RetrieveAsync(
+        KnowledgeQuery query,
+        CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Retrieves knowledge together with conflict-analysis status.
+    /// Asynchronously retrieves knowledge together with conflict-analysis status.
     /// </summary>
-    KnowledgeRetrievalResult RetrieveWithContext(
-        KnowledgeQuery query);
+    Task<KnowledgeRetrievalResult> RetrieveWithContextAsync(
+        KnowledgeQuery query,
+        CancellationToken cancellationToken = default);
 }
