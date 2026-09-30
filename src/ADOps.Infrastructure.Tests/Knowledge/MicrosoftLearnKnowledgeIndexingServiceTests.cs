@@ -1,6 +1,7 @@
 using System.Net;
 using System.Net.Http.Headers;
 using ADOps.Core.Entities;
+using ADOps.Core.Interfaces;
 using ADOps.Infrastructure.Knowledge;
 
 namespace ADOps.Infrastructure.Tests.Knowledge;
@@ -308,5 +309,28 @@ public sealed class MicrosoftLearnKnowledgeIndexingServiceTests
 
             return Task.FromResult(response);
         }
+    }
+
+    [Fact]
+    public void Constructor_AcceptsKnowledgeIndexWriterAbstraction()
+    {
+        var constructor =
+            typeof(MicrosoftLearnKnowledgeIndexingService)
+                .GetConstructors()
+                .Single();
+
+        var parameterTypes =
+            constructor
+                .GetParameters()
+                .Select(parameter => parameter.ParameterType)
+                .ToArray();
+
+        Assert.Contains(
+            typeof(IKnowledgeIndexWriter),
+            parameterTypes);
+
+        Assert.DoesNotContain(
+            typeof(InMemoryKnowledgeChunkIndex),
+            parameterTypes);
     }
 }

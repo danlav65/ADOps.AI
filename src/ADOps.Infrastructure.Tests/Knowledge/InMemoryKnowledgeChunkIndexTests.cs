@@ -260,6 +260,35 @@ public sealed class InMemoryKnowledgeChunkIndexTests
     }
 
     [Fact]
+    public async Task SearchAsync_CanceledToken_ThrowsOperationCanceledException()
+    {
+        // Arrange
+        var index =
+            new InMemoryKnowledgeChunkIndex();
+
+        using var cancellationTokenSource =
+            new CancellationTokenSource();
+
+        cancellationTokenSource.Cancel();
+
+        // Act
+        var exception =
+            await Assert.ThrowsAsync<OperationCanceledException>(
+                () => index.SearchAsync(
+                    new KnowledgeQuery
+                    {
+                        Query = "replication",
+                        MaxResults = 5
+                    },
+                    cancellationTokenSource.Token));
+
+        // Assert
+        Assert.Equal(
+            cancellationTokenSource.Token,
+            exception.CancellationToken);
+    }
+
+    [Fact]
     public void Add_SameChunkTwice_DoesNotReturnDuplicateMatches()
     {
         // Arrange
@@ -579,5 +608,82 @@ public sealed class InMemoryKnowledgeChunkIndexTests
 
         Assert.Equal(originalChunk.Content, match.Description);
         Assert.Same(provenance, match.Provenance);
+    }
+
+    [Fact]
+    public async Task ReplaceSourceAsync_CanceledToken_DoesNotModifyIndex()
+    {
+        // Arrange
+        var index =
+            new InMemoryKnowledgeChunkIndex();
+
+        var source =
+            new KnowledgeSource
+            {
+                SourceId = "source-1",
+                Title = "Original",
+                Publisher = "Test",
+                SourceType = KnowledgeSourceType.MicrosoftDocumentation,
+                RetrievedUtc = DateTimeOffset.UtcNow
+            };
+
+        index.Add(
+        [
+            new KnowledgeChunk
+            {
+                ChunkId = "chunk-original",
+                SourceId = source.SourceId,
+                Sequence = 0,
+                Content = "original replication content",
+                Provenance = source
+            }
+        ]);
+
+        var replacement =
+            new KnowledgeChunk
+            {
+                ChunkId = "chunk-replacement",
+                SourceId = source.SourceId,
+                Sequence = 0,
+                Content = "replacement kerberos content",
+                Provenance = source
+            };
+
+        using var cancellationTokenSource =
+            new CancellationTokenSource();
+
+        cancellationTokenSource.Cancel();
+
+        // Act
+        var exception =
+            await Assert.ThrowsAsync<OperationCanceledException>(
+                () => index.ReplaceSourceAsync(
+                    source.SourceId,
+                    [replacement],
+                    cancellationTokenSource.Token));
+
+        // Assert
+        Assert.Equal(
+            cancellationTokenSource.Token,
+            exception.CancellationToken);
+
+        var originalResults =
+            index.Search(
+                new KnowledgeQuery
+                {
+                    Query = "original",
+                    MaxResults = 5
+                });
+
+        var replacementResults =
+            index.Search(
+                new KnowledgeQuery
+                {
+                    Query = "kerberos",
+                    MaxResults = 5
+                });
+
+        Assert.Single(originalResults);
+        Assert.Empty(replacementResults);
     }
 }

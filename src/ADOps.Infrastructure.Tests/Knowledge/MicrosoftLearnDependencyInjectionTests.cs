@@ -194,4 +194,36 @@ public sealed class MicrosoftLearnDependencyInjectionTests
                 result.Provenance?.SourceId ==
                     "https://learn.microsoft.com/test");
     }
+
+    [Fact]
+    public void AddInfrastructure_RegistersKnowledgeStoreAbstractionsAsSameSingleton()
+    {
+        // Arrange
+        var services =
+            new ServiceCollection();
+
+        services.AddInfrastructure();
+
+        using var provider =
+            services.BuildServiceProvider();
+
+        // Act
+        var concrete =
+            provider.GetRequiredService<InMemoryKnowledgeChunkIndex>();
+
+        var searcher =
+            provider.GetRequiredService<IKnowledgeSearcher>();
+
+        var writer =
+            provider.GetRequiredService<IKnowledgeIndexWriter>();
+
+        // Assert
+        Assert.Same(
+            concrete,
+            searcher);
+
+        Assert.Same(
+            concrete,
+            writer);
+    }
 }

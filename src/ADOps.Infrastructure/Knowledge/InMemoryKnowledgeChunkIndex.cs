@@ -1,4 +1,5 @@
 using ADOps.Core.Entities;
+using ADOps.Core.Interfaces;
 
 namespace ADOps.Infrastructure.Knowledge;
 
@@ -7,6 +8,8 @@ namespace ADOps.Infrastructure.Knowledge;
 /// over knowledge document chunks.
 /// </summary>
 public sealed class InMemoryKnowledgeChunkIndex
+    : IKnowledgeSearcher,
+      IKnowledgeIndexWriter
 {
     private readonly List<KnowledgeChunk> _chunks = [];
 
@@ -115,6 +118,23 @@ public sealed class InMemoryKnowledgeChunkIndex
     }
 
     /// <summary>
+    /// Asynchronously replaces all indexed chunks belonging to a source.
+    /// </summary>
+    public Task ReplaceSourceAsync(
+        string sourceId,
+        IEnumerable<KnowledgeChunk> chunks,
+        CancellationToken cancellationToken = default)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+
+        ReplaceSource(
+            sourceId,
+            chunks);
+
+        return Task.CompletedTask;
+    }
+
+    /// <summary>
     /// Searches indexed chunks using case-insensitive keyword matching.
     /// Results are ranked by the number of distinct matching query terms.
     /// </summary>
@@ -167,5 +187,19 @@ public sealed class InMemoryKnowledgeChunkIndex
                 Provenance = result.Chunk.Provenance
             })
             .ToArray();
+    }
+
+    /// <summary>
+    /// Asynchronously searches indexed knowledge.
+    /// </summary>
+    public Task<IReadOnlyCollection<KnowledgeMatch>> SearchAsync(
+        KnowledgeQuery query,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(query);
+
+        cancellationToken.ThrowIfCancellationRequested();
+
+        return Task.FromResult(Search(query));
     }
 }

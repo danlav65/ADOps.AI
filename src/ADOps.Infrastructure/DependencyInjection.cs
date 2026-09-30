@@ -120,6 +120,16 @@ public static class DependencyInjection
         services.AddSingleton<
             InMemoryKnowledgeChunkIndex>();
 
+        services.AddSingleton<IKnowledgeSearcher>(
+            serviceProvider =>
+                serviceProvider.GetRequiredService<
+                    InMemoryKnowledgeChunkIndex>());
+
+        services.AddSingleton<IKnowledgeIndexWriter>(
+            serviceProvider =>
+                serviceProvider.GetRequiredService<
+                    InMemoryKnowledgeChunkIndex>());
+
         services.AddScoped<
             MicrosoftLearnKnowledgeIndexingService>();
         

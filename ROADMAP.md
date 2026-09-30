@@ -43,7 +43,7 @@ Document extraction/chunking             ✅ Complete
 In-memory knowledge index                ✅ Complete
 Composite knowledge retrieval            ✅ Complete
 Investigation supporting knowledge       ✅ Complete
-Searchable knowledge-store abstraction   ○ Not started
+Searchable knowledge-store abstraction   ✅ Complete
 Async enterprise retrieval boundary      ✅ Complete
 Azure AI Search                          ○ Not started
 SITA Documentation                       ○ Not started

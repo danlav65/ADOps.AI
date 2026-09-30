@@ -10,19 +10,19 @@ namespace ADOps.Infrastructure.Knowledge;
 public sealed class CompositeKnowledgeRetriever : IKnowledgeRetriever
 {
     private readonly InMemoryKnowledgeRetriever _fixtureRetriever;
-    private readonly InMemoryKnowledgeChunkIndex _chunkIndex;
+    private readonly IKnowledgeSearcher _knowledgeSearcher;
 
     public CompositeKnowledgeRetriever(
         InMemoryKnowledgeRetriever fixtureRetriever,
-        InMemoryKnowledgeChunkIndex chunkIndex)
+        IKnowledgeSearcher knowledgeSearcher)
     {
         _fixtureRetriever = fixtureRetriever
             ?? throw new ArgumentNullException(
                 nameof(fixtureRetriever));
 
-        _chunkIndex = chunkIndex
+        _knowledgeSearcher = knowledgeSearcher
             ?? throw new ArgumentNullException(
-                nameof(chunkIndex));
+                nameof(knowledgeSearcher));
     }
 
     public async Task<IReadOnlyCollection<KnowledgeMatch>> RetrieveAsync(
@@ -47,7 +47,9 @@ public sealed class CompositeKnowledgeRetriever : IKnowledgeRetriever
         cancellationToken.ThrowIfCancellationRequested();
 
         var indexedMatches =
-            _chunkIndex.Search(query);
+            await _knowledgeSearcher.SearchAsync(
+                query,
+                cancellationToken);
 
         return fixtureMatches
             .Concat(indexedMatches)

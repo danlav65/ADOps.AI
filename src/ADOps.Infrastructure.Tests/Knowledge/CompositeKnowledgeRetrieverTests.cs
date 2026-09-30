@@ -1,5 +1,6 @@
 using ADOps.Core.Entities;
 using ADOps.Core.Enums;
+using ADOps.Core.Interfaces;
 using ADOps.Infrastructure.Knowledge;
 
 namespace ADOps.Infrastructure.Tests.Knowledge;
@@ -292,5 +293,28 @@ public sealed class CompositeKnowledgeRetrieverTests
         Assert.Equal(
             cancellationTokenSource.Token,
             exception.CancellationToken);
+    }
+
+    [Fact]
+    public void Constructor_AcceptsKnowledgeSearcherAbstraction()
+    {
+        var constructor =
+            typeof(CompositeKnowledgeRetriever)
+                .GetConstructors()
+                .Single();
+
+        var parameterTypes =
+            constructor
+                .GetParameters()
+                .Select(parameter => parameter.ParameterType)
+                .ToArray();
+
+        Assert.Contains(
+            typeof(IKnowledgeSearcher),
+            parameterTypes);
+
+        Assert.DoesNotContain(
+            typeof(InMemoryKnowledgeChunkIndex),
+            parameterTypes);
     }
 }
